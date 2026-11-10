@@ -1,0 +1,1166 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>糖心小欣奈 - 治愈系生活内容合集</title>
+<meta name="description" content="糖心小欣奈是聚焦治愈系日常与手作生活的内容合集，收录糖心小欣奈的烘焙笔记、手账教程、城市漫步路线与心情随笔，适合喜欢慢生活与温柔记录方式的读者按兴趣浏览。">
+<meta name="keywords" content="治愈系日常,手账教程,烘焙笔记,城市漫步路线,慢生活随笔">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23f6c9d4'/%3E%3Cpath d='M32 16c5 6 12 8 12 16a12 12 0 0 1-24 0c0-8 7-10 12-16z' fill='%23c9536f'/%3E%3Ccircle cx='28' cy='34' r='2.4' fill='%23fff'/%3E%3Ccircle cx='36' cy='34' r='2.4' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+:root{
+  --pink-50:#fdf6f8;
+  --pink-100:#fbe9ee;
+  --pink-200:#f6cdd9;
+  --pink-300:#eea9bd;
+  --pink-500:#c9536f;
+  --pink-600:#a83e59;
+  --ink-900:#33232a;
+  --ink-700:#544049;
+  --ink-500:#7c6670;
+  --ink-400:#9a8790;
+  --cream:#fffdfb;
+  --panel:#ffffff;
+  --line:#f0dfe6;
+  --line-strong:#e6c9d4;
+  --mint:#5f9e8a;
+  --mint-soft:#e8f3ef;
+  --gold:#c79a4a;
+  --gold-soft:#faf1e0;
+  --radius-s:8px;
+  --radius-m:14px;
+  --radius-l:22px;
+  --shadow-s:0 1px 2px rgba(83,45,60,.05),0 2px 8px rgba(83,45,60,.05);
+  --shadow-m:0 2px 6px rgba(83,45,60,.06),0 12px 28px rgba(83,45,60,.08);
+  --sticky-h:96px;
+  --font:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:var(--sticky-h)}
+body{
+  margin:0;font-family:var(--font);color:var(--ink-900);background:var(--pink-50);
+  line-height:1.75;font-size:15px;-webkit-font-smoothing:antialiased;
+}
+a{color:var(--pink-600);text-decoration:none}
+a:hover{color:var(--pink-500);text-decoration:underline}
+h1,h2,h3,h4{margin:0;line-height:1.35;font-weight:700}
+p{margin:0 0 .9em}
+ul,ol{margin:0 0 .9em;padding-left:1.25em}
+li{margin-bottom:.35em}
+img{display:block;max-width:100%}
+
+/* ---------- 吸顶区 ---------- */
+.sticky-wrap{position:sticky;top:0;z-index:60}
+.announce{
+  background:linear-gradient(90deg,#a83e59,#c9536f 55%,#d97a90);
+  color:#fff5f8;font-size:13px;
+}
+.announce-inner{
+  max-width:1360px;margin:0 auto;padding:7px 20px;
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+.announce b{font-weight:700;color:#fff}
+.announce .dot{width:6px;height:6px;border-radius:50%;background:#ffe3ea;box-shadow:0 0 0 3px rgba(255,255,255,.18);flex:none}
+.announce a{color:#fff;text-decoration:none;border-bottom:1px dashed rgba(255,255,255,.6);margin-left:auto;white-space:nowrap}
+.announce a:hover{color:#fff;border-bottom-style:solid}
+
+.site-header{
+  background:rgba(255,253,251,.94);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line-strong);
+  box-shadow:0 4px 16px rgba(83,45,60,.05);
+}
+.header-inner{
+  max-width:1360px;margin:0 auto;padding:10px 20px;
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink-900)}
+.brand:hover{text-decoration:none;color:var(--ink-900)}
+.brand-mark{width:40px;height:40px;flex:none}
+.brand-text{display:flex;flex-direction:column;line-height:1.2}
+.brand-name{font-size:19px;font-weight:800;letter-spacing:.5px}
+.brand-sub{font-size:11px;color:var(--ink-400);letter-spacing:2px}
+.header-nav{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+.header-nav a{
+  font-size:13.5px;color:var(--ink-700);padding:6px 10px;border-radius:999px;
+  text-decoration:none;white-space:nowrap;
+}
+.header-nav a:hover{background:var(--pink-100);color:var(--pink-600);text-decoration:none}
+.header-nav a:focus-visible{outline:2px solid var(--pink-500);outline-offset:2px}
+.header-tools{display:flex;align-items:center;gap:8px}
+.search-box{position:relative;display:flex;align-items:center}
+.search-box input{
+  width:170px;padding:7px 32px 7px 12px;border:1px solid var(--line-strong);border-radius:999px;
+  font-size:13px;font-family:var(--font);background:#fff;color:var(--ink-900);
+}
+.search-box input:focus{outline:2px solid var(--pink-300);outline-offset:1px;border-color:var(--pink-300)}
+.search-box button{
+  position:absolute;right:4px;width:24px;height:24px;border:none;border-radius:50%;
+  background:var(--pink-100);color:var(--pink-600);cursor:pointer;font-size:12px;
+  display:flex;align-items:center;justify-content:center;
+}
+.search-box button:focus-visible{outline:2px solid var(--pink-500);outline-offset:1px}
+.search-feedback{font-size:12px;color:var(--pink-600);display:none;max-width:1360px;margin:0 auto;padding:0 20px 8px}
+.search-feedback.show{display:block}
+
+/* ---------- 首屏 ---------- */
+.hero{
+  background:
+    radial-gradient(900px 320px at 12% -10%, #fbe1e8 0%, transparent 60%),
+    radial-gradient(700px 300px at 92% 0%, #e8f3ef 0%, transparent 55%),
+    linear-gradient(180deg,#fffdfb 0%,#fdf6f8 100%);
+  border-bottom:1px solid var(--line);
+}
+.hero-inner{
+  max-width:1360px;margin:0 auto;padding:44px 20px 40px;
+  display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:40px;align-items:center;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:2px;
+  color:var(--pink-600);background:#fff;border:1px solid var(--line-strong);
+  padding:4px 12px;border-radius:999px;margin-bottom:16px;
+}
+.hero h1{font-size:clamp(30px,4.4vw,46px);letter-spacing:1px;color:var(--ink-900)}
+.hero h1 .accent{color:var(--pink-500)}
+.hero-lead{font-size:15.5px;color:var(--ink-700);max-width:34em;margin-top:14px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{
+  display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;
+  padding:9px 18px;border-radius:999px;text-decoration:none;border:1px solid transparent;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.btn:hover{text-decoration:none;transform:translateY(-1px)}
+.btn-primary{background:var(--pink-500);color:#fff;box-shadow:0 6px 16px rgba(201,83,111,.28)}
+.btn-primary:hover{color:#fff;background:var(--pink-600)}
+.btn-ghost{background:#fff;color:var(--pink-600);border-color:var(--line-strong)}
+.btn-ghost:hover{color:var(--pink-600);background:var(--pink-100)}
+.btn:focus-visible{outline:2px solid var(--pink-500);outline-offset:2px}
+.hero-stats{display:flex;gap:22px;margin-top:26px;flex-wrap:wrap}
+.hero-stat b{display:block;font-size:20px;color:var(--pink-600);line-height:1.2}
+.hero-stat span{font-size:12px;color:var(--ink-400);letter-spacing:.5px}
+.hero-art{position:relative}
+.hero-art svg{width:100%;height:auto;display:block;filter:drop-shadow(0 18px 34px rgba(201,83,111,.14))}
+
+/* ---------- 布局 ---------- */
+.layout{
+  max-width:1360px;margin:0 auto;padding:34px 20px 20px;
+  display:grid;grid-template-columns:190px minmax(0,1fr) 260px;gap:26px;align-items:start;
+}
+.channel-nav{
+  position:sticky;top:calc(var(--sticky-h) + 16px);
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-m);
+  padding:14px 12px;box-shadow:var(--shadow-s);
+}
+.channel-nav h2{font-size:12px;letter-spacing:2px;color:var(--ink-400);font-weight:600;padding:0 8px 8px}
+.channel-nav ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.channel-nav a{
+  display:flex;align-items:center;justify-content:space-between;gap:6px;
+  font-size:13.5px;color:var(--ink-700);padding:7px 10px;border-radius:var(--radius-s);
+  text-decoration:none;
+}
+.channel-nav a span{font-size:11px;color:var(--ink-400)}
+.channel-nav a:hover{background:var(--pink-100);color:var(--pink-600);text-decoration:none}
+.channel-nav a:focus-visible{outline:2px solid var(--pink-500);outline-offset:1px}
+.channel-divider{height:1px;background:var(--line);margin:10px 8px}
+
+.main-col{min-width:0;display:flex;flex-direction:column;gap:26px}
+.side-col{min-width:0;display:flex;flex-direction:column;gap:20px}
+
+/* ---------- 通用区块 ---------- */
+.section{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-l);
+  padding:24px 24px 22px;box-shadow:var(--shadow-s);scroll-margin-top:var(--sticky-h);
+}
+.section-head{display:flex;align-items:flex-end;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.section-head h2{
+  font-size:20px;letter-spacing:.5px;position:relative;padding-left:12px;
+}
+.section-head h2::before{
+  content:"";position:absolute;left:0;top:6px;bottom:5px;width:4px;border-radius:2px;
+  background:linear-gradient(180deg,var(--pink-500),var(--pink-300));
+}
+.section-head .hint{font-size:12.5px;color:var(--ink-400);margin-left:auto}
+.section-sub{font-size:13.5px;color:var(--ink-500);margin:-6px 0 16px}
+
+/* ---------- 概览 ---------- */
+.overview-text{font-size:15px;color:var(--ink-700)}
+.overview-text strong{color:var(--pink-600);font-weight:700}
+.overview-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.tag{
+  display:inline-block;font-size:12px;padding:3px 10px;border-radius:999px;
+  background:var(--pink-100);color:var(--pink-600);border:1px solid #f7dbe3;white-space:nowrap;
+}
+.tag-mint{background:var(--mint-soft);color:var(--mint);border-color:#d3e8e0}
+.tag-gold{background:var(--gold-soft);color:#9a7430;border-color:#f0e0c4}
+
+/* ---------- 精选卡片 ---------- */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.card{
+  border:1px solid var(--line);border-radius:var(--radius-m);overflow:hidden;background:#fff;
+  display:flex;flex-direction:column;transition:box-shadow .18s ease,transform .18s ease;
+}
+.card:hover{box-shadow:var(--shadow-m);transform:translateY(-2px)}
+.card-cover{position:relative;aspect-ratio:4/3;background:var(--pink-100)}
+.card-cover img{width:100%;height:100%;object-fit:cover}
+.card-badge{
+  position:absolute;left:10px;top:10px;font-size:11.5px;padding:2px 9px;border-radius:999px;
+  background:rgba(255,255,255,.92);color:var(--pink-600);font-weight:600;backdrop-filter:blur(4px);
+}
+.card-body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:7px;flex:1}
+.card-body h3{font-size:15.5px;line-height:1.4}
+.card-desc{font-size:13px;color:var(--ink-500);line-height:1.65;flex:1}
+.card-tags{display:flex;flex-wrap:wrap;gap:5px}
+.card-tags .tag{font-size:11px;padding:2px 8px}
+.card-meta{
+  display:flex;align-items:center;justify-content:space-between;font-size:11.5px;
+  color:var(--ink-400);border-top:1px dashed var(--line);padding-top:9px;margin-top:2px;
+}
+.rate{color:var(--gold);font-weight:700}
+.rate::before{content:"★ ";}
+
+/* ---------- 更新动态 ---------- */
+.update-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.update-list li{
+  display:grid;grid-template-columns:74px minmax(0,1fr);gap:12px;align-items:baseline;
+  padding:10px 0;border-bottom:1px dashed var(--line);margin:0;
+}
+.update-list li:last-child{border-bottom:none}
+.update-time{font-size:12px;color:var(--pink-600);font-weight:600;letter-spacing:.3px}
+.update-body b{font-weight:700;color:var(--ink-900)}
+.update-body span{font-size:13px;color:var(--ink-500)}
+
+/* ---------- 分类入口 ---------- */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:12px}
+.cat-item{
+  display:flex;flex-direction:column;gap:3px;padding:13px 14px;border-radius:var(--radius-m);
+  background:linear-gradient(160deg,#fff 0%,var(--pink-50) 100%);
+  border:1px solid var(--line);text-decoration:none;transition:border-color .18s ease,box-shadow .18s ease;
+}
+.cat-item:hover{border-color:var(--pink-300);box-shadow:var(--shadow-s);text-decoration:none}
+.cat-item:focus-visible{outline:2px solid var(--pink-500);outline-offset:2px}
+.cat-item b{font-size:14.5px;color:var(--ink-900)}
+.cat-item span{font-size:12px;color:var(--ink-400)}
+.cat-item em{font-style:normal;font-size:11.5px;color:var(--pink-600);margin-top:2px}
+
+/* ---------- 深度解析 ---------- */
+.article-body{font-size:15px;color:var(--ink-700)}
+.article-body h3{
+  font-size:16.5px;color:var(--pink-600);margin:22px 0 8px;padding-left:10px;border-left:3px solid var(--pink-300);
+}
+.article-body h3:first-child{margin-top:0}
+.article-body ul{padding-left:1.2em}
+.article-body li::marker{color:var(--pink-300)}
+.compare{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:14px 0 6px;
+}
+.compare-panel{
+  border:1px solid var(--line);border-radius:var(--radius-m);padding:14px 15px;background:var(--pink-50);
+}
+.compare-panel h4{font-size:14px;margin-bottom:6px;color:var(--ink-900)}
+.compare-panel p{font-size:13px;margin:0;color:var(--ink-500)}
+.compare-panel.highlight{background:var(--mint-soft);border-color:#d3e8e0}
+.compare-panel.highlight h4{color:var(--mint)}
+
+/* ---------- 指南步骤 ---------- */
+.steps{list-style:none;margin:0;padding:0;counter-reset:step;display:flex;flex-direction:column;gap:12px}
+.steps li{
+  counter-increment:step;position:relative;padding:12px 16px 12px 52px;margin:0;
+  border:1px solid var(--line);border-radius:var(--radius-m);background:#fff;
+}
+.steps li::before{
+  content:counter(step);position:absolute;left:14px;top:12px;width:26px;height:26px;border-radius:50%;
+  background:var(--pink-500);color:#fff;font-size:13px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+.steps b{display:block;font-size:14.5px;margin-bottom:2px}
+.steps span{font-size:13px;color:var(--ink-500)}
+
+/* ---------- FAQ ---------- */
+details{
+  border:1px solid var(--line);border-radius:var(--radius-m);background:#fff;margin-bottom:10px;
+  overflow:hidden;
+}
+details[open]{border-color:var(--pink-200);background:#fffdfb}
+summary{
+  cursor:pointer;padding:13px 42px 13px 16px;font-size:14.5px;font-weight:600;color:var(--ink-900);
+  list-style:none;position:relative;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{
+  content:"+";position:absolute;right:16px;top:50%;transform:translateY(-50%);
+  font-size:18px;color:var(--pink-500);font-weight:400;line-height:1;
+}
+details[open] summary::after{content:"–"}
+summary:focus-visible{outline:2px solid var(--pink-500);outline-offset:-2px}
+details p{font-size:13.5px;color:var(--ink-500);margin:0;padding:0 16px 14px}
+
+/* ---------- 评论 ---------- */
+.comment-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;list-style:none;margin:0;padding:0}
+.comment-list li{
+  margin:0;padding:12px 14px;border:1px solid var(--line);border-radius:var(--radius-m);
+  background:#fff;display:flex;flex-direction:column;gap:5px;
+}
+.c-head{display:flex;align-items:center;gap:8px}
+.avatar{
+  width:26px;height:26px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;color:#fff;background:var(--pink-300);
+}
+.avatar.m{background:var(--mint)}
+.avatar.g{background:var(--gold)}
+.c-name{font-size:13px;font-weight:700;color:var(--ink-900)}
+.c-date{font-size:11px;color:var(--ink-400);margin-left:auto}
+.c-text{font-size:13px;color:var(--ink-500);margin:0;line-height:1.65}
+
+/* ---------- 资讯 ---------- */
+.news-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.news-list li{
+  margin:0;display:grid;grid-template-columns:112px minmax(0,1fr);gap:14px;align-items:start;
+  padding-bottom:12px;border-bottom:1px dashed var(--line);
+}
+.news-list li:last-child{border-bottom:none;padding-bottom:0}
+.news-list img{width:112px;height:75px;object-fit:cover;border-radius:var(--radius-s)}
+.news-list h3{font-size:14.5px;margin-bottom:3px}
+.news-list .date{font-size:11.5px;color:var(--pink-600);font-weight:600}
+.news-list p{font-size:13px;color:var(--ink-500);margin:3px 0 0}
+
+/* ---------- 相关推荐 ---------- */
+.reco-tags{display:flex;flex-wrap:wrap;gap:8px}
+.reco-tags a{
+  font-size:13px;padding:6px 13px;border-radius:999px;background:#fff;border:1px solid var(--line-strong);
+  color:var(--ink-700);text-decoration:none;
+}
+.reco-tags a:hover{background:var(--pink-100);color:var(--pink-600);border-color:var(--pink-200);text-decoration:none}
+.reco-tags a:focus-visible{outline:2px solid var(--pink-500);outline-offset:2px}
+
+/* ---------- 榜单 ---------- */
+.rank-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.rank-list li{
+  margin:0;display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:10px;align-items:center;
+  padding:8px 10px;border-radius:var(--radius-s);background:var(--pink-50);
+}
+.rank-no{font-size:13px;font-weight:800;color:var(--ink-400);text-align:center}
+.rank-list li:nth-child(-n+3) .rank-no{color:var(--pink-600)}
+.rank-name{font-size:13.5px;font-weight:600;color:var(--ink-900);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rank-heat{font-size:11.5px;color:var(--pink-600);white-space:nowrap}
+
+/* ---------- 侧栏 ---------- */
+.side-card{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-m);
+  padding:16px 16px 14px;box-shadow:var(--shadow-s);
+}
+.side-card h2{font-size:14.5px;margin-bottom:10px;padding-left:10px;position:relative}
+.side-card h2::before{
+  content:"";position:absolute;left:0;top:4px;bottom:3px;width:3px;border-radius:2px;background:var(--pink-300);
+}
+.side-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.side-list li{margin:0;font-size:13px;display:flex;gap:8px;align-items:baseline;color:var(--ink-700)}
+.side-list .num{font-size:11.5px;color:var(--pink-500);font-weight:700;flex:none;width:16px}
+.side-list a{color:var(--ink-700);text-decoration:none}
+.side-list a:hover{color:var(--pink-600);text-decoration:underline}
+.side-note{font-size:12px;color:var(--ink-400);margin:10px 0 0;padding-top:9px;border-top:1px dashed var(--line)}
+.mini-tag-cloud{display:flex;flex-wrap:wrap;gap:6px}
+.mini-tag-cloud a{
+  font-size:12px;padding:3px 9px;border-radius:999px;background:var(--pink-50);
+  border:1px solid var(--line);color:var(--ink-700);text-decoration:none;
+}
+.mini-tag-cloud a:hover{background:var(--pink-100);color:var(--pink-600);text-decoration:none}
+.side-cover{width:100%;height:auto;border-radius:var(--radius-s);margin-bottom:9px;aspect-ratio:8/4;object-fit:cover}
+.side-quote{font-size:13px;color:var(--ink-500);font-style:italic;border-left:3px solid var(--pink-200);padding-left:10px;margin:0}
+
+/* ---------- 页尾 ---------- */
+.site-footer{
+  margin-top:40px;background:#fffdfb;border-top:1px solid var(--line-strong);
+}
+.footer-inner{max-width:1360px;margin:0 auto;padding:34px 20px 20px;
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:26px}
+.footer-brand .brand{margin-bottom:8px}
+.footer-brand p{font-size:13px;color:var(--ink-500);max-width:30em}
+.footer-col h3{font-size:13px;letter-spacing:1px;color:var(--ink-900);margin-bottom:10px}
+.footer-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.footer-col a{font-size:13px;color:var(--ink-500);text-decoration:none}
+.footer-col a:hover{color:var(--pink-600);text-decoration:underline}
+.footer-bottom{
+  border-top:1px solid var(--line);font-size:12px;color:var(--ink-400);
+  max-width:1360px;margin:0 auto;padding:14px 20px 24px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;
+}
+
+@media (max-width:1024px){
+  .layout{grid-template-columns:minmax(0,1fr) 260px}
+  .channel-nav{display:none}
+  .hero-inner{grid-template-columns:1fr;gap:26px}
+  .hero-art{max-width:460px}
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media (max-width:860px){
+  .layout{grid-template-columns:1fr}
+  .side-col{order:2}
+  .main-col{order:1}
+  .header-nav{order:3;width:100%;margin-left:0;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}
+  .header-tools{order:2}
+}
+@media (max-width:740px){
+  :root{--sticky-h:132px}
+  .header-inner{gap:10px}
+  .header-tools{width:100%}
+  .search-box{width:100%}
+  .search-box input{width:100%}
+  .section{padding:18px 16px;border-radius:var(--radius-m)}
+  .hero-inner{padding:30px 16px 28px}
+  .footer-inner{grid-template-columns:1fr}
+  .news-list li{grid-template-columns:88px minmax(0,1fr)}
+  .news-list img{width:88px;height:62px}
+  .update-list li{grid-template-columns:64px minmax(0,1fr);gap:8px}
+  .card-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+}
+@media (max-width:420px){
+  .card-grid{grid-template-columns:1fr}
+  .cat-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="sticky-wrap">
+  <div class="announce">
+    <div class="announce-inner">
+      <span class="dot" aria-hidden="true"></span>
+      <b>本周新增 14 篇手账与烘焙笔记</b>
+      <span>｜11 月 8 日更新《秋日奶油卷制作全记录》《城市漫步·梧桐区路线》</span>
+      <a href="#updates">查看今日更新</a>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top">
+        <svg class="brand-mark" viewBox="0 0 64 64" role="img" aria-label="糖心小欣奈标志">
+          <defs>
+            <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#fbe1e8"/><stop offset="1" stop-color="#f6cdd9"/>
+            </linearGradient>
+          </defs>
+          <circle cx="32" cy="32" r="30" fill="url(#bg1)"/>
+          <path d="M32 15c4.6 5.8 11.5 7.6 11.5 15.4A11.5 11.5 0 0 1 32 42a11.5 11.5 0 0 1-11.5-11.6C20.5 22.6 27.4 20.8 32 15z" fill="#c9536f"/>
+          <circle cx="27.6" cy="33" r="2.3" fill="#fff"/>
+          <circle cx="36.4" cy="33" r="2.3" fill="#fff"/>
+          <path d="M28.5 38.6c2.2 1.8 4.8 1.8 7 0" stroke="#fff" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <path d="M17 47c4-3 9-3 13 0M34 47c4-3 9-3 13 0" stroke="#e8a9ba" stroke-width="2" stroke-linecap="round" fill="none"/>
+        </svg>
+        <span class="brand-text">
+          <span class="brand-name">糖心小欣奈</span>
+          <span class="brand-sub">TANGXIN XINNAI</span>
+        </span>
+      </a>
+
+      <nav class="header-nav" aria-label="主题导航">
+        <a href="#overview">领域概览</a>
+        <a href="#featured">精选内容</a>
+        <a href="#updates">今日更新</a>
+        <a href="#categories">分类入口</a>
+        <a href="#deepdive">深度解析</a>
+        <a href="#guide">体验指南</a>
+        <a href="#faq">常见问题</a>
+        <a href="#news">相关资讯</a>
+      </nav>
+
+      <div class="header-tools">
+        <div class="search-box">
+          <input id="siteSearch" type="search" placeholder="搜索条目、类型、路线…" aria-label="站内内容搜索">
+          <button id="searchBtn" type="button" aria-label="搜索">⌕</button>
+        </div>
+      </div>
+    </div>
+    <p class="search-feedback" id="searchFeedback" role="status" aria-live="polite"></p>
+  </header>
+</div>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="hero" aria-labelledby="heroTitle">
+    <div class="hero-inner">
+      <div>
+        <span class="hero-eyebrow">治愈系日常 · 手作与记录</span>
+        <h1 id="heroTitle">糖心小欣奈<span class="accent">。</span></h1>
+        <p class="hero-lead">
+          这里汇聚糖心小欣奈式的温柔生活记录：从秋日奶油卷的烘焙笔记、A6 手账的排版拆解，
+          到梧桐区城市漫步路线、四季心情随笔与低预算小厨房食谱。每一篇都给出具体材料、步骤与判断依据，
+          适合想慢下来做点小东西、又希望有章可循的人按兴趣挑着看。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#featured">看本周精选 8 篇</a>
+          <a class="btn btn-ghost" href="#guide">从哪一篇开始</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><b>186</b><span>篇手作笔记</span></div>
+          <div class="hero-stat"><b>42</b><span>条漫步路线</span></div>
+          <div class="hero-stat"><b>11-08</b><span>今日更新</span></div>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 520 400" role="presentation">
+          <defs>
+            <linearGradient id="hg1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#fbe9ee"/>
+            </linearGradient>
+            <linearGradient id="hg2" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="#f6cdd9"/><stop offset="1" stop-color="#fdf6f8"/>
+            </linearGradient>
+          </defs>
+          <rect x="18" y="26" width="484" height="348" rx="26" fill="url(#hg1)" stroke="#f0dfe6"/>
+          <circle cx="404" cy="96" r="54" fill="#fbe1e8"/>
+          <circle cx="404" cy="96" r="34" fill="#f6cdd9"/>
+          <rect x="52" y="66" width="212" height="18" rx="9" fill="#f6cdd9"/>
+          <rect x="52" y="96" width="150" height="12" rx="6" fill="#fbe9ee"/>
+          <rect x="52" y="118" width="176" height="12" rx="6" fill="#fbe9ee"/>
+          <rect x="52" y="168" width="336" height="128" rx="18" fill="url(#hg2)" stroke="#eea9bd"/>
+          <path d="M84 244c26-34 52-10 78-30s48-4 74 12 52 6 76-14" stroke="#c9536f" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <circle cx="126" cy="214" r="7" fill="#c9536f"/>
+          <circle cx="216" cy="206" r="7" fill="#c9536f"/>
+          <circle cx="306" cy="226" r="7" fill="#c9536f"/>
+          <rect x="52" y="316" width="96" height="14" rx="7" fill="#fbe9ee"/>
+          <rect x="160" y="316" width="64" height="14" rx="7" fill="#fbe9ee"/>
+          <rect x="236" y="316" width="110" height="14" rx="7" fill="#fbe9ee"/>
+          <path d="M392 232c0-16 12-28 28-28s28 12 28 28-28 44-28 44-28-28-28-44z" fill="#fff" stroke="#eea9bd" stroke-width="3"/>
+          <circle cx="420" cy="232" r="5" fill="#c9536f"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三栏门户布局 -->
+  <div class="layout">
+
+    <!-- 左频道索引 -->
+    <aside class="channel-nav" aria-label="频道索引">
+      <h2>频道索引</h2>
+      <ul>
+        <li><a href="#featured">烘焙笔记<span>36</span></a></li>
+        <li><a href="#featured">手账排版<span>29</span></a></li>
+        <li><a href="#categories">城市漫步<span>42</span></a></li>
+        <li><a href="#categories">小厨房食谱<span>27</span></a></li>
+        <li><a href="#categories">心情随笔<span>22</span></a></li>
+        <li><a href="#categories">四季花事<span>15</span></a></li>
+        <li><a href="#categories">文具评测<span>11</span></a></li>
+        <li><a href="#categories">低预算布置<span>9</span></a></li>
+        <li><a href="#rank">本周榜单<span>—</span></a></li>
+        <li><a href="#faq">常见问题<span>6</span></a></li>
+      </ul>
+      <div class="channel-divider" aria-hidden="true"></div>
+      <ul>
+        <li><a href="#news">相关资讯<span>6</span></a></li>
+        <li><a href="#reco">延伸方向<span>8</span></a></li>
+        <li><a href="#comments">读者留言<span>16</span></a></li>
+      </ul>
+    </aside>
+
+    <!-- 主内容 -->
+    <div class="main-col">
+
+      <!-- 1 领域概览 -->
+      <section class="section" id="overview" aria-labelledby="overviewTitle">
+        <div class="section-head">
+          <h2 id="overviewTitle">治愈系日常内容概览</h2>
+          <span class="hint">从手作到漫步的 8 个方向</span>
+        </div>
+        <div class="overview-text">
+          <p>
+            <strong>糖心小欣奈</strong>所代表的这一类内容，核心是“把平常日子做出一点手感”。它不追求宏大叙事，
+            而是围绕可以亲手完成的小事展开，通常可以分成几个稳定方向：一是<strong>烘焙笔记</strong>，以奶油卷、戚风、
+            司康、曲奇等低门槛甜点为主，重点记录材料克数、烤箱温度与失败原因；二是<strong>手账排版</strong>，
+            涵盖 A6 与 A5 两种规格、拼贴与纯文字两种风格；三是<strong>城市漫步</strong>，把一条街区的咖啡店、
+            旧书店、行道树与拍照点串成两小时可走完的路线。
+          </p>
+          <p>
+            再往下还有<strong>小厨房食谱</strong>，偏向一人食与十五分钟出餐；<strong>四季花事</strong>记录当季花材的
+            养护与插瓶；<strong>文具评测</strong>对比不同纸张的洇墨程度与钢笔适配；<strong>心情随笔</strong>则更接近
+            日记体，用具体场景写情绪；<strong>低预算布置</strong>讲如何用百元以内的小物调整桌面与窗台。
+            这八个方向互相支撑——烘焙与布置共享器物审美，手账与随笔共享记录习惯，漫步则把前两者带到户外。
+          </p>
+          <p>
+            当前值得关注的，是入秋后内容重心向“暖色调”与“室内手作”转移：奶油卷、肉桂卷、热可可的搜索量明显上升，
+            手账也从夏季的清爽拼贴转向纸质胶带与干花叠加。漫步路线则从公园转向有梧桐与老建筑的街区，
+            单条路线普遍控制在 1.5—3 公里。理解这些方向之后，挑内容会容易很多。
+          </p>
+          <div class="overview-tags">
+            <span class="tag">奶油卷配方</span>
+            <span class="tag">A6 手账排版</span>
+            <span class="tag tag-mint">梧桐区漫步</span>
+            <span class="tag tag-mint">一人食小厨房</span>
+            <span class="tag tag-gold">干花插瓶</span>
+            <span class="tag tag-gold">钢笔纸张评测</span>
+            <span class="tag">秋日心情随笔</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2 精选内容 -->
+      <section class="section" id="featured" aria-labelledby="featuredTitle">
+        <div class="section-head">
+          <h2 id="featuredTitle">本周精选内容</h2>
+          <span class="hint">8 篇 · 按更新与评分排序</span>
+        </div>
+        <p class="section-sub">每篇都给出可复现的材料、步骤或路线，适合直接照着做一遍。</p>
+
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-cover">
+              <img src="https://picsum.photos/seed/tangxin-creamroll01/400/300" width="400" height="300" loading="lazy" alt="秋日奶油卷蛋糕卷切片与热可可">
+              <span class="card-badge">烘焙笔记</span>
+            </div>
+            <div class="card-body">
+              <h3>秋日奶油卷：28×28 烤盘全记录</h3>
+              <p class="card-desc">从蛋白打发到卷起定型，记录 170℃ 18 分钟的炉温与开裂原因，附奶油打发到 8 分发的判断方法。</p>
+              <div class="card-tags"><span class="tag">蛋糕卷</span><span class="tag">零基础烘焙</span></div>
+              <div class="card-meta"><span class="rate">9.3</span><span>11-08 更新</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-cover">
+              <img src="https://picsum.photos/seed/tangxin-journal02/400/300" width="400" height="300" loading="lazy" alt="A6 手账拼贴页面与纸质胶带">
+              <span class="card-badge">手账排版</span>
+            </div>
+            <div class="card-body">
+              <h3>A6 手账一周排版拆解</h3>
+              <p class="card-desc">用三张纸质胶带、一枚邮票和两行手写，讲清左右页字数配比与留白位置，附失败版面复盘。</p>
+              <div class="card-tags"><span class="tag">拼贴</span><span class="tag">纸质胶带</span></div>
+              <div class="card-meta"><span class="rate">9.0</span><span>11-07 更新</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-cover">
+              <img src="https://picsum.photos/seed/tangxin-walk03/400/300" width="400" height="300" loading="lazy" alt="梧桐街区漫步路线与旧书店门面">
+              <span class="card-badge">城市漫步</span>
+            </div>
+            <div class="card-body">
+              <h3>梧桐区两小时漫步路线</h3>
+              <p class="card-desc">从地铁口到旧书店再到街角咖啡，全程 2.3 公里，标出 4 个拍照点与 2 处可歇脚的座位。</p>
+              <div class="card-tags"><span class="tag tag-mint">老建筑</span><span class="tag tag-mint">周末散步</span></div>
+              <div class="card-meta"><span class="rate">8.8</span><span>11-06 更新</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-cover">
+              <img src="https://picsum.photos/seed/tangxin-kitchen04/400/300" width="400" height="300" loading="lazy" alt="一人食小厨房的番茄鸡蛋面">
+              <span class="card-badge">小厨房食谱</span>
+            </div>
+            <div class="card-body">
+              <h3>十五分钟番茄鸡蛋面</h3>
+              <p class="card-desc">一人份的锅具选择、番茄去皮技巧与汤底浓度控制，附“面太软”和“汤太酸”两个常见问题的补救。</p>
+              <div class="card-tags"><span class="tag tag-mint">一人食</span><span class="tag tag-mint">快手菜</span></div>
+              <div class="card-meta"><span class="rate">8.6</span><span>11-05 更新</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-cover">
+              <img src="https://picsum.photos/seed/tangxin-flower05/400/300" width="400" height="300" loading="lazy" alt="干花插瓶与秋季花材搭配">
+              <span class="card-badge">四季花事</span>
+            </div>
+            <div class="card-body">
+              <h3>秋季干花插瓶三组搭配</h3>
+              <p class="card-desc">尤加利、兔尾草与满天星的比例关系，讲清瓶口直径与花枝长度的匹配，附悬挂晾干的时间表。</p>
+              <div class="card-tags"><span class="tag tag-gold">干花</span><span class="tag tag-gold">插瓶</span></div>
+              <div class="card-meta"><span class="rate">8.5</span><span>11-04 更新</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-cover">
+              <img src="https://picsum.photos/seed/tangxin-stationery06/400/300" width="400" height="300" loading="lazy" alt="钢笔在不同纸张上的洇墨对比">
+              <span class="card-badge">文具评测</span>
+            </div>
+            <div class="card-body">
+              <h3>五款手账纸的钢笔洇墨对比</h3>
+              <p class="card-desc">同一支 F 尖钢笔在五款纸上书写，记录渗透、干透时间与背面透印程度，给出按用途的选择建议。</p>
+              <div class="card-tags"><span class="tag">钢笔</span><span class="tag">纸张测试</span></div>
+              <div class="card-meta"><span class="rate">8.4</span><span>11-03 更新</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-cover">
+              <img src="https://picsum.photos/seed/tangxin-desk07/400/300" width="400" height="300" loading="lazy" alt="百元以内的桌面改造与窗台布置">
+              <span class="card-badge">低预算布置</span>
+            </div>
+            <div class="card-body">
+              <h3>百元桌面改造：从杂乱到顺眼</h3>
+              <p class="card-desc">只换三样东西——托盘、台灯罩、收纳盒，讲清色温 3000K 与桌面材质如何互相影响。</p>
+              <div class="card-tags"><span class="tag tag-gold">桌面收纳</span><span class="tag tag-gold">灯光色温</span></div>
+              <div class="card-meta"><span class="rate">8.3</span><span>11-02 更新</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-cover">
+              <img src="https://picsum.photos/seed/tangxin-essay08/400/300" width="400" height="300" loading="lazy" alt="雨天窗边的心情随笔手写稿">
+              <span class="card-badge">心情随笔</span>
+            </div>
+            <div class="card-body">
+              <h3>雨天窗边：一篇 800 字的慢记录</h3>
+              <p class="card-desc">以一场十一月的雨为线索，写热可可、旧毛衣与手账翻页的细节，示范如何用场景代替情绪形容。</p>
+              <div class="card-tags"><span class="tag">日记体</span><span class="tag">写作练习</span></div>
+              <div class="card-meta"><span class="rate">8.7</span><span>11-01 更新</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 3 最新更新 -->
+      <section class="section" id="updates" aria-labelledby="updatesTitle">
+        <div class="section-head">
+          <h2 id="updatesTitle">今日更新与动态</h2>
+          <span class="hint">11 月 8 日前后</span>
+        </div>
+        <ul class="update-list">
+          <li><span class="update-time">今天 09:30</span><span class="update-body"><b>《秋日奶油卷：28×28 烤盘全记录》</b> <span>新增开裂原因对照表，补入 3 张剖面图。</span></span></li>
+          <li><span class="update-time">今天 08:10</span><span class="update-body"><b>《梧桐区两小时漫步路线》</b> <span>第 3 版更新，替换一家已停业的咖啡店。</span></span></li>
+          <li><span class="update-time">昨天 21:10</span><span class="update-body"><b>《A6 手账一周排版拆解》</b> <span>补入 11 月第 1 周的完整版面。</span></span></li>
+          <li><span class="update-time">昨天 18:40</span><span class="update-body"><b>《秋季干花插瓶三组搭配》</b> <span>新增兔尾草与尤加利比例图。</span></span></li>
+          <li><span class="update-time">11 月 6 日</span><span class="update-body"><b>《十五分钟番茄鸡蛋面》</b> <span>补充一人食锅具尺寸对照。</span></span></li>
+          <li><span class="update-time">11 月 5 日</span><span class="update-body"><b>《五款手账纸的钢笔洇墨对比》</b> <span>新增第 5 款纸张测试数据。</span></span></li>
+          <li><span class="update-time">11 月 4 日</span><span class="update-body"><b>《百元桌面改造》</b> <span>加入 3000K 与 4000K 灯光实拍对照。</span></span></li>
+          <li><span class="update-time">11 月 3 日</span><span class="update-body"><b>手账排版专题</b> <span>新增“纯文字页”子栏目，收录 6 篇范例。</span></span></li>
+          <li><span class="update-time">11 月 2 日</span><span class="update-body"><b>城市漫步频道</b> <span>上线“按地铁站找路线”索引，覆盖 18 个站点。</span></span></li>
+          <li><span class="update-time">10 月 30 日</span><span class="update-body"><b>《雨天窗边：一篇 800 字的慢记录》</b> <span>开放读者投稿版块，已收 12 篇。</span></span></li>
+        </ul>
+      </section>
+
+      <!-- 4 分类入口 -->
+      <section class="section" id="categories" aria-labelledby="categoriesTitle">
+        <div class="section-head">
+          <h2 id="categoriesTitle">按方向浏览</h2>
+          <span class="hint">8 个分类</span>
+        </div>
+        <div class="cat-grid">
+          <a class="cat-item" href="#featured"><b>烘焙笔记</b><span>奶油卷 · 司康 · 曲奇</span><em>36 篇 →</em></a>
+          <a class="cat-item" href="#featured"><b>手账排版</b><span>A6 · A5 · 拼贴</span><em>29 篇 →</em></a>
+          <a class="cat-item" href="#featured"><b>城市漫步</b><span>街区 · 旧书店 · 咖啡</span><em>42 条 →</em></a>
+          <a class="cat-item" href="#featured"><b>小厨房食谱</b><span>一人食 · 快手菜</span><em>27 篇 →</em></a>
+          <a class="cat-item" href="#featured"><b>四季花事</b><span>干花 · 插瓶 · 养护</span><em>15 篇 →</em></a>
+          <a class="cat-item" href="#featured"><b>文具评测</b><span>钢笔 · 纸张 · 胶带</span><em>11 篇 →</em></a>
+          <a class="cat-item" href="#featured"><b>低预算布置</b><span>桌面 · 窗台 · 灯光</span><em>9 篇 →</em></a>
+          <a class="cat-item" href="#featured"><b>心情随笔</b><span>日记体 · 写作练习</span><em>22 篇 →</em></a>
+        </div>
+      </section>
+
+      <!-- 5 深度解析 -->
+      <section class="section" id="deepdive" aria-labelledby="deepdiveTitle">
+        <div class="section-head">
+          <h2 id="deepdiveTitle">深度解析：三个方向怎么选、怎么判断</h2>
+          <span class="hint">约 750 字</span>
+        </div>
+        <div class="article-body">
+          <h3>烘焙笔记：先看“失败记录”，再看配方</h3>
+          <p>
+            甜点配方本身并不稀缺，真正决定一篇笔记有没有用的是它有没有写清楚失败情形。以蛋糕卷为例，
+            开裂、掉皮、奶油出水是三个高频问题，成因分别指向蛋白打发过度、烘烤后未及时脱模、以及奶油打发温度过高。
+            一篇合格的奶油卷笔记，通常会同时给出烤箱实际温度（而非面板温度）、烤盘尺寸和卷起时的温度区间。
+            如果只写“170 度 18 分钟”却不提烤盘是 28×28 还是 30×30，复现成功率会明显下降。
+          </p>
+          <p>
+            司康与曲奇则更看重材料替换的影响。黄油换植物油会让司康失去层次，糖粉换细砂糖会让曲奇延展变大。
+            看这类笔记时，建议先找“替换实验”小段，再决定是否照做。
+          </p>
+
+          <h3>手账排版：规格决定结构，结构决定留白</h3>
+          <p>
+            A6 与 A5 的差别不只是大小。A6 单页能容纳的手写行数通常在 12—16 行，因此更适合“一天一页”的日记式排版；
+            A5 单页可到 24 行以上，适合“一周两页”的周计划。拼贴风格在 A6 上容易显得拥挤，
+            纸质胶带宽度最好控制在 15mm 以内；A5 则可以使用 20mm 以上的宽胶带做整块色块。
+          </p>
+          <div class="compare">
+            <div class="compare-panel">
+              <h4>A6 手账</h4>
+              <p>单页 12—16 行，适合日记体；胶带 ≤15mm；留白位置优先放右下角，避免遮挡日期栏。</p>
+            </div>
+            <div class="compare-panel highlight">
+              <h4>A5 手账</h4>
+              <p>单页 24 行以上，适合周计划；可用宽胶带做色块；左侧留 2cm 装订边更耐用。</p>
+            </div>
+          </div>
+          <p>
+            另一个常被忽略的变量是纸张克重。低于 80g 的纸在钢笔书写时背面透印明显，
+            如果习惯双面写，建议选 100g 以上；若只用中性笔，80g 已足够。
+          </p>
+
+          <h3>城市漫步：路线长度与停留点数量要匹配</h3>
+          <p>
+            一条两小时路线，合理的停留点数量是 3—5 个，平均每个点停留 15—20 分钟。超过 6 个点，
+            走完往往变成赶场；少于 3 个点，又容易觉得单调。判断一条路线值不值得走，可以看三个指标：
+          </p>
+          <ul>
+            <li><strong>步行总长</strong>：1.5—3 公里最适合半天出行，超过 4 公里要考虑中途休息点。</li>
+            <li><strong>节点密度</strong>：每 500 米至少有一个可进入的店铺或可坐下的位置。</li>
+            <li><strong>时间适配</strong>：梧桐类街区下午三点后的侧光更适合拍照，旧书店则适合上午人少时逛。</li>
+          </ul>
+          <p>
+            路线里的咖啡店与旧书店如果只是“路过看看”，实际体验会打折。更好的做法是标注每家店的座位数、
+            是否允许带电脑、以及一杯手冲的大致价格区间，这样读者能自行判断要不要进去坐。
+          </p>
+
+          <h3>三类内容的共同判断标准</h3>
+          <p>
+            无论是烘焙、手账还是漫步，判断一篇内容是否值得投入时间，都可以回到同一条线：
+            它有没有给出<strong>可验证的细节</strong>——克数、温度、行数、米数、价格。细节越具体，
+            复现和比较就越容易；只停留在感受描述的内容，更适合当灵感看，而不是当教程用。
+          </p>
+        </div>
+      </section>
+
+      <!-- 6 体验指南 -->
+      <section class="section" id="guide" aria-labelledby="guideTitle">
+        <div class="section-head">
+          <h2 id="guideTitle">从哪一篇开始：消费顺序与判断依据</h2>
+          <span class="hint">4 步</span>
+        </div>
+        <ol class="steps">
+          <li><b>先按“能立刻做”筛一遍</b><span>如果你有烤箱，从奶油卷或司康开始；没有烤箱，先看十五分钟番茄鸡蛋面与桌面改造。</span></li>
+          <li><b>再看细节密度</b><span>同一类型里，优先选写了克数、温度、时长与失败原因的篇目，跳过只有成品图的。</span></li>
+          <li><b>同类条目做横向比较</b><span>两篇手账排版对比时，看谁给出了纸张克重与胶带宽度；两条漫步路线对比时，看谁标了停留点与座位。</span></li>
+          <li><b>最后再扩展到随笔与花事</b><span>这类内容偏感受，适合在动手之后阅读，用来补充记录习惯与季节感，不必追求复现。</span></li>
+        </ol>
+        <p class="section-sub" style="margin-top:14px">
+          判断一个条目值不值得投入时间，最直接的方法是看它有没有回答“做砸了怎么办”。
+          愿意写失败与补救的内容，通常比只展示成品的内容更耐读。
+        </p>
+      </section>
+
+      <!-- 7 FAQ -->
+      <section class="section" id="faq" aria-labelledby="faqTitle">
+        <div class="section-head">
+          <h2 id="faqTitle">常见问题</h2>
+          <span class="hint">6 问</span>
+        </div>
+
+        <details>
+          <summary>蛋糕卷总是开裂，一般是什么原因？</summary>
+          <p>最常见是蛋白打到干性发泡、烘烤温度偏高或烤后未及时脱模。建议蛋白打到湿性偏干（提起呈弯钩），
+          烤箱实际温度控制在 165—170℃，出炉后 2 分钟内撕开四边油纸散热，再卷起定型。</p>
+        </details>
+
+        <details>
+          <summary>A6 和 A5 手账，第一次买应该选哪个？</summary>
+          <p>如果你习惯一天写一段、喜欢拼贴，A6 更合适，单页 12—16 行不容易写空；如果你要做周计划、
+          需要贴票据和打印小图，A5 的 24 行以上空间更从容。两者价格接近，差别主要在排版密度。</p>
+        </details>
+
+        <details>
+          <summary>手账纸 80g 和 100g 区别大吗？</summary>
+          <p>用中性笔差别不大；用钢笔时 80g 背面透印明显，双面书写会互相干扰。习惯钢笔且双面写的，
+          建议 100g 以上；只单面写或贴图为主，80g 足够且更轻薄。</p>
+        </details>
+
+        <details>
+          <summary>城市漫步路线一般多长比较合适？</summary>
+          <p>半天出行建议 1.5—3 公里，停留点 3—5 个。超过 4 公里要安排中途可坐下的位置；
+          少于 3 个停留点容易单调。梧桐类街区下午三点后侧光更好，适合拍照。</p>
+        </details>
+
+        <details>
+          <summary>干花插瓶一般多久能晾干？</summary>
+          <p>悬挂在通风避光处，尤加利与满天星约 7—10 天，兔尾草约 5—7 天。判断标准是花枝弯折时
+          有脆感而非软塌。晾干后喷少量定型发胶可以减少掉屑。</p>
+        </details>
+
+        <details>
+          <summary>一人食快手菜，锅具最少要准备几件？</summary>
+          <p>一口 18cm 不粘奶锅、一口 20cm 平底锅基本够用。奶锅负责煮面、煮汤与热牛奶，平底锅负责煎蛋、
+          炒番茄与煎豆腐。两件即可覆盖大部分十五分钟出餐的菜式。</p>
+        </details>
+      </section>
+
+      <!-- 8 用户评论 -->
+      <section class="section" id="comments" aria-labelledby="commentsTitle">
+        <div class="section-head">
+          <h2 id="commentsTitle">读者留言</h2>
+          <span class="hint">16 条</span>
+        </div>
+        <ul class="comment-list">
+          <li><div class="c-head"><span class="avatar">林</span><span class="c-name">林间小满</span><span class="c-date">11-08</span></div><p class="c-text">奶油卷那篇的开裂对照表很实用，我第二次做终于没裂。</p></li>
+          <li><div class="c-head"><span class="avatar m">阿</span><span class="c-name">阿柚不加冰</span><span class="c-date">11-08</span></div><p class="c-text">A6 排版拆解里留白位置的说明，解决了我一直写满页的问题。</p></li>
+          <li><div class="c-head"><span class="avatar g">七</span><span class="c-name">七号旧站台</span><span class="c-date">11-07</span></div><p class="c-text">梧桐区路线走了，第三家咖啡店座位不多，下午去要等。</p></li>
+          <li><div class="c-head"><span class="avatar">南</span><span class="c-name">南风慢递</span><span class="c-date">11-07</span></div><p class="c-text">番茄鸡蛋面十五分钟是真的，但番茄去皮我花了更久。</p></li>
+          <li><div class="c-head"><span class="avatar m">纸</span><span class="c-name">纸飞机计划</span><span class="c-date">11-06</span></div><p class="c-text">五款纸的洇墨对比很中肯，没有一味夸贵的纸。</p></li>
+          <li><div class="c-head"><span class="avatar g">慢</span><span class="c-name">慢半拍小陈</span><span class="c-date">11-06</span></div><p class="c-text">干花比例图如果能标注花瓶高度就更好了。</p></li>
+          <li><div class="c-head"><span class="avatar">秋</span><span class="c-name">秋日拿铁</span><span class="c-date">11-05</span></div><p class="c-text">百元桌面改造里色温那段让我换了灯泡，确实顺眼不少。</p></li>
+          <li><div class="c-head"><span class="avatar m">小</span><span class="c-name">小满不加班</span><span class="c-date">11-05</span></div><p class="c-text">随笔那篇写得安静，适合睡前看，不吵。</p></li>
+          <li><div class="c-head"><span class="avatar g">星</span><span class="c-name">星野拾光</span><span class="c-date">11-04</span></div><p class="c-text">司康替换实验那段很有用，植物油版本确实没层次。</p></li>
+          <li><div class="c-head"><span class="avatar">温</span><span class="c-name">温柔收集者</span><span class="c-date">11-04</span></div><p class="c-text">希望漫步路线能标出洗手间位置，带小孩出门很需要。</p></li>
+          <li><div class="c-head"><span class="avatar m">半</span><span class="c-name">半糖去冰</span><span class="c-date">11-03</span></div><p class="c-text">手账胶带宽度建议 15mm 以内，我试了确实不挤。</p></li>
+          <li><div class="c-head"><span class="avatar g">周</span><span class="c-name">周末不设闹钟</span><span class="c-date">11-03</span></div><p class="c-text">路线 2.3 公里走完一个下午刚好，不算累。</p></li>
+          <li><div class="c-head"><span class="avatar">橙</span><span class="c-name">橙子汽水</span><span class="c-date">11-02</span></div><p class="c-text">曲奇糖粉换细砂糖导致延展变大，这篇提醒得很及时。</p></li>
+          <li><div class="c-head"><span class="avatar m">书</span><span class="c-name">书页折角</span><span class="c-date">11-02</span></div><p class="c-text">纯文字页子栏目做得不错，拼贴看多了反而想写点字。</p></li>
+          <li><div class="c-head"><span class="avatar g">夜</span><span class="c-name">夜航小船</span><span class="c-date">11-01</span></div><p class="c-text">100g 纸双面写钢笔确实不透，已经回购。</p></li>
+          <li><div class="c-head"><span class="avatar">一</span><span class="c-name">一只小满</span><span class="c-date">10-31</span></div><p class="c-text">整体节奏偏慢，适合周末翻，赶时间的人可能会觉得啰嗦。</p></li>
+        </ul>
+      </section>
+
+      <!-- 9 相关资讯 -->
+      <section class="section" id="news" aria-labelledby="newsTitle">
+        <div class="section-head">
+          <h2 id="newsTitle">相关资讯</h2>
+          <span class="hint">6 条</span>
+        </div>
+        <ul class="news-list">
+          <li>
+            <img src="https://picsum.photos/seed/tangxin-news01/600/400" width="600" height="400" loading="lazy" alt="秋季烘焙专题上线页面">
+            <div>
+              <h3>秋季烘焙专题上线，收录 12 篇奶油卷与司康笔记</h3>
+              <span class="date">2026-11-08</span>
+              <p>专题按“零基础”“有烤箱经验”两档分组，每篇标注了烤盘尺寸与失败原因。</p>
+            </div>
+          </li>
+          <li>
+            <img src="https://picsum.photos/seed/tangxin-news02/600/400" width="600" height="400" loading="lazy" alt="手账纸新品洇墨测试">
+            <div>
+              <h3>手账纸新品上市，100g 双面钢笔书写测试结果公布</h3>
+              <span class="date">2026-11-06</span>
+              <p>五款新品中三款在双面书写时背面透印可控，两款仍建议单面使用。</p>
+            </div>
+          </li>
+          <li>
+            <img src="https://picsum.photos/seed/tangxin-news03/600/400" width="600" height="400" loading="lazy" alt="梧桐街区漫步路线地图">
+            <div>
+              <h3>梧桐街区漫步路线更新，替换两家停业店铺</h3>
+              <span class="date">2026-11-05</span>
+              <p>新版路线保持 2.3 公里，新增一处可歇脚的长椅，停留点仍为 5 个。</p>
+            </div>
+          </li>
+          <li>
+            <img src="https://picsum.photos/seed/tangxin-news04/600/400" width="600" height="400" loading="lazy" alt="干花插瓶工作台">
+            <div>
+              <h3>干花插瓶工作坊报名开启，限额 20 人</h3>
+              <span class="date">2026-11-03</span>
+              <p>以尤加利、兔尾草与满天星为主材，讲解比例与晾干时间，材料费另计。</p>
+            </div>
+          </li>
+          <li>
+            <img src="https://picsum.photos/seed/tangxin-news05/600/400" width="600" height="400" loading="lazy" alt="一人食小厨房锅具对照">
+            <div>
+              <h3>一人食锅具对照表更新，新增 18cm 奶锅尺寸</h3>
+              <span class="date">2026-11-01</span>
+              <p>覆盖 16—22cm 四档尺寸，标注了煮面、煮汤与热牛奶的适配范围。</p>
+            </div>
+          </li>
+          <li>
+            <img src="https://picsum.photos/seed/tangxin-news06/600/400" width="600" height="400" loading="lazy" alt="读者投稿心情随笔集">
+            <div>
+              <h3>读者投稿版块收录 12 篇心情随笔，主题集中在“雨天”</h3>
+              <span class="date">2026-10-30</span>
+              <p>投稿以日记体为主，编辑按场景、季节与写作练习三个标签做了归类。</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 10 相关推荐 -->
+      <section class="section" id="reco" aria-labelledby="recoTitle">
+        <div class="section-head">
+          <h2 id="recoTitle">延伸方向</h2>
+          <span class="hint">8 个</span>
+        </div>
+        <div class="reco-tags">
+          <a href="#featured">肉桂卷配方</a>
+          <a href="#featured">热可可做法</a>
+          <a href="#featured">A5 周计划排版</a>
+          <a href="#featured">纯文字手账页</a>
+          <a href="#featured">旧书店漫步路线</a>
+          <a href="#featured">阳台小盆花养护</a>
+          <a href="#featured">中性笔洇墨测试</a>
+          <a href="#featured">窗台百元改造</a>
+        </div>
+      </section>
+
+      <!-- 11 补充：热门榜单 -->
+      <section class="section" id="rank" aria-labelledby="rankTitle">
+        <div class="section-head">
+          <h2 id="rankTitle">本周热门榜</h2>
+          <span class="hint">截至 11 月 8 日 09:00</span>
+        </div>
+        <ol class="rank-list">
+          <li><span class="rank-no">1</span><span class="rank-name">秋日奶油卷：28×28 烤盘全记录</span><span class="rank-heat">9.3</span></li>
+          <li><span class="rank-no">2</span><span class="rank-name">A6 手账一周排版拆解</span><span class="rank-heat">9.0</span></li>
+          <li><span class="rank-no">3</span><span class="rank-name">梧桐区两小时漫步路线</span><span class="rank-heat">8.8</span></li>
+          <li><span class="rank-no">4</span><span class="rank-name">雨天窗边：一篇 800 字的慢记录</span><span class="rank-heat">8.7</span></li>
+          <li><span class="rank-no">5</span><span class="rank-name">十五分钟番茄鸡蛋面</span><span class="rank-heat">8.6</span></li>
+          <li><span class="rank-no">6</span><span class="rank-name">秋季干花插瓶三组搭配</span><span class="rank-heat">8.5</span></li>
+          <li><span class="rank-no">7</span><span class="rank-name">五款手账纸的钢笔洇墨对比</span><span class="rank-heat">8.4</span></li>
+          <li><span class="rank-no">8</span><span class="rank-name">百元桌面改造：从杂乱到顺眼</span><span class="rank-heat">8.3</span></li>
+        </ol>
+      </section>
+
+    </div>
+
+    <!-- 右侧辅助栏 -->
+    <aside class="side-col" aria-label="辅助信息">
+      <div class="side-card">
+        <h2>今日更新速览</h2>
+        <ul class="side-list">
+          <li><span class="num">01</span><a href="#featured">秋日奶油卷开裂对照表</a></li>
+          <li><span class="num">02</span><a href="#featured">梧桐区路线第 3 版</a></li>
+          <li><span class="num">03</span><a href="#featured">A6 手账 11 月第 1 周</a></li>
+          <li><span class="num">04</span><a href="#featured">干花比例图补充</a></li>
+        </ul>
+        <p class="side-note">数据更新于 2026-11-08 09:30</p>
+      </div>
+
+      <div class="side-card">
+        <h2>编辑推荐路线</h2>
+        <img class="side-cover" src="https://picsum.photos/seed/tangxin-sidewalk77/800/400" width="800" height="400" loading="lazy" alt="梧桐街区漫步路线示意图">
+        <p class="side-quote">“先走一小时，找家店坐下写两页手账，再原路慢慢走回去。”</p>
+        <p class="side-note">全长 2.3 公里 · 5 个停留点</p>
+      </div>
+
+      <div class="side-card">
+        <h2>热门标签</h2>
+        <div class="mini-tag-cloud">
+          <a href="#featured">蛋糕卷</a>
+          <a href="#featured">A6 排版</a>
+          <a href="#featured">干花</a>
+          <a href="#featured">钢笔</a>
+          <a href="#featured">一人食</a>
+          <a href="#featured">桌面收纳</a>
+          <a href="#featured">旧书店</a>
+          <a href="#featured">热可可</a>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <h2>本周榜单</h2>
+        <ul class="side-list">
+          <li><span class="num">1</span><a href="#featured">秋日奶油卷全记录</a></li>
+          <li><span class="num">2</span><a href="#featured">A6 手账排版拆解</a></li>
+          <li><span class="num">3</span><a href="#featured">梧桐区漫步路线</a></li>
+          <li><span class="num">4</span><a href="#featured">雨天窗边慢记录</a></li>
+          <li><span class="num">5</span><a href="#featured">番茄鸡蛋面</a></li>
+        </ul>
+        <p class="side-note">按评分与收藏综合排序</p>
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="brand" href="#top">
+        <svg class="brand-mark" viewBox="0 0 64 64" role="img" aria-label="糖心小欣奈标志">
+          <circle cx="32" cy="32" r="30" fill="#fbe1e8"/>
+          <path d="M32 15c4.6 5.8 11.5 7.6 11.5 15.4A11.5 11.5 0 0 1 32 42a11.5 11.5 0 0 1-11.5-11.6C20.5 22.6 27.4 20.8 32 15z" fill="#c9536f"/>
+          <circle cx="27.6" cy="33" r="2.3" fill="#fff"/>
+          <circle cx="36.4" cy="33" r="2.3" fill="#fff"/>
+        </svg>
+        <span class="brand-text">
+          <span class="brand-name">糖心小欣奈</span>
+          <span class="brand-sub">TANGXIN XINNAI</span>
+        </span>
+      </a>
+      <p>聚焦烘焙笔记、手账排版、城市漫步与一人食小厨房的治愈系生活内容合集，讲究可复现的细节与慢节奏的记录方式。</p>
+    </div>
+
+    <div class="footer-col">
+      <h3>内容方向</h3>
+      <ul>
+        <li><a href="#featured">烘焙笔记</a></li>
+        <li><a href="#featured">手账排版</a></li>
+        <li><a href="#featured">城市漫步</a></li>
+        <li><a href="#featured">小厨房食谱</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>延伸浏览</h3>
+      <ul>
+        <li><a href="#categories">四季花事</a></li>
+        <li><a href="#categories">文具评测</a></li>
+        <li><a href="#categories">低预算布置</a></li>
+        <li><a href="#categories">心情随笔</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>常用入口</h3>
+      <ul>
+        <li><a href="#updates">今日更新</a></li>
+        <li><a href="#rank">本周榜单</a></li>
+        <li><a href="#faq">常见问题</a></li>
+        <li><a href="#news">相关资讯</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 糖心小欣奈 · 内容合集</span>
+    <span>部分内容为示例数据，仅用于展示页面结构</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var input = document.getElementById('siteSearch');
+  var btn = document.getElementById('searchBtn');
+  var feedback = document.getElementById('searchFeedback');
+  var main = document.querySelector('main');
+
+  function resetHighlight(){
+    var marked = main.querySelectorAll('.search-hit');
+    for (var i = 0; i < marked.length; i++){
+      var el = marked[i];
+      el.style.outline = '';
+      el.style.outlineOffset = '';
+      el.classList.remove('search-hit');
+    }
+  }
+
+  function runSearch(){
+    var q = (input.value || '').trim();
+    resetHighlight();
+    if (!q){
+      feedback.className = 'search-feedback';
+      feedback.textContent = '';
+      return;
+    }
+    var targets = main.querySelectorAll('.card-body h3, .update-body b, .cat-item b, .news-list h3, .rank-name, .side-list a, .reco-tags a, .comment-list .c-text');
+    var first = null;
+    var count = 0;
+    for (var i = 0; i < targets.length; i++){
+      var el = targets[i];
+      if (el.textContent.indexOf(q) !== -1){
+        count++;
+        var box = el.closest('.card, li, .cat-item, .reco-tags a, .side-list li') || el;
+        box.classList.add('search-hit');
+        box.style.outline = '2px solid #c9536f';
+        box.style.outlineOffset = '2px';
+        if (!first) first = box;
+      }
+    }
+    feedback.className = 'search-feedback show';
+    if (count === 0){
+      feedback.textContent = '没有找到与“' + q + '”相关的内容，换个关键词试试，例如“奶油卷”“手账”“漫步”。';
+    } else {
+      feedback.textContent = '找到 ' + count + ' 条与“' + q + '”相关的内容。';
+      if (first) first.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+  }
+
+  btn.addEventListener('click', runSearch);
+  input.addEventListener('keydown', function(e){
+    if (e.key === 'Enter'){ e.preventDefault(); runSearch(); }
+  });
+  input.addEventListener('input', function(){
+    if (!input.value.trim()){
+      resetHighlight();
+      feedback.className = 'search-feedback';
+      feedback.textContent = '';
+    }
+  });
+})();
+</script>
+</body>
+  </html>
