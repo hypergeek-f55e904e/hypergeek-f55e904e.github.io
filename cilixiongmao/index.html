@@ -1,0 +1,1576 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>磁力熊猫 - 影视聚合与资源导航</title>
+  <meta name="description" content="磁力熊猫聚合最新影视条目、磁力资源与热播动态，提供电影、剧集、动漫、纪录片等具体内容分类，适合喜欢通过磁力链接获取高清影视资源的用户浏览与筛选。">
+  <meta name="keywords" content="磁力链接影视,高清电影下载,剧集更新,动漫资源,纪录片合集">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%232b2d42'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='%23f4a261'%3E🐼%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --color-bg: #f7f5f2;
+      --color-surface: #ffffff;
+      --color-ink: #1e1e24;
+      --color-ink-soft: #3d3d4a;
+      --color-muted: #6b6b7a;
+      --color-primary: #2b2d42;
+      --color-accent: #e76f51;
+      --color-accent-soft: #f4a261;
+      --color-border: #e3e0db;
+      --color-tag-bg: #f0ece6;
+      --color-tag-ink: #4a4a5a;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 2px 6px rgba(0,0,0,0.04);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.06);
+      --font-base: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', system-ui, -apple-system, sans-serif;
+      --max-width: 1360px;
+      --sticky-offset: 132px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--sticky-offset);
+    }
+
+    body {
+      font-family: var(--font-base);
+      background: var(--color-bg);
+      color: var(--color-ink);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--color-accent);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    /* 吸顶公告条 + 页头 */
+    .sticky-group {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--color-surface);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .announce-bar {
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 14px;
+      padding: 8px 20px;
+      text-align: center;
+      letter-spacing: 0.3px;
+    }
+
+    .announce-bar a {
+      color: var(--color-accent-soft);
+      font-weight: 600;
+      margin-left: 8px;
+      text-decoration: underline;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 28px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .brand-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-svg {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--color-primary);
+      letter-spacing: 1px;
+      line-height: 1.2;
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .header-nav a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-ink-soft);
+      padding: 6px 0;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .header-nav a:hover {
+      border-bottom-color: var(--color-accent);
+      color: var(--color-primary);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--color-border);
+      border-radius: 30px;
+      padding: 4px 14px;
+      background: #fff;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      font-size: 14px;
+      padding: 6px 0;
+      width: 160px;
+      background: transparent;
+      font-family: inherit;
+    }
+
+    .search-box button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      color: var(--color-muted);
+      padding: 4px;
+    }
+
+    .search-box button:hover {
+      color: var(--color-accent);
+    }
+
+    /* 布局 */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 24px 28px 48px;
+    }
+
+    .three-col-layout {
+      display: grid;
+      grid-template-columns: 180px minmax(0,1fr) 260px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* 左频道栏 */
+    .channel-sidebar {
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      padding: 20px 12px;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: var(--sticky-offset);
+    }
+
+    .channel-sidebar h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-primary);
+      padding: 0 12px 12px;
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .channel-sidebar a {
+      display: block;
+      padding: 8px 12px;
+      font-size: 14px;
+      color: var(--color-ink-soft);
+      border-radius: var(--radius-sm);
+      transition: background 0.15s;
+    }
+
+    .channel-sidebar a:hover {
+      background: var(--color-tag-bg);
+      color: var(--color-accent);
+    }
+
+    /* 主内容区 */
+    .main-content {
+      min-width: 0;
+    }
+
+    /* 右侧辅助栏 */
+    .right-aside {
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      padding: 20px 16px;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: var(--sticky-offset);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .aside-block h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-primary);
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .aside-list li {
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--color-border);
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .aside-list li:last-child {
+      border-bottom: none;
+    }
+
+    .aside-list .item-name {
+      font-weight: 600;
+      color: var(--color-ink-soft);
+    }
+
+    .aside-list .item-meta {
+      font-size: 12px;
+      color: var(--color-muted);
+      white-space: nowrap;
+    }
+
+    /* 首屏 hero */
+    .hero {
+      background: linear-gradient(135deg, #1e1e2a 0%, #2b2d42 100%);
+      border-radius: var(--radius-lg);
+      padding: 40px 40px 32px;
+      color: #fff;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .hero-text {
+      flex: 1 1 400px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.82);
+      max-width: 600px;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-actions a {
+      display: inline-block;
+      padding: 10px 26px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: transform 0.15s, background 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--color-accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #d15f43;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,0.6);
+      color: #fff;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .hero-visual {
+      flex: 0 0 220px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-visual svg {
+      width: 200px;
+      height: 200px;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.3));
+    }
+
+    /* 板块通用 */
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .section-header h2 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--color-primary);
+      letter-spacing: 0.5px;
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .section-header h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 4px;
+      bottom: 4px;
+      width: 5px;
+      border-radius: 4px;
+      background: var(--color-accent);
+    }
+
+    .section-more {
+      font-size: 14px;
+      color: var(--color-muted);
+      font-weight: 500;
+    }
+
+    .section-more:hover {
+      color: var(--color-accent);
+    }
+
+    /* 概览文字 */
+    .overview-text {
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      padding: 24px 28px;
+      box-shadow: var(--shadow-sm);
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--color-ink-soft);
+    }
+
+    .overview-text p {
+      margin-bottom: 12px;
+    }
+    .overview-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .content-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .content-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: #ddd;
+    }
+
+    .card-body {
+      padding: 14px 14px 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .tag {
+      background: var(--color-tag-bg);
+      color: var(--color-tag-ink);
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--color-muted);
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: 10px;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--color-muted);
+      border-top: 1px solid var(--color-border);
+      padding-top: 10px;
+    }
+
+    .card-meta .hot {
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+
+    /* 最新更新列表 */
+    .update-list {
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      padding: 4px 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .update-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .update-item:last-child {
+      border-bottom: none;
+    }
+
+    .update-time {
+      font-size: 13px;
+      color: var(--color-muted);
+      white-space: nowrap;
+      min-width: 82px;
+      padding-top: 2px;
+    }
+
+    .update-content {
+      flex: 1;
+    }
+
+    .update-content .title {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--color-primary);
+      margin-bottom: 2px;
+    }
+
+    .update-content .desc {
+      font-size: 14px;
+      color: var(--color-muted);
+    }
+
+    /* 分类入口 */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 14px;
+    }
+
+    .category-item {
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      padding: 18px 12px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.15s, background 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      color: var(--color-ink-soft);
+      font-size: 15px;
+    }
+
+    .category-item:hover {
+      background: var(--color-tag-bg);
+      transform: translateY(-2px);
+      color: var(--color-accent);
+    }
+
+    .category-item .emoji {
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    /* 深度解析 */
+    .deep-dive {
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      padding: 28px 32px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .deep-dive h2 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--color-primary);
+      margin-bottom: 20px;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .deep-dive h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 4px;
+      bottom: 4px;
+      width: 5px;
+      border-radius: 4px;
+      background: var(--color-accent);
+    }
+
+    .deep-dive h3 {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin: 24px 0 10px;
+    }
+
+    .deep-dive h3:first-of-type {
+      margin-top: 0;
+    }
+
+    .deep-dive p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--color-ink-soft);
+      margin-bottom: 12px;
+    }
+
+    .deep-dive ul {
+      margin: 10px 0 16px 20px;
+      list-style: disc;
+    }
+
+    .deep-dive li {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--color-ink-soft);
+      margin-bottom: 6px;
+    }
+
+    /* 体验指南 */
+    .guide-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      counter-reset: step;
+    }
+
+    .guide-step {
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      padding: 20px 18px;
+      box-shadow: var(--shadow-sm);
+      counter-increment: step;
+      position: relative;
+    }
+
+    .guide-step::before {
+      content: counter(step);
+      display: block;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--color-accent-soft);
+      opacity: 0.7;
+      margin-bottom: 6px;
+      line-height: 1;
+    }
+
+    .guide-step h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 6px;
+    }
+
+    .guide-step p {
+      font-size: 14px;
+      color: var(--color-muted);
+      line-height: 1.6;
+    }
+
+    /* FAQ */
+    .faq-list {
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      padding: 6px 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .faq-list details {
+      border-bottom: 1px solid var(--color-border);
+      padding: 14px 0;
+    }
+
+    .faq-list details:last-child {
+      border-bottom: none;
+    }
+
+    .faq-list summary {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--color-primary);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-list summary::after {
+      content: '+';
+      font-size: 20px;
+      color: var(--color-accent);
+      font-weight: 400;
+      margin-left: 12px;
+    }
+
+    .faq-list details[open] summary::after {
+      content: '−';
+    }
+
+    .faq-answer {
+      padding: 12px 0 4px;
+      font-size: 14px;
+      color: var(--color-muted);
+      line-height: 1.7;
+    }
+
+    /* 评论 */
+    .comment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .comment-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .comment-user {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--color-primary);
+    }
+
+    .comment-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--color-tag-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--color-accent);
+      font-weight: 800;
+    }
+
+    .comment-text {
+      font-size: 14px;
+      color: var(--color-ink-soft);
+      line-height: 1.6;
+    }
+
+    .comment-meta {
+      font-size: 12px;
+      color: var(--color-muted);
+      margin-top: 4px;
+    }
+
+    /* 资讯 */
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .news-item {
+      display: flex;
+      gap: 16px;
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      box-shadow: var(--shadow-sm);
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .news-date {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-accent);
+      white-space: nowrap;
+      min-width: 80px;
+    }
+
+    .news-body {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .news-body h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 4px;
+    }
+
+    .news-body p {
+      font-size: 14px;
+      color: var(--color-muted);
+      line-height: 1.6;
+    }
+
+    /* 相关推荐 */
+    .related-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .related-tag {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 14px;
+      color: var(--color-ink-soft);
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+
+    .related-tag:hover {
+      background: var(--color-tag-bg);
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+
+    /* 榜单 */
+    .rank-list {
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      padding: 4px 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .rank-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .rank-item:last-child {
+      border-bottom: none;
+    }
+
+    .rank-num {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--color-accent-soft);
+      min-width: 36px;
+      text-align: center;
+    }
+
+    .rank-info {
+      flex: 1;
+    }
+
+    .rank-info .name {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--color-primary);
+    }
+
+    .rank-info .meta {
+      font-size: 13px;
+      color: var(--color-muted);
+    }
+
+    .rank-score {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-accent);
+    }
+
+    /* 页脚 */
+    .site-footer {
+      background: var(--color-primary);
+      color: rgba(255,255,255,0.8);
+      padding: 48px 28px 28px;
+      margin-top: 20px;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 32px;
+    }
+
+    .footer-brand .brand-text {
+      color: #fff;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.65);
+      max-width: 320px;
+    }
+
+    .footer-col h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      padding: 4px 0;
+    }
+
+    .footer-col a:hover {
+      color: var(--color-accent-soft);
+    }
+
+    .footer-bottom {
+      max-width: var(--max-width);
+      margin: 28px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+    }
+
+    /* 响应式 */
+    @media (max-width: 1024px) {
+      .three-col-layout {
+        grid-template-columns: 1fr 260px;
+      }
+      .channel-sidebar {
+        display: none;
+      }
+      .site-header {
+        padding: 10px 18px;
+      }
+      .container {
+        padding: 18px 18px 36px;
+      }
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 740px) {
+      .three-col-layout {
+        grid-template-columns: 1fr;
+      }
+      .right-aside {
+        position: static;
+        margin-top: 8px;
+      }
+      .hero {
+        padding: 28px 22px;
+      }
+      .hero h1 {
+        font-size: 32px;
+      }
+      .hero-visual {
+        flex: 0 0 140px;
+      }
+      .hero-visual svg {
+        width: 140px;
+        height: 140px;
+      }
+      .header-nav {
+        gap: 12px;
+        font-size: 14px;
+      }
+      .search-box input {
+        width: 100px;
+      }
+      .card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      }
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .section-header h2 {
+        font-size: 20px;
+      }
+      .deep-dive {
+        padding: 20px 18px;
+      }
+      .comment-grid {
+        grid-template-columns: 1fr;
+      }
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 400px) {
+      .hero h1 {
+        font-size: 26px;
+      }
+      .hero-desc {
+        font-size: 14px;
+      }
+      .search-box input {
+        width: 70px;
+      }
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- 吸顶公告条 + 页头 -->
+<div class="sticky-group">
+  <div class="announce-bar">
+    本周新增 14 部 4K 磁力条目 · 《暗夜追踪》第 8 集已更新 · 《深海异客》纪录片全集上线
+    <a href="/#latest">查看更新</a>
+  </div>
+  <header class="site-header">
+    <div class="brand-area">
+      <svg class="brand-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" fill="#2b2d42"/>
+        <circle cx="32" cy="32" r="26" fill="#3d3d4a" opacity="0.5"/>
+        <ellipse cx="24" cy="28" rx="6" ry="5" fill="#f4a261"/>
+        <ellipse cx="40" cy="28" rx="6" ry="5" fill="#f4a261"/>
+        <circle cx="24" cy="28" r="3" fill="#1e1e24"/>
+        <circle cx="40" cy="28" r="3" fill="#1e1e24"/>
+        <circle cx="25" cy="27" r="1.2" fill="#fff"/>
+        <circle cx="41" cy="27" r="1.2" fill="#fff"/>
+        <ellipse cx="32" cy="36" rx="5" ry="4" fill="#f4a261"/>
+        <ellipse cx="32" cy="36" rx="2.5" ry="2" fill="#1e1e24"/>
+        <path d="M12 20 Q32 8 52 20" stroke="#f4a261" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M10 48 Q32 58 54 48" stroke="#f4a261" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      </svg>
+      <span class="brand-text">磁力熊猫</span>
+    </div>
+    <nav class="header-nav" aria-label="主题导航">
+      <a href="/#featured">精选推荐</a>
+      <a href="/#latest">最新更新</a>
+      <a href="/#category">分类入口</a>
+      <a href="/#deep-dive">深度解析</a>
+      <a href="/#rank">热门榜单</a>
+      <a href="/#faq">常见问题</a>
+    </nav>
+    <div class="header-actions">
+      <div class="search-box">
+        <input type="search" id="siteSearch" placeholder="搜索条目、类型…" aria-label="搜索条目">
+        <button type="button" id="searchBtn" aria-label="搜索">🔍</button>
+      </div>
+    </div>
+  </header>
+</div>
+
+<!-- 主体 -->
+<div class="container">
+  <div class="three-col-layout">
+
+    <!-- 左频道栏 -->
+    <aside class="channel-sidebar" aria-label="频道索引">
+      <h3>频道索引</h3>
+      <a href="/#featured">电影磁力</a>
+      <a href="/#featured">剧集磁力</a>
+      <a href="/#featured">动漫磁力</a>
+      <a href="/#featured">纪录片磁力</a>
+      <a href="/#category">4K 高清专区</a>
+      <a href="/#category">经典修复合集</a>
+      <a href="/#latest">今日更新</a>
+      <a href="/#rank">本周热榜</a>
+      <a href="/#related">延伸片单</a>
+    </aside>
+
+    <!-- 主内容 -->
+    <main class="main-content" id="main-content">
+
+      <!-- 首屏 -->
+      <section class="hero" id="hero">
+        <div class="hero-text">
+          <h1>磁力熊猫</h1>
+          <p class="hero-desc">聚合电影、剧集、动漫与纪录片的磁力条目与资源索引，提供 4K 高清、经典修复、新番连载等具体分类，适合习惯用磁力链接获取影视内容的观众查找与筛选。</p>
+          <div class="hero-actions">
+            <a href="/#featured" class="btn-primary">浏览精选条目</a>
+            <a href="/#latest" class="btn-outline">查看今日更新</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="90" fill="#1e1e2a" stroke="#e76f51" stroke-width="2" opacity="0.8"/>
+            <circle cx="100" cy="100" r="70" fill="#2b2d42" stroke="#f4a261" stroke-width="1.5" opacity="0.6"/>
+            <!-- 磁力环 -->
+            <ellipse cx="100" cy="85" rx="55" ry="18" stroke="#f4a261" stroke-width="2" fill="none" opacity="0.7"/>
+            <ellipse cx="100" cy="115" rx="55" ry="18" stroke="#f4a261" stroke-width="2" fill="none" opacity="0.7"/>
+            <ellipse cx="100" cy="100" rx="55" ry="18" stroke="#e76f51" stroke-width="1.5" fill="none" opacity="0.5"/>
+            <!-- 熊猫脸 -->
+            <ellipse cx="80" cy="88" rx="12" ry="10" fill="#f4a261"/>
+            <ellipse cx="120" cy="88" rx="12" ry="10" fill="#f4a261"/>
+            <circle cx="80" cy="88" r="6" fill="#1e1e24"/>
+            <circle cx="120" cy="88" r="6" fill="#1e1e24"/>
+            <circle cx="82" cy="86" r="2" fill="#fff"/>
+            <circle cx="122" cy="86" r="2" fill="#fff"/>
+            <ellipse cx="100" cy="108" rx="10" ry="8" fill="#f4a261"/>
+            <ellipse cx="100" cy="108" rx="5" ry="4" fill="#1e1e24"/>
+            <!-- 链接符号 -->
+            <path d="M70 130 Q100 155 130 130" stroke="#f4a261" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <circle cx="65" cy="130" r="5" fill="#e76f51"/>
+            <circle cx="135" cy="130" r="5" fill="#e76f51"/>
+          </svg>
+        </div>
+      </section>
+
+      <!-- 1. 主题领域概览 -->
+      <section class="section" id="overview">
+        <div class="section-header">
+          <h2>影视磁力资源领域概览</h2>
+        </div>
+        <div class="overview-text">
+          <p>磁力熊猫所覆盖的领域，是以磁力链接为核心获取方式的影视内容聚合方向。当前主流内容包含几大具体分支：电影方面有院线新片的高清磁力、经典修复重制版、以及各大影展获奖作品合集；剧集方向涵盖欧美周更剧、日韩档期剧、国产网剧与上星剧；动漫分类则分为新番连载、剧场版与经典长篇合集；纪录片包括自然地理、历史人文与社会观察等子类。</p>
+          <p>从资源规格看，4K HDR 原盘、1080P 高码率、以及适合移动端的压缩版本构成主要选择。近期值得关注的具体条目包括：科幻悬疑片《暗夜追踪》系列第 8 集已更新 4K 磁力；自然纪录片《深海异客》全 6 集上线；经典修复版《雾中风景》推出 50 周年纪念磁力；以及秋季新番《星轨列车》第 6 话的 1080P 合集。观众在选择时通常会关注画质规格、字幕组来源、文件体积与做种热度四个维度。</p>
+        </div>
+      </section>
+
+      <!-- 2. 精选内容推荐 -->
+      <section class="section" id="featured">
+        <div class="section-header">
+          <h2>精选磁力条目推荐</h2>
+          <a href="/#latest" class="section-more">更多更新 →</a>
+        </div>
+        <div class="card-grid">
+          <article class="content-card">
+            <img class="card-img" src="https://picsum.photos/seed/anye-zhuizong08/400/300" alt="暗夜追踪剧集封面" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">暗夜追踪 第 8 集</h3>
+              <div class="card-tags"><span class="tag">悬疑</span><span class="tag">4K HDR</span><span class="tag">周更</span></div>
+              <p class="card-desc">科幻悬疑剧集，本集揭示时间循环的关键线索，4K 原盘磁力含内封简中字幕，做种数稳定。</p>
+              <div class="card-meta"><span class="hot">热度 9.2</span><span>更新于 11-07</span></div>
+            </div>
+          </article>
+          <article class="content-card">
+            <img class="card-img" src="https://picsum.photos/seed/shenhai-yike/400/300" alt="深海异客纪录片封面" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">深海异客 全 6 集</h3>
+              <div class="card-tags"><span class="tag">纪录片</span><span class="tag">自然地理</span><span class="tag">1080P</span></div>
+              <p class="card-desc">BBC 自然历史部新作，探索马里亚纳海沟极端生命形态，磁力合集含国语配音与英字。</p>
+              <div class="card-meta"><span class="hot">热度 8.9</span><span>更新于 11-06</span></div>
+            </div>
+          </article>
+          <article class="content-card">
+            <img class="card-img" src="https://picsum.photos/seed/wuzhong-fengjing/400/300" alt="雾中风景修复版海报" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">雾中风景 50 周年修复版</h3>
+              <div class="card-tags"><span class="tag">经典修复</span><span class="tag">文艺</span><span class="tag">蓝光原盘</span></div>
+              <p class="card-desc">安哲罗普洛斯代表作 4K 修复磁力，含导演评论音轨与花絮纪录片，适合收藏级用户。</p>
+              <div class="card-meta"><span class="hot">热度 8.5</span><span>更新于 11-05</span></div>
+            </div>
+          </article>
+          <article class="content-card">
+            <img class="card-img" src="https://picsum.photos/seed/xinggui-lieche06/400/300" alt="星轨列车动画封面" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">星轨列车 第 6 话</h3>
+              <div class="card-tags"><span class="tag">动漫</span><span class="tag">秋季新番</span><span class="tag">1080P</span></div>
+              <p class="card-desc">原创科幻动画，本话进入主线揭秘篇章，磁力含简繁日内封字幕与 NCOP/NCED。</p>
+              <div class="card-meta"><span class="hot">热度 8.7</span><span>更新于 11-07</span></div>
+            </div>
+          </article>
+          <article class="content-card">
+            <img class="card-img" src="https://picsum.photos/seed/chengshi-zhiguang/400/300" alt="城市之光电影海报" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">城市之光 4K 磁力</h3>
+              <div class="card-tags"><span class="tag">剧情</span><span class="tag">华语</span><span class="tag">杜比视界</span></div>
+              <p class="card-desc">都市现实主义题材影片，磁力为杜比视界版本，包含正片与制作特辑，文件体积 22GB。</p>
+              <div class="card-meta"><span class="hot">热度 8.3</span><span>更新于 11-04</span></div>
+            </div>
+          </article>
+          <article class="content-card">
+            <img class="card-img" src="https://picsum.photos/seed/beiji-xingkong/400/300" alt="北极星空纪录片剧照" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">北极星空 4K 延时合集</h3>
+              <div class="card-tags"><span class="tag">纪录片</span><span class="tag">天文</span><span class="tag">4K 60fps</span></div>
+              <p class="card-desc">极光与星轨延时摄影纪录片，磁力为 4K 60 帧高动态版本，适合大屏播放与壁纸截取。</p>
+              <div class="card-meta"><span class="hot">热度 8.1</span><span>更新于 11-03</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 3. 最新更新 -->
+      <section class="section" id="latest">
+        <div class="section-header">
+          <h2>最新磁力更新与热播动态</h2>
+        </div>
+        <div class="update-list">
+          <div class="update-item"><span class="update-time">今天 09:30</span><div class="update-content"><div class="title">暗夜追踪 第 9 集磁力已发布</div><div class="desc">4K HDR 内封简中，做种数 320+，文件体积 5.8GB。</div></div></div>
+          <div class="update-item"><span class="update-time">今天 08:10</span><div class="update-content"><div class="title">深海异客 第 3 集 1080P 磁力补档</div><div class="desc">修复音频不同步问题，新增国语音轨版本。</div></div></div>
+          <div class="update-item"><span class="update-time">昨天 21:10</span><div class="update-content"><div class="title">星轨列车 第 7 话预告及前 6 话合集磁力</div><div class="desc">合集包含 NCOP 与设定集 PDF，方便补番。</div></div></div>
+          <div class="update-item"><span class="update-time">昨天 18:40</span><div class="update-content"><div class="title">雾中风景 修复版磁力新增评论音轨</div><div class="desc">单独音轨文件已上传，可配合正片磁力使用。</div></div></div>
+          <div class="update-item"><span class="update-time">11-07 14:20</span><div class="update-content"><div class="title">城市之光 4K 杜比视界磁力热度攀升</div><div class="desc">进入本周磁力下载榜前五，做种数稳定。</div></div></div>
+          <div class="update-item"><span class="update-time">11-07 10:05</span><div class="update-content"><div class="title">北极星空 4K 60fps 磁力更新</div><div class="desc">新增第 4 集“极光之舞”的独立磁力。</div></div></div>
+          <div class="update-item"><span class="update-time">11-06 22:30</span><div class="update-content"><div class="title">经典修复专区新增《雾中风景》花絮</div><div class="desc">45 分钟幕后纪录片磁力单独发布。</div></div></div>
+          <div class="update-item"><span class="update-time">11-06 16:00</span><div class="update-content"><div class="title">秋季新番磁力合集页上线</div><div class="desc">涵盖 10 部新番的当前话数磁力索引。</div></div></div>
+        </div>
+      </section>
+
+      <!-- 4. 分类入口 -->
+      <section class="section" id="category">
+        <div class="section-header">
+          <h2>磁力资源分类入口</h2>
+        </div>
+        <div class="category-grid">
+          <a href="/#featured" class="category-item"><span class="emoji">🎬</span>电影磁力</a>
+          <a href="/#featured" class="category-item"><span class="emoji">📺</span>剧集磁力</a>
+          <a href="/#featured" class="category-item"><span class="emoji">🌸</span>动漫磁力</a>
+          <a href="/#featured" class="category-item"><span class="emoji">🌍</span>纪录片磁力</a>
+          <a href="/#featured" class="category-item"><span class="emoji">🎞️</span>经典修复</a>
+          <a href="/#featured" class="category-item"><span class="emoji">🔊</span>4K 高清专区</a>
+          <a href="/#featured" class="category-item"><span class="emoji">📦</span>合集磁力</a>
+          <a href="/#featured" class="category-item"><span class="emoji">🏆</span>影展获奖</a>
+        </div>
+      </section>
+
+      <!-- 5. 深度解析正文 -->
+      <section class="section" id="deep-dive">
+        <div class="deep-dive">
+          <h2>磁力影视资源深度解析</h2>
+
+          <h3>电影磁力：院线新片与修复经典的路径差异</h3>
+          <p>在磁力熊猫的影视资源体系中，电影磁力通常分为两条主要路径。第一条是院线新片的高清磁力，一般在流媒体上线后 7 至 14 天内出现，画质以 1080P 为主，部分热门影片会有 4K HDR 版本。第二条是经典修复磁力，比如《雾中风景》50 周年修复版、小津安二郎作品 4K 修复系列，这类磁力往往附带大量花絮、评论音轨，文件体积较大，但收藏价值更高。判断一个电影磁力是否值得下载，可以关注三个具体指标：是否有内封字幕、是否包含完整花絮、以及做种数是否在 50 以上。</p>
+
+          <h3>剧集磁力：周更节奏与合集策略</h3>
+          <p>欧美剧集通常按照周更节奏发布磁力，例如《暗夜追踪》每周五更新一集，4K 版本延迟 1 到 2 天。日韩剧则多为月火水木金土日固定档期，磁力发布时间相对稳定。对于追剧用户，逐集下载可以第一时间观看，但合集磁力在季终后发布，体积更小、字幕更完整。国产剧的磁力发布速度与平台更新同步，通常有 1080P 与 4K 两个规格。选择剧集磁力时，需要留意字幕组标注，不同字幕组的翻译风格与时间轴精度存在差异。</p>
+
+          <h3>动漫磁力：新番连载与剧场版区别</h3>
+          <p>动漫磁力分为新番连载和剧场版两大类。新番连载每周更新，磁力文件通常包含 NCOP、NCED 和预告，体积在 300MB 到 1.5GB 之间。剧场版磁力则在蓝光发售日之后出现，画质更高，文件体积可达 10GB 以上。以《星轨列车》为例，每话 1080P 磁力约 800MB，而剧场版总集篇的 4K 磁力约 18GB。动漫磁力的字幕选择比真人剧集更多，简中、繁中、日内嵌是常见组合。</p>
+
+          <h3>纪录片磁力：规格与题材的对应关系</h3>
+          <p>纪录片磁力的选择更依赖题材。自然地理类纪录片如《深海异客》《北极星空》，通常提供 4K 60fps 高码率版本，因为画面细节和动态范围是核心价值。历史人文类纪录片则更看重解说音轨和字幕准确性，画质规格反而次要。社会观察类纪录片的磁力体积通常较小，1080P 已足够。在磁力熊猫的纪录片分类中，用户可以根据题材标签快速筛选规格，避免下载体积过大但内容需求不匹配的文件。</p>
+        </div>
+      </section>
+
+      <!-- 6. 体验指南 -->
+      <section class="section" id="guide">
+        <div class="section-header">
+          <h2>磁力影视消费路径指南</h2>
+        </div>
+        <div class="guide-steps">
+          <div class="guide-step">
+            <h4>先确定类型偏好</h4>
+            <p>从电影、剧集、动漫、纪录片四个方向中选择最常看的一类，在对应分类中浏览更新频率和条目数量。</p>
+          </div>
+          <div class="guide-step">
+            <h4>核对画质与规格</h4>
+            <p>4K 原盘适合大屏收藏，1080P 高码率适合日常观看，体积较小的压缩版适合移动端。根据设备与存储空间选择。</p>
+          </div>
+          <div class="guide-step">
+            <h4>检查字幕与音轨</h4>
+            <p>内封简中字幕通常最方便，外挂字幕需要播放器支持。国配、原声、评论音轨按需选择。</p>
+          </div>
+          <div class="guide-step">
+            <h4>参考做种数与热度</h4>
+            <p>做种数在 50 以上的磁力下载更稳定。热度值反映近期下载人数，可作为新片参考。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. FAQ -->
+      <section class="section" id="faq">
+        <div class="section-header">
+          <h2>磁力熊猫常见问题</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>磁力链接和传统下载有什么区别？</summary>
+            <div class="faq-answer">磁力链接不依赖中心服务器，通过 DHT 网络从其他用户处获取文件片段。它不需要注册或登录，但下载速度取决于做种人数。传统下载通常从固定服务器获取，速度更稳定但受服务器带宽限制。</div>
+          </details>
+          <details>
+            <summary>4K 磁力和 1080P 磁力怎么选？</summary>
+            <div class="faq-answer">如果使用 4K 电视或高分辨率显示器，且存储空间充足，4K HDR 磁力能提供更好的画面细节和色彩。日常用笔记本或手机观看，1080P 高码率版本已经足够，且下载更快、占用空间更小。</div>
+          </details>
+          <details>
+            <summary>剧集磁力一般多久更新一次？</summary>
+            <div class="faq-answer">欧美周更剧通常在播出后 12 到 24 小时内出现磁力，4K 版本可能延迟 1 到 2 天。日韩剧更新频率与电视台档期一致，国产剧则与平台更新同步。合集磁力一般在季终后一周内发布。</div>
+          </details>
+          <details>
+            <summary>纪录片磁力为什么文件体积差别很大？</summary>
+            <div class="faq-answer">自然地理类纪录片常提供 4K 60fps 高码率版本，文件体积可达 20GB 以上。历史人文类纪录片以内容为主，1080P 版本通常 3 到 5GB。社会观察类纪录片体积更小。选择时根据观看设备和存储空间决定。</div>
+          </details>
+          <details>
+            <summary>磁力下载没有速度是什么原因？</summary>
+            <div class="faq-answer">可能原因包括：该磁力做种人数过少、下载软件未开启 DHT 网络、或者网络环境限制了 BT 协议。可以尝试更换做种数更多的磁力版本，或在下载软件中检查 DHT 和端口映射设置。</div>
+          </details>
+          <details>
+            <summary>第一次接触磁力下载，从哪类条目开始比较好？</summary>
+            <div class="faq-answer">建议从 1080P 的电影或剧集磁力开始，文件体积适中，做种数通常较多。选择内封简中字幕的版本可以减少播放器设置步骤。熟悉流程后，再尝试 4K 原盘或纪录片高码率版本。</div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 8. 用户评论 -->
+      <section class="section" id="comments">
+        <div class="section-header">
+          <h2>用户评论</h2>
+        </div>
+        <div class="comment-grid">
+          <div class="comment-card"><div class="comment-user"><span class="comment-avatar">林</span>林间漫步</div><div class="comment-text">《暗夜追踪》第 8 集的 4K 磁力画质很稳，夜戏暗部细节保留得不错，内封字幕时间轴也对。</div><div class="comment-meta">11-07</div></div>
+          <div class="comment-card"><div class="comment-user"><span class="comment-avatar">陈</span>陈默看片</div><div class="comment-text">深海异客的国语音轨版本找了好久，这里补档很及时，第 3 集音频问题也修复了。</div><div class="comment-meta">11-07</div></div>
+          <div class="comment-card"><div class="comment-user"><span class="comment-avatar">张</span>张小鱼</div><div class="comment-text">星轨列车第 6 话的 NCOP 单独文件好评，不用再下整个合集。</div><div class="comment-meta">11-06</div></div>
+          <div class="comment-card"><div class="comment-user"><span class="comment-avatar">王</span>王二狗</div><div class="comment-text">雾中风景修复版体积有点大，54GB，但画质确实值，评论音轨是意外惊喜。</div><div class="comment-meta">11-06</div></div>
+          <div class="comment-card"><div class="comment-user"><span class="comment-avatar">赵</span>赵小北</div><div class="comment-text">城市之光杜比视界版本在我的电视上色彩偏暗，可能是我设备不支持，普通 4K 版本应该更好。</div><div class="comment-meta">11-05</div></div>
+          <div class="comment-card"><div class="comment-user"><span class="comment-avatar">周</span>周末看电影</div><div class="comment-text">北极星空 4K 60fps 拿来当屏保素材很合适，文件不算太大，做种也多。</div><div class="comment-meta">11-05</div></div>
+          <div class="comment-card"><div class="comment-user"><span class="comment-avatar">吴</span>吴聊</div><div class="comment-text">秋季新番合集页方便，不用一集一集找磁力，希望保持更新。</div><div class="comment-meta">11-04</div></div>
+          <div class="comment-card"><div class="comment-user"><span class="comment-avatar">郑</span>郑在追剧</div><div class="comment-text">暗夜追踪第 9 集出了，4K 磁力速度不错，半小时下完。</div><div class="comment-meta">11-08</div></div>
+          <div class="comment-card"><div class="comment-user"><span class="comment-avatar">孙</span>孙悟饭</div><div class="comment-text">纪录片分类的题材标签挺细的，自然地理和历史人文分得清楚。</div><div class="comment-meta">11-04</div></div>
+          <div class="comment-card"><div class="comment-user"><span class="comment-avatar">李</span>李知遥</div><div class="comment-text">希望多来点经典港片修复磁力，比如《甜蜜蜜》那种。</div><div class="comment-meta">11-03</div></div>
+          <div class="comment-card"><div class="comment-user"><span class="comment-avatar">黄</span>黄小鸭</div><div class="comment-text">磁力熊猫的更新列表时间挺准的，早上刷一下就知道昨天更新了什么。</div><div class="comment-meta">11-03</div></div>
+          <div class="comment-card"><div class="comment-user"><span class="comment-avatar">刘</span>刘大壮</div><div class="comment-text">有些磁力体积标注能再细一点就好了，比如是否包含花絮。</div><div class="comment-meta">11-02</div></div>
+          <div class="comment-card"><div class="comment-user"><span class="comment-avatar">何</span>何处是归途</div><div class="comment-text">星轨列车第 7 话预告磁力也有了，追番节奏很舒服。</div><div class="comment-meta">11-07</div></div>
+          <div class="comment-card"><div class="comment-user"><span class="comment-avatar">马</span>马小跳</div><div class="comment-text">深海异客的 4K 版本什么时候上？1080P 先看着，画面已经不错了。</div><div class="comment-meta">11-06</div></div>
+        </div>
+      </section>
+
+      <!-- 9. 相关资讯 -->
+      <section class="section" id="news">
+        <div class="section-header">
+          <h2>磁力影视相关资讯</h2>
+        </div>
+        <div class="news-list">
+          <article class="news-item">
+            <span class="news-date">2026-11-08</span>
+            <div class="news-body">
+              <h4>《暗夜追踪》第 9 集 4K 磁力提前放出</h4>
+              <p>比常规更新时间提前 6 小时，4K HDR 内封简中，做种数已超过 200。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <span class="news-date">2026-11-07</span>
+            <div class="news-body">
+              <h4>秋季新番磁力合集索引更新至第 7 周</h4>
+              <p>涵盖 10 部新番的最新话数，新增《星轨列车》第 6 话与《午后三点的魔法》第 5 话。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <span class="news-date">2026-11-06</span>
+            <div class="news-body">
+              <h4>经典修复专区新增 3 部欧洲电影磁力</h4>
+              <p>《雾中风景》《尤利西斯的凝视》《时光之尘》4K 修复版磁力陆续发布。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <span class="news-date">2026-11-05</span>
+            <div class="news-body">
+              <h4>纪录片《深海异客》国语音轨补档完成</h4>
+              <p>第 1 至 3 集国语音轨磁力已更新，第 4 至 6 集预计本周内完成。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <span class="news-date">2026-11-03</span>
+            <div class="news-body">
+              <h4>4K 磁力专区新增杜比视界筛选标签</h4>
+              <p>用户可快速筛选支持杜比视界的电影磁力，目前收录 17 部。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <span class="news-date">2026-11-01</span>
+            <div class="news-body">
+              <h4>10 月磁力下载热度榜发布</h4>
+              <p>《城市之光》《暗夜追踪》前 7 集、《北极星空》位列前三。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 10. 相关推荐 -->
+      <section class="section" id="related">
+        <div class="section-header">
+          <h2>延伸磁力方向推荐</h2>
+        </div>
+        <div class="related-tags">
+          <a href="/#featured" class="related-tag">北欧悬疑剧磁力</a>
+          <a href="/#featured" class="related-tag">自然纪录片 4K 合集</a>
+          <a href="/#featured" class="related-tag">日本动画剧场版磁力</a>
+          <a href="/#featured" class="related-tag">经典黑白电影修复</a>
+          <a href="/#featured" class="related-tag">华语现实主义影片</a>
+          <a href="/#featured" class="related-tag">科幻剧集周更磁力</a>
+          <a href="/#featured" class="related-tag">极地摄影纪录片</a>
+        </div>
+      </section>
+
+      <!-- 11. 补充板块：热门榜单 -->
+      <section class="section" id="rank">
+        <div class="section-header">
+          <h2>本周磁力热门榜单</h2>
+        </div>
+        <div class="rank-list">
+          <div class="rank-item"><span class="rank-num">1</span><div class="rank-info"><div class="name">暗夜追踪 第 9 集</div><div class="meta">悬疑 · 4K HDR · 做种 320+</div></div><span class="rank-score">9.4</span></div>
+          <div class="rank-item"><span class="rank-num">2</span><div class="rank-info"><div class="name">深海异客 全 6 集</div><div class="meta">纪录片 · 1080P · 做种 210+</div></div><span class="rank-score">9.1</span></div>
+          <div class="rank-item"><span class="rank-num">3</span><div class="rank-info"><div class="name">星轨列车 第 6 话</div><div class="meta">动漫 · 1080P · 做种 180+</div></div><span class="rank-score">8.9</span></div>
+          <div class="rank-item"><span class="rank-num">4</span><div class="rank-info"><div class="name">城市之光 4K 杜比视界</div><div class="meta">电影 · 杜比视界 · 做种 150+</div></div><span class="rank-score">8.6</span></div>
+          <div class="rank-item"><span class="rank-num">5</span><div class="rank-info"><div class="name">雾中风景 50 周年修复</div><div class="meta">经典修复 · 蓝光原盘 · 做种 120+</div></div><span class="rank-score">8.5</span></div>
+          <div class="rank-item"><span class="rank-num">6</span><div class="rank-info"><div class="name">北极星空 4K 60fps</div><div class="meta">纪录片 · 4K 60fps · 做种 95+</div></div><span class="rank-score">8.3</span></div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 右侧辅助栏 -->
+    <aside class="right-aside" aria-label="辅助信息">
+      <div class="aside-block">
+        <h3>今日更新速览</h3>
+        <ul class="aside-list">
+          <li><span class="item-name">暗夜追踪 第 9 集</span><span class="item-meta">09:30</span></li>
+          <li><span class="item-name">深海异客 第 3 集</span><span class="item-meta">08:10</span></li>
+          <li><span class="item-name">星轨列车 第 6 话合集</span><span class="item-meta">昨天</span></li>
+          <li><span class="item-name">雾中风景 评论音轨</span><span class="item-meta">昨天</span></li>
+          <li><span class="item-name">城市之光 4K 修复</span><span class="item-meta">11-07</span></li>
+        </ul>
+      </div>
+      <div class="aside-block">
+        <h3>磁力规格指南</h3>
+        <ul class="aside-list">
+          <li><span class="item-name">4K HDR 原盘</span><span class="item-meta">20-60GB</span></li>
+          <li><span class="item-name">1080P 高码率</span><span class="item-meta">5-12GB</span></li>
+          <li><span class="item-name">1080P 压缩版</span><span class="item-meta">1-3GB</span></li>
+          <li><span class="item-name">动漫单话 1080P</span><span class="item-meta">0.5-1.5GB</span></li>
+          <li><span class="item-name">纪录片 4K 60fps</span><span class="item-meta">15-30GB</span></li>
+        </ul>
+      </div>
+      <div class="aside-block">
+        <h3>热门标签</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="tag">4K HDR</span>
+          <span class="tag">内封简中</span>
+          <span class="tag">周更</span>
+          <span class="tag">合集磁力</span>
+          <span class="tag">经典修复</span>
+          <span class="tag">杜比视界</span>
+          <span class="tag">蓝光原盘</span>
+          <span class="tag">国语音轨</span>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- 页脚 -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-text">磁力熊猫</div>
+      <p>聚合电影、剧集、动漫与纪录片的磁力条目索引，提供 4K 高清、经典修复与合集磁力的具体分类与更新动态。</p>
+    </div>
+    <div class="footer-col">
+      <h4>内容分类</h4>
+      <a href="/#featured">电影磁力</a>
+      <a href="/#featured">剧集磁力</a>
+      <a href="/#featured">动漫磁力</a>
+      <a href="/#featured">纪录片磁力</a>
+    </div>
+    <div class="footer-col">
+      <h4>热门专区</h4>
+      <a href="/#featured">4K 高清专区</a>
+      <a href="/#featured">经典修复合集</a>
+      <a href="/#latest">今日更新</a>
+      <a href="/#rank">本周热榜</a>
+    </div>
+    <div class="footer-col">
+      <h4>使用参考</h4>
+      <a href="/#guide">消费路径指南</a>
+      <a href="/#deep-dive">深度解析</a>
+      <a href="/#faq">常见问题</a>
+      <a href="/#related">延伸方向</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    部分内容为示例数据，仅用于展示页面结构 · © 2026 磁力熊猫
+  </div>
+</footer>
+
+<script>
+  (function() {
+    // 搜索功能：本地可见内容筛选
+    const searchInput = document.getElementById('siteSearch');
+    const searchBtn = document.getElementById('searchBtn');
+    const mainContent = document.getElementById('main-content');
+
+    function doSearch() {
+      const query = searchInput.value.trim().toLowerCase();
+      if (!query) {
+        // 恢复所有
+        mainContent.querySelectorAll('.content-card, .update-item, .news-item, .rank-item, .comment-card, .category-item').forEach(el => {
+          el.style.display = '';
+        });
+        return;
+      }
+      // 对主要列表项进行筛选
+      const targets = mainContent.querySelectorAll('.content-card, .update-item, .news-item, .rank-item, .comment-card, .category-item');
+      let visibleCount = 0;
+      targets.forEach(el => {
+        const text = el.innerText.toLowerCase();
+        if (text.includes(query)) {
+          el.style.display = '';
+          visibleCount++;
+        } else {
+          el.style.display = 'none';
+        }
+      });
+      // 无结果反馈
+      let noResultEl = document.getElementById('noResultMsg');
+      if (visibleCount === 0) {
+        if (!noResultEl) {
+          noResultEl = document.createElement('div');
+          noResultEl.id = 'noResultMsg';
+          noResultEl.style.cssText = 'background:#fff;padding:20px;border-radius:12px;text-align:center;color:#6b6b7a;margin:20px 0;box-shadow:0 2px 6px rgba(0,0,0,0.04);';
+          noResultEl.textContent = '未找到匹配的条目，请尝试其他关键词。';
+          mainContent.prepend(noResultEl);
+        } else {
+          noResultEl.style.display = '';
+        }
+      } else {
+        if (noResultEl) noResultEl.style.display = 'none';
+      }
+    }
+
+    searchBtn.addEventListener('click', doSearch);
+    searchInput.addEventListener('input', doSearch);
+    searchInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        doSearch();
+      }
+    });
+  })();
+</script>
+
+</body>
+              </html>
