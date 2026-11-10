@@ -1,0 +1,1379 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>吃瓜网 - 娱乐八卦热门事件与明星动态聚合</title>
+  <meta name="description" content="吃瓜网汇聚明星恋情、片场花絮、综艺争议、红毯造型等娱乐八卦内容，涵盖影视剧组、音乐现场、网红话题与热搜事件，适合关注娱乐圈动态的网友浏览。">
+  <meta name="keywords" content="娱乐八卦,明星恋情,综艺争议,红毯造型,影视剧组">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='55' r='38' fill='%23e85d3f'/%3E%3Cpath d='M20 15 L50 55 L80 15' stroke='%232b2b2b' stroke-width='9' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='55' r='12' fill='%23fff5e6'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #fef9f4;
+      --panel: #ffffff;
+      --text: #24211c;
+      --text-soft: #5f574c;
+      --accent: #e85d3f;
+      --accent-soft: #fbede6;
+      --accent-dark: #c54428;
+      --gold: #d49b3b;
+      --border: #e9dfd3;
+      --shadow: 0 8px 20px rgba(40, 30, 20, 0.06);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --font: system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      --sticky-offset: 98px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--sticky-offset);
+    }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    .container {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    /* 吸顶区域 */
+    .sticky-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .announce-bar {
+      background: #2b221b;
+      color: #fff2e6;
+      font-size: 0.88rem;
+      padding: 8px 0;
+      letter-spacing: 0.3px;
+      border-bottom: 1px solid #443b32;
+    }
+    .announce-bar .container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .announce-bar .tag {
+      background: var(--accent);
+      color: #fff;
+      padding: 2px 10px;
+      border-radius: 25px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .announce-bar p {
+      flex: 1;
+    }
+    .announce-bar a {
+      color: #f5c9a8;
+      font-weight: 600;
+      border-bottom: 1px dashed #f5c9a8;
+    }
+    .site-header {
+      background: rgba(255, 252, 248, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand svg {
+      width: 38px;
+      height: 38px;
+    }
+    .brand-text {
+      font-size: 1.65rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #2b1f16;
+      line-height: 1.2;
+    }
+    .brand-text .accent {
+      color: var(--accent);
+    }
+    .main-nav {
+      display: flex;
+      gap: 8px 22px;
+      flex-wrap: wrap;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-soft);
+    }
+    .main-nav a {
+      padding: 6px 0;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .main-nav a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      padding: 4px 6px 4px 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .search-box input {
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 0.9rem;
+      width: 160px;
+      padding: 6px 0;
+      font-family: var(--font);
+    }
+    .search-box button {
+      background: var(--accent);
+      border: none;
+      color: #fff;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .search-box button:hover {
+      background: var(--accent-dark);
+    }
+    .search-box button svg {
+      width: 16px;
+      height: 16px;
+      stroke: #fff;
+      stroke-width: 2.5;
+    }
+    /* 首屏 */
+    .hero {
+      padding: 40px 0 32px;
+      background: linear-gradient(145deg, #fcf5ee 0%, #fef9f4 100%);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+      color: #1e1712;
+    }
+    .hero-content .subhead {
+      font-size: 1.1rem;
+      color: var(--text-soft);
+      max-width: 580px;
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 11px 26px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: transform 0.15s, background 0.2s;
+      border: 1px solid transparent;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 8px 16px rgba(232, 93, 63, 0.25);
+    }
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+    }
+    .btn-secondary {
+      background: #fff;
+      color: var(--text);
+      border-color: var(--border);
+      box-shadow: var(--shadow);
+    }
+    .btn-secondary:hover {
+      background: #fcf6f0;
+    }
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .hero-visual svg {
+      width: 100%;
+      max-width: 420px;
+      height: auto;
+      filter: drop-shadow(0 16px 30px rgba(180, 100, 60, 0.12));
+    }
+    /* 三栏门户布局 */
+    .portal-layout {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr) 250px;
+      gap: 28px;
+      padding: 36px 0 48px;
+      align-items: start;
+    }
+    .left-channel {
+      background: #fffcf9;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 18px 0;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: calc(var(--sticky-offset) + 12px);
+      max-height: calc(100vh - var(--sticky-offset) - 36px);
+      overflow-y: auto;
+    }
+    .channel-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-soft);
+      padding: 0 18px 12px;
+      font-weight: 700;
+    }
+    .channel-list {
+      list-style: none;
+    }
+    .channel-list li a {
+      display: block;
+      padding: 9px 18px;
+      font-size: 0.94rem;
+      font-weight: 500;
+      color: var(--text);
+      border-left: 3px solid transparent;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+    .channel-list li a:hover,
+    .channel-list li a.active {
+      background: var(--accent-soft);
+      border-left-color: var(--accent);
+      color: var(--accent-dark);
+    }
+    .main-content {
+      min-width: 0;
+    }
+    .right-aside {
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+      position: sticky;
+      top: calc(var(--sticky-offset) + 12px);
+    }
+    .aside-card {
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 20px 18px;
+      box-shadow: var(--shadow);
+    }
+    .aside-card h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .aside-card h3::before {
+      content: "";
+      width: 4px;
+      height: 18px;
+      background: var(--accent);
+      border-radius: 4px;
+    }
+    .rank-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .rank-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 0.9rem;
+    }
+    .rank-num {
+      font-weight: 800;
+      color: var(--gold);
+      min-width: 22px;
+      font-size: 1rem;
+    }
+    .rank-list a {
+      font-weight: 500;
+      line-height: 1.4;
+    }
+    .rank-list a:hover {
+      color: var(--accent);
+    }
+    /* 板块通用 */
+    .section {
+      margin-bottom: 42px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .section-header h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      color: #1e1712;
+    }
+    .section-header .more-link {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent);
+      border-bottom: 1px solid transparent;
+    }
+    .section-header .more-link:hover {
+      border-bottom-color: var(--accent);
+    }
+    .intro-text {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 24px 26px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      font-size: 0.98rem;
+      color: #3f3830;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 18px;
+    }
+    .card {
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.18s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 28px rgba(80, 50, 30, 0.08);
+    }
+    .card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #efe7df;
+    }
+    .card-body {
+      padding: 16px 16px 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .card-body h3 {
+      font-size: 1.06rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 6px;
+    }
+    .card-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .tag {
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 25px;
+      white-space: nowrap;
+    }
+    .tag-gold {
+      background: #fef3e0;
+      color: #9e6b1a;
+    }
+    .card-desc {
+      font-size: 0.88rem;
+      color: var(--text-soft);
+      margin-bottom: 14px;
+      flex: 1;
+    }
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: #9b8d7e;
+      font-weight: 500;
+    }
+    /* 紧凑列表 */
+    .compact-list {
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 6px 0;
+      list-style: none;
+    }
+    .compact-list li {
+      padding: 12px 22px;
+      border-bottom: 1px solid #f0e9e1;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .compact-list li:last-child {
+      border-bottom: none;
+    }
+    .compact-list .item-name {
+      font-weight: 700;
+      font-size: 0.96rem;
+    }
+    .compact-list .item-summary {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+    }
+    .compact-list .item-time {
+      font-size: 0.78rem;
+      color: #b2a292;
+      white-space: nowrap;
+    }
+    /* 分类入口 */
+    .category-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .category-tags a {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      padding: 9px 22px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.15s, border-color 0.15s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .category-tags a:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+    }
+    /* 深度解析 */
+    .deep-dive {
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 30px 32px;
+      box-shadow: var(--shadow);
+    }
+    .deep-dive h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin: 22px 0 10px;
+      color: #2b1f16;
+    }
+    .deep-dive h3:first-of-type {
+      margin-top: 0;
+    }
+    .deep-dive p {
+      margin-bottom: 14px;
+      color: #3f3830;
+      font-size: 0.96rem;
+      line-height: 1.8;
+    }
+    .deep-dive ul {
+      margin: 8px 0 18px 22px;
+      color: #3f3830;
+      font-size: 0.94rem;
+    }
+    .deep-dive li {
+      margin-bottom: 6px;
+    }
+    /* 体验指南 */
+    .guide-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+      counter-reset: step;
+    }
+    .guide-item {
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 20px 20px 18px;
+      box-shadow: var(--shadow);
+      counter-increment: step;
+      position: relative;
+    }
+    .guide-item::before {
+      content: counter(step);
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 800;
+      width: 26px;
+      height: 26px;
+      line-height: 26px;
+      text-align: center;
+      border-radius: 50%;
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+    }
+    .guide-item h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .guide-item p {
+      font-size: 0.88rem;
+      color: var(--text-soft);
+    }
+    /* FAQ */
+    details.faq-item {
+      background: #fff;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      padding: 4px 18px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    details.faq-item summary {
+      font-weight: 700;
+      padding: 14px 0;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.96rem;
+    }
+    details.faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+    details.faq-item summary::after {
+      content: "＋";
+      font-size: 1.2rem;
+      color: var(--accent);
+      font-weight: 400;
+    }
+    details[open].faq-item summary::after {
+      content: "－";
+    }
+    details.faq-item p {
+      padding: 0 0 16px;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+    /* 用户评论 */
+    .comment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .comment-card {
+      background: #fff;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      padding: 16px 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .comment-user {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 0.8rem;
+    }
+    .comment-user strong {
+      font-size: 0.88rem;
+    }
+    .comment-text {
+      font-size: 0.88rem;
+      color: #3f3830;
+    }
+    .comment-time {
+      font-size: 0.72rem;
+      color: #b2a292;
+      margin-top: 2px;
+    }
+    /* 相关资讯 */
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .news-item {
+      background: #fff;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      padding: 16px 20px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: center;
+    }
+    .news-date {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 6px 12px;
+      border-radius: 40px;
+      white-space: nowrap;
+    }
+    .news-content h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .news-content p {
+      font-size: 0.86rem;
+      color: var(--text-soft);
+    }
+    /* 相关推荐 */
+    .recommend-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .recommend-tags a {
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 7px 16px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-soft);
+      transition: background 0.15s, color 0.15s;
+    }
+    .recommend-tags a:hover {
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+    }
+    /* 榜单时间线补充 */
+    .timeline {
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 24px 26px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .timeline-item {
+      display: flex;
+      gap: 18px;
+      align-items: baseline;
+      border-left: 3px solid var(--accent-soft);
+      padding-left: 18px;
+    }
+    .timeline-date {
+      font-weight: 700;
+      color: var(--accent-dark);
+      min-width: 80px;
+      font-size: 0.88rem;
+    }
+    .timeline-text {
+      font-size: 0.92rem;
+    }
+    /* 页尾 */
+    .site-footer {
+      background: #2b221b;
+      color: #e8ddd2;
+      margin-top: 36px;
+      padding: 42px 0 26px;
+      font-size: 0.9rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+    .footer-brand h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .footer-brand p {
+      color: #b8aa9a;
+      max-width: 260px;
+      line-height: 1.7;
+    }
+    .footer-col h4 {
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .footer-col a {
+      color: #b8aa9a;
+      transition: color 0.15s;
+    }
+    .footer-col a:hover {
+      color: #f0d7c0;
+    }
+    .footer-bottom {
+      border-top: 1px solid #443b32;
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.78rem;
+      color: #9a8b7a;
+    }
+    /* 搜索无结果提示 */
+    .no-result {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 28px;
+      text-align: center;
+      color: var(--text-soft);
+      font-weight: 500;
+      border: 1px dashed var(--border);
+      display: none;
+    }
+    .no-result.show {
+      display: block;
+    }
+    /* 响应式 */
+    @media (max-width: 1024px) {
+      .portal-layout {
+        grid-template-columns: 1fr 260px;
+      }
+      .left-channel {
+        grid-column: 1 / -1;
+        position: static;
+        max-height: none;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 8px 12px;
+      }
+      .channel-title {
+        width: 100%;
+        padding: 8px 8px 4px;
+      }
+      .channel-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+      }
+      .channel-list li a {
+        border-left: none;
+        border-radius: 30px;
+        padding: 5px 14px;
+        font-size: 0.88rem;
+        background: #f7f0e9;
+      }
+      .channel-list li a:hover,
+      .channel-list li a.active {
+        background: var(--accent-soft);
+      }
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .hero-content h1 {
+        font-size: 2.6rem;
+      }
+    }
+    @media (max-width: 740px) {
+      .portal-layout {
+        grid-template-columns: 1fr;
+      }
+      .right-aside {
+        position: static;
+      }
+      .hero-content h1 {
+        font-size: 2.1rem;
+      }
+      .search-box input {
+        width: 110px;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .announce-bar .container {
+        font-size: 0.78rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 16px;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+      .comment-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+  <div class="sticky-wrap">
+    <div class="announce-bar" id="announce">
+      <div class="container">
+        <span class="tag">今日更新</span>
+        <p>11 月 8 日新增 9 条剧组路透与 3 条综艺录制花絮，<a href="/#latest">查看最新动态 →</a></p>
+      </div>
+    </div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/#top" aria-label="吃瓜网首页">
+          <svg viewBox="0 0 100 100" width="38" height="38" aria-hidden="true">
+            <circle cx="50" cy="55" r="38" fill="#e85d3f"/>
+            <path d="M20 15 L50 55 L80 15" stroke="#2b2b2b" stroke-width="9" fill="none" stroke-linecap="round"/>
+            <circle cx="50" cy="55" r="12" fill="#fff5e6"/>
+          </svg>
+          <span class="brand-text">吃瓜<span class="accent">网</span></span>
+        </a>
+        <nav class="main-nav" aria-label="主题导航">
+          <a href="/#featured">热门瓜田</a>
+          <a href="/#latest">最新动态</a>
+          <a href="/#categories">分类速查</a>
+          <a href="/#deep">深度解析</a>
+          <a href="/#guide">入坑指南</a>
+          <a href="/#faq">常见问题</a>
+        </nav>
+        <div class="header-actions">
+          <form class="search-box" id="searchForm" role="search">
+            <input type="search" id="searchInput" placeholder="搜索瓜名 / 明星 / 综艺" aria-label="搜索站内可见内容">
+            <button type="submit" aria-label="搜索">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="7"/>
+                <line x1="16" y1="16" x2="22" y2="22"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <main id="top">
+    <!-- 首屏 -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <h1>吃瓜网</h1>
+          <p class="subhead">聚合明星恋情、片场花絮、综艺争议、红毯造型与网红翻车等娱乐八卦内容。从剧组路透到热搜事件，一站浏览当下热议瓜田。</p>
+          <div class="hero-actions">
+            <a href="/#featured" class="btn btn-primary">进入热门瓜田</a>
+            <a href="/#latest" class="btn btn-secondary">查看今日更新</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#e85d3f" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="#d49b3b" stop-opacity="0.7"/>
+              </linearGradient>
+            </defs>
+            <rect x="30" y="40" width="340" height="220" rx="28" fill="#fcf5ee" stroke="#e9dfd3" stroke-width="2"/>
+            <circle cx="110" cy="110" r="48" fill="#e85d3f" opacity="0.2"/>
+            <circle cx="280" cy="170" r="38" fill="#d49b3b" opacity="0.2"/>
+            <path d="M160 90 L240 90 L200 150 Z" fill="url(#heroGrad)" opacity="0.7"/>
+            <rect x="150" y="170" width="100" height="12" rx="6" fill="#e9dfd3"/>
+            <rect x="170" y="192" width="60" height="12" rx="6" fill="#e9dfd3"/>
+            <circle cx="90" cy="80" r="6" fill="#e85d3f"/>
+            <circle cx="310" cy="100" r="6" fill="#d49b3b"/>
+            <path d="M60 230 Q200 260 340 230" stroke="#e9dfd3" stroke-width="4" fill="none" stroke-dasharray="8 8"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 三栏门户布局 -->
+    <div class="container portal-layout">
+      <!-- 左侧频道索引 -->
+      <aside class="left-channel" id="categories">
+        <div class="channel-title">频道索引</div>
+        <ul class="channel-list">
+          <li><a href="/#featured" class="active">全部瓜田</a></li>
+          <li><a href="/#featured">明星恋情</a></li>
+          <li><a href="/#featured">片场花絮</a></li>
+          <li><a href="/#featured">综艺争议</a></li>
+          <li><a href="/#featured">红毯造型</a></li>
+          <li><a href="/#featured">网红翻车</a></li>
+          <li><a href="/#featured">音乐现场</a></li>
+          <li><a href="/#featured">剧组路透</a></li>
+          <li><a href="/#featured">热搜事件</a></li>
+          <li><a href="/#featured">粉丝互撕</a></li>
+        </ul>
+      </aside>
+
+      <!-- 主内容 -->
+      <div class="main-content" id="main-content">
+        <!-- 板块1：主题领域概览 -->
+        <section class="section" id="overview">
+          <div class="intro-text">
+            <p>吃瓜网关注的领域涵盖娱乐圈一线动态：明星恋情曝光与分手时间线、影视剧组拍摄路透与番位争议、综艺节目录制花絮与嘉宾互撕、红毯造型翻车与高定解析、网红言行翻车与粉丝脱粉、音乐节现场事故与假唱鉴定。这些内容通常以短平快的方式传播，核心看点是“人设反差”“现场意外”和“时间线反转”。例如剧组路透往往伴随造型泄露和剧本改动传闻，综艺争议则多源于剪辑冲突和嘉宾真实反应。对于只想快速了解事件梗概的读者，可以优先查看时间线和关键截图；愿意深挖的读者则会关注各方回应、粉丝控评话术以及后续资源变化。当前热议方向集中在古装剧组换角风波、音乐节压轴时长争议以及多位艺人的恋情时间线交叉。</p>
+          </div>
+        </section>
+
+        <!-- 板块2：精选内容推荐 -->
+        <section class="section" id="featured">
+          <div class="section-header">
+            <h2>热门瓜田精选</h2>
+            <a href="/#latest" class="more-link">更多更新 →</a>
+          </div>
+          <div class="card-grid" id="cardGrid">
+            <article class="card">
+              <img src="https://picsum.photos/seed/liangqing01/400/300" alt="周雨彤与翟潇闻恋情时间线封面" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <h3>周雨彤翟潇闻恋情时间线</h3>
+                <div class="card-tags"><span class="tag">明星恋情</span><span class="tag tag-gold">时间线</span><span class="tag">实锤</span></div>
+                <p class="card-desc">从同款手机壳到深夜同回小区，三个月内被拍七次，双方工作室暂未回应。</p>
+                <div class="card-meta"><span>热度 9.8万</span><span>11-08 更新</span></div>
+              </div>
+            </article>
+            <article class="card">
+              <img src="https://picsum.photos/seed/xiangmu02/400/300" alt="《长街宴》剧组番位争议现场路透" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <h3>《长街宴》剧组番位争议</h3>
+                <div class="card-tags"><span class="tag">剧组路透</span><span class="tag">番位</span><span class="tag tag-gold">争议</span></div>
+                <p class="card-desc">开机仪式站位图流出，两位主演粉丝就“谁是一番”展开超话大战。</p>
+                <div class="card-meta"><span>热度 7.2万</span><span>11-07 更新</span></div>
+              </div>
+            </article>
+            <article class="card">
+              <img src="https://picsum.photos/seed/zongyi03/400/300" alt="《周末大乱斗》录制现场嘉宾黑脸" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <h3>《周末大乱斗》嘉宾黑脸</h3>
+                <div class="card-tags"><span class="tag">综艺争议</span><span class="tag">剪辑</span><span class="tag">现场爆料</span></div>
+                <p class="card-desc">现场观众爆料某嘉宾因游戏环节被泼水当场离席，剪辑版是否会保留引猜测。</p>
+                <div class="card-meta"><span>热度 6.5万</span><span>11-08 更新</span></div>
+              </div>
+            </article>
+            <article class="card">
+              <img src="https://picsum.photos/seed/hongtan04/400/300" alt="Vogue之夜红毯某小花造型翻车" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <h3>Vogue之夜红毯翻车造型</h3>
+                <div class="card-tags"><span class="tag">红毯造型</span><span class="tag">高定</span><span class="tag tag-gold">翻车</span></div>
+                <p class="card-desc">某小花身着某品牌过季高定，被指与模特图差距过大，造型师评论区沦陷。</p>
+                <div class="card-meta"><span>热度 5.9万</span><span>11-06 更新</span></div>
+              </div>
+            </article>
+            <article class="card">
+              <img src="https://picsum.photos/seed/wanghong05/400/300" alt="网红“阿哲”直播翻车现场截图" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <h3>网红阿哲直播翻车</h3>
+                <div class="card-tags"><span class="tag">网红翻车</span><span class="tag">直播</span><span class="tag">脱粉</span></div>
+                <p class="card-desc">直播中误将吐槽品牌的语音发出，十分钟内掉粉两万，已发视频道歉。</p>
+                <div class="card-meta"><span>热度 5.1万</span><span>11-08 更新</span></div>
+              </div>
+            </article>
+            <article class="card">
+              <img src="https://picsum.photos/seed/yinyue06/400/300" alt="星光音乐节压轴时段争议现场" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <h3>星光音乐节压轴时长争议</h3>
+                <div class="card-tags"><span class="tag">音乐现场</span><span class="tag">压轴</span><span class="tag">粉丝互撕</span></div>
+                <p class="card-desc">原定压轴歌手仅唱三首便下台，粉丝质疑被砍时长，主办方称设备故障。</p>
+                <div class="card-meta"><span>热度 4.8万</span><span>11-05 更新</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 板块3：最新更新 / 动态 -->
+        <section class="section" id="latest">
+          <div class="section-header">
+            <h2>最新动态</h2>
+            <span class="more-link">11 月 8 日更新</span>
+          </div>
+          <ul class="compact-list">
+            <li><span class="item-name">周雨彤翟潇闻同回小区</span><span class="item-summary">狗仔放出第四弹视频，两人先后进入同一单元楼</span><span class="item-time">今天 09:30</span></li>
+            <li><span class="item-name">《长街宴》官宣阵容调整</span><span class="item-summary">原定男二换成选秀出身新人，粉丝刷屏“还我原班”</span><span class="item-time">今天 08:15</span></li>
+            <li><span class="item-name">《周末大乱斗》下期预告</span><span class="item-summary">预告片中嘉宾黑脸镜头被剪入，节目组回应“真实反应”</span><span class="item-time">昨天 21:10</span></li>
+            <li><span class="item-name">Vogue之夜造型师回应</span><span class="item-summary">造型师发文“衣服没问题，是人没撑起来”，随后秒删</span><span class="item-time">昨天 18:40</span></li>
+            <li><span class="item-name">网红阿哲道歉视频</span><span class="item-summary">视频中称“情绪上头误发语音”，评论区仍被“退网”刷屏</span><span class="item-time">11-08 11:20</span></li>
+            <li><span class="item-name">星光音乐节主办方声明</span><span class="item-summary">声明称因风力过大切断电源，压轴歌手转发“理解”</span><span class="item-time">11-07 22:05</span></li>
+            <li><span class="item-name">林一白被拍与友人聚餐</span><span class="item-summary">与一女子并肩走出餐厅，工作室回应“同事聚餐”</span><span class="item-time">11-07 15:30</span></li>
+            <li><span class="item-name">《迷雾剧场》新剧过审</span><span class="item-summary">悬疑短剧《回声》拿到上线备案号，预计月底定档</span><span class="item-time">11-06 10:00</span></li>
+          </ul>
+        </section>
+
+        <!-- 板块4：分类入口 -->
+        <section class="section" id="categories-section">
+          <div class="section-header">
+            <h2>分类速查</h2>
+          </div>
+          <div class="category-tags">
+            <a href="/#featured">明星恋情</a>
+            <a href="/#featured">片场花絮</a>
+            <a href="/#featured">综艺争议</a>
+            <a href="/#featured">红毯造型</a>
+            <a href="/#featured">网红翻车</a>
+            <a href="/#featured">音乐现场</a>
+            <a href="/#featured">剧组路透</a>
+            <a href="/#featured">热搜事件</a>
+          </div>
+        </section>
+
+        <!-- 板块5：深度解析正文 -->
+        <section class="section" id="deep">
+          <div class="section-header"><h2>深度解析：内娱瓜田的几种典型叙事</h2></div>
+          <div class="deep-dive">
+            <h3>恋情曝光类：时间线和同款是核心证据</h3>
+            <p>明星恋情瓜通常遵循“同款物品→同框画面→同回住所”的递进逻辑。以周雨彤与翟潇闻为例，最早被扒出的是同品牌手机壳和相似背景的云朵照片，随后狗仔放出深夜同回小区的视频，形成完整证据链。这类瓜的判断要点在于：时间线是否连续、双方是否在同一城市有公开行程、以及工作室回应的话术——沉默往往被解读为默认，而“同事聚餐”则是标准否认模板。粉丝在控评时通常会强调“关注作品”，但恋情瓜的传播恰恰依赖作品之外的私生活细节。</p>
+            <h3>剧组番位争议：海报站位和官宣顺序是关键</h3>
+            <p>番位争议往往发生在官宣阵容、开机仪式或海报发布节点。《长街宴》的争议源于开机仪式站位——两位主演的椅子间距和谁先走红毯被逐帧分析。判断番位的客观依据包括：片头片尾字幕排序、官方海报姓名位置、以及合同约定的署名顺序。当片方采用“排名不分先后”或“按姓氏拼音排序”时，通常意味着双方团队在博弈。粉丝的互撕往往会将话题推上热搜，但路人更关心的是剧本质量和演员适配度。</p>
+            <h3>综艺争议：剪辑权和现场爆料的对冲</h3>
+            <p>综艺争议的核心矛盾在于“剪辑呈现”与“现场真实”之间的落差。《周末大乱斗》嘉宾黑脸事件中，现场观众的文字爆料与预告片的剪辑节奏形成信息差。判断这类瓜的走向，可以留意三个信号：节目组是否放出未剪辑片段、当事嘉宾是否在社交平台发言、以及下期预告是否刻意保留争议镜头。如果节目组选择冷处理，通常意味着争议对收视有利；如果迅速道歉，则可能涉及品牌方压力。</p>
+            <h3>网红翻车：言行记录和商业损失是直接证据</h3>
+            <p>网红翻车类内容传播极快，因为证据通常是直播录屏或社交媒体截图。阿哲误发语音事件中，从语音发出到掉粉两万仅用十分钟，随后品牌方下架合作链接。判断翻车严重程度可以看三个指标：掉粉速度、品牌解约数量、以及平台是否限流。与明星不同，网红的商业价值高度依赖粉丝信任，因此一次明显的言行失误往往带来不可逆的损失。</p>
+            <h3>红毯造型：高定资源和造型师审美共同作用</h3>
+            <p>红毯造型翻车通常涉及“衣服是否合身”“是否过季”“与模特图差距”三个讨论维度。Vogue之夜某小花的造型争议中，网友迅速扒出该高定礼服来自两年前的秋冬系列，且模特穿着的腰线处理完全不同。判断造型团队是否失职，可以对比同场其他艺人的借衣级别和品牌认领速度。高定品牌是否在官方账号认领，往往是造型资源好坏的风向标。</p>
+          </div>
+        </section>
+
+        <!-- 板块6：体验指南 / 消费路径 -->
+        <section class="section" id="guide">
+          <div class="section-header"><h2>瓜田消费路径：先看什么、怎么判断值不值得追</h2></div>
+          <div class="guide-steps">
+            <div class="guide-item">
+              <h3>先看时间线是否完整</h3>
+              <p>一个瓜值不值得追，先看有没有完整时间线。只有“疑似”没有“同框”的瓜，多半是捕风捉影。</p>
+            </div>
+            <div class="guide-item">
+              <h3>看证据类型是实拍还是文字</h3>
+              <p>视频实拍＞照片＞聊天记录截图＞文字爆料。优先选择有现场画面的内容。</p>
+            </div>
+            <div class="guide-item">
+              <h3>关注当事人回应层级</h3>
+              <p>工作室声明＞本人回应＞经纪人朋友圈。回应越快、越具体，说明瓜越接近真实。</p>
+            </div>
+            <div class="guide-item">
+              <h3>对比同类瓜的后续走向</h3>
+              <p>恋情瓜通常有“默认→冷处理→官宣”或“否认→分手”两条路径，参考过往案例可预判。</p>
+            </div>
+            <div class="guide-item">
+              <h3>红毯造型看品牌认领</h3>
+              <p>高定品牌是否在官方账号发布穿着图，是判断造型资源的核心指标，比粉丝控评更客观。</p>
+            </div>
+            <div class="guide-item">
+              <h3>综艺争议等未剪辑片段</h3>
+              <p>若节目组放出完整花絮，说明争议在可控范围；若沉默，则可能涉及更复杂的利益博弈。</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 板块7：FAQ -->
+        <section class="section" id="faq">
+          <div class="section-header"><h2>常见问题</h2></div>
+          <details class="faq-item" open>
+            <summary>明星恋情瓜一般多久会被实锤？</summary>
+            <p>通常在被拍后 24 到 72 小时内，狗仔会放出后续视频或双方回应。若超过一周没有新物料，热度会自然下降。</p>
+          </details>
+          <details class="faq-item">
+            <summary>剧组番位争议怎么看谁是一番？</summary>
+            <p>最硬的标准是片头片尾字幕排序和官方海报姓名位置。若片方标注“排名不分先后”，通常意味着双方团队在平番。</p>
+          </details>
+          <details class="faq-item">
+            <summary>综艺黑脸事件是真实发生还是剪辑效果？</summary>
+            <p>需要对照现场观众的文字爆料和未剪辑花絮。若节目组放出完整片段，则偏向真实；若只保留预告镜头，则剪辑效果可能性大。</p>
+          </details>
+          <details class="faq-item">
+            <summary>红毯造型翻车主要看哪些细节？</summary>
+            <p>看腰线是否合身、裙摆长度是否拖地、以及品牌是否认领。过季高定和模特图对比差异大，通常会被判定为造型失败。</p>
+          </details>
+          <details class="faq-item">
+            <summary>网红翻车和明星翻车有什么区别？</summary>
+            <p>网红翻车掉粉速度和品牌解约速度更快，因为商业价值完全依赖粉丝信任。明星有作品和公司公关缓冲，恢复周期更长。</p>
+          </details>
+          <details class="faq-item">
+            <summary>第一次关注娱乐圈瓜田，从哪类内容开始看比较好？</summary>
+            <p>建议从时间线清晰的恋情瓜或红毯造型对比开始，信息密度高、判断门槛低。剧组番位争议需要一定的背景知识。</p>
+          </details>
+        </section>
+
+        <!-- 板块8：用户评论 -->
+        <section class="section" id="comments">
+          <div class="section-header"><h2>瓜友评论</h2></div>
+          <div class="comment-grid">
+            <div class="comment-card"><div class="comment-user"><span class="avatar">瓜</span><strong>瓜田里的猹</strong></div><p class="comment-text">周雨彤那个时间线太细了，同款手机壳都能扒出来，佩服。</p><span class="comment-time">11-08 10:12</span></div>
+            <div class="comment-card"><div class="comment-user"><span class="avatar">吃</span><strong>吃瓜不吐皮</strong></div><p class="comment-text">《长街宴》这波番位撕得没必要，剧好看就行呗。</p><span class="comment-time">11-08 09:45</span></div>
+            <div class="comment-card"><div class="comment-user"><span class="avatar">路</span><strong>路人甲看戏</strong></div><p class="comment-text">综艺黑脸那个我就在现场，当时确实冷场了十分钟。</p><span class="comment-time">11-07 22:18</span></div>
+            <div class="comment-card"><div class="comment-user"><span class="avatar">时</span><strong>时尚灾难现场</strong></div><p class="comment-text">Vogue那个造型确实不行，模特穿是仙气，她穿像窗帘。</p><span class="comment-time">11-07 20:30</span></div>
+            <div class="comment-card"><div class="comment-user"><span class="avatar">阿</span><strong>阿哲前粉丝</strong></div><p class="comment-text">直播翻车那次我就在直播间，语音出来的时候弹幕全炸了。</p><span class="comment-time">11-06 18:55</span></div>
+            <div class="comment-card"><div class="comment-user"><span class="avatar">音</span><strong>音乐节常客</strong></div><p class="comment-text">星光那个压轴明显是主办方的问题，风大可以理解但应该提前通知。</p><span class="comment-time">11-06 15:40</span></div>
+            <div class="comment-card"><div class="comment-user"><span class="avatar">粉</span><strong>佛系追星</strong></div><p class="comment-text">恋情瓜看看就好，工作室否认了就别追着不放了。</p><span class="comment-time">11-08 08:05</span></div>
+            <div class="comment-card"><div class="comment-user"><span class="avatar">深</span><strong>深度吃瓜er</strong></div><p class="comment-text">番位那个事，海报上名字左右排列其实已经说明问题了。</p><span class="comment-time">11-07 17:22</span></div>
+            <div class="comment-card"><div class="comment-user"><span class="avatar">小</span><strong>小透明围观</strong></div><p class="comment-text">红毯造型师秒删那条最好笑，心虚得太明显。</p><span class="comment-time">11-07 12:10</span></div>
+            <div class="comment-card"><div class="comment-user"><span class="avatar">综</span><strong>综艺咖</strong></div><p class="comment-text">《周末大乱斗》下期预告里嘉宾脸色确实不好看，等正片。</p><span class="comment-time">11-08 11:00</span></div>
+            <div class="comment-card"><div class="comment-user"><span class="avatar">路</span><strong>路过的猹</strong></div><p class="comment-text">网红阿哲那个掉粉速度，十分钟两万，太吓人了。</p><span class="comment-time">11-08 09:00</span></div>
+            <div class="comment-card"><div class="comment-user"><span class="avatar">看</span><strong>看热闹不嫌大</strong></div><p class="comment-text">林一白那个回应“同事聚餐”太模板了，狗仔说还有后续。</p><span class="comment-time">11-07 21:45</span></div>
+          </div>
+        </section>
+
+        <!-- 板块9：相关资讯 -->
+        <section class="section" id="news">
+          <div class="section-header"><h2>相关资讯</h2></div>
+          <div class="news-list">
+            <div class="news-item"><span class="news-date">11-08</span><div class="news-content"><h3>《回声》过审，迷雾剧场年底再添悬疑短剧</h3><p>12 集短剧已拿到上线备案号，平台排播表显示预计 11 月底独播。</p></div></div>
+            <div class="news-item"><span class="news-date">11-07</span><div class="news-content"><h3>星光音乐节主办方发布设备检测报告</h3><p>报告称瞬时风力达到七级，为保障安全切断电源，压轴歌手转发表示理解。</p></div></div>
+            <div class="news-item"><span class="news-date">11-06</span><div class="news-content"><h3>Vogue之夜造型师删除回应帖</h3><p>造型师“衣服没问题”言论引发争议后秒删，品牌方暂未认领该套高定。</p></div></div>
+            <div class="news-item"><span class="news-date">11-05</span><div class="news-content"><h3>网红阿哲掉粉超五万，两个品牌暂停合作</h3><p>直播误发语音事件持续发酵，其店铺客服自动回复改为“致歉中”。</p></div></div>
+            <div class="news-item"><span class="news-date">11-04</span><div class="news-content"><h3>《长街宴》开机仪式站位图引热议</h3><p>两位主演椅子间距和出场顺序被逐帧分析，片方暂未回应番位问题。</p></div></div>
+            <div class="news-item"><span class="news-date">11-03</span><div class="news-content"><h3>周雨彤翟潇闻同款手机壳被扒</h3><p>网友发现两人在不同时间晒出的照片中使用了同一小众品牌手机壳。</p></div></div>
+          </div>
+        </section>
+
+        <!-- 板块10：相关推荐 -->
+        <section class="section" id="recommend">
+          <div class="section-header"><h2>延伸方向</h2></div>
+          <div class="recommend-tags">
+            <a href="/#featured">明星恋情时间线整理</a>
+            <a href="/#featured">剧组番位科普</a>
+            <a href="/#featured">综艺剪辑争议案例</a>
+            <a href="/#featured">红毯高定资源对比</a>
+            <a href="/#featured">网红商业价值分析</a>
+            <a href="/#featured">音乐节事故处理流程</a>
+            <a href="/#featured">粉丝控评话术合集</a>
+          </div>
+        </section>
+
+        <!-- 板块11：补充板块 - 时间线 -->
+        <section class="section" id="timeline">
+          <div class="section-header"><h2>本周瓜田时间线</h2></div>
+          <div class="timeline">
+            <div class="timeline-item"><span class="timeline-date">11-08</span><span class="timeline-text">周雨彤翟潇闻同回小区视频曝光，恋情时间线增至七次同框。</span></div>
+            <div class="timeline-item"><span class="timeline-date">11-07</span><span class="timeline-text">《长街宴》官宣阵容调整，原男二被换，粉丝刷屏抗议。</span></div>
+            <div class="timeline-item"><span class="timeline-date">11-06</span><span class="timeline-text">Vogue之夜造型师回应争议后秒删，品牌未认领。</span></div>
+            <div class="timeline-item"><span class="timeline-date">11-05</span><span class="timeline-text">星光音乐节压轴时长争议，主办方称设备故障。</span></div>
+            <div class="timeline-item"><span class="timeline-date">11-04</span><span class="timeline-text">网红阿哲直播误发语音，十分钟掉粉两万。</span></div>
+          </div>
+        </section>
+
+        <div class="no-result" id="noResult">没有找到匹配的瓜，试试其他关键词如“恋情”“综艺”“红毯”。</div>
+      </div>
+
+      <!-- 右侧辅助栏 -->
+      <aside class="right-aside">
+        <div class="aside-card">
+          <h3>今日热瓜榜</h3>
+          <ul class="rank-list">
+            <li><span class="rank-num">1</span><a href="/#featured">周雨彤翟潇闻同回小区</a></li>
+            <li><span class="rank-num">2</span><a href="/#featured">《长街宴》番位争议</a></li>
+            <li><span class="rank-num">3</span><a href="/#featured">《周末大乱斗》嘉宾黑脸</a></li>
+            <li><span class="rank-num">4</span><a href="/#featured">Vogue之夜红毯翻车</a></li>
+            <li><span class="rank-num">5</span><a href="/#featured">网红阿哲直播翻车</a></li>
+            <li><span class="rank-num">6</span><a href="/#featured">星光音乐节压轴争议</a></li>
+          </ul>
+        </div>
+        <div class="aside-card">
+          <h3>更新流</h3>
+          <ul class="rank-list">
+            <li><span style="color:var(--accent);font-weight:700;">09:30</span><a href="/#latest">周雨彤同回小区视频</a></li>
+            <li><span style="color:var(--accent);font-weight:700;">08:15</span><a href="/#latest">《长街宴》阵容调整</a></li>
+            <li><span style="color:var(--accent);font-weight:700;">昨天</span><a href="/#latest">综艺预告黑脸镜头</a></li>
+            <li><span style="color:var(--accent);font-weight:700;">昨天</span><a href="/#latest">造型师秒删回应</a></li>
+            <li><span style="color:var(--accent);font-weight:700;">11-08</span><a href="/#latest">阿哲道歉视频</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>吃瓜网</h3>
+          <p>聚合明星恋情、片场花絮、综艺争议、红毯造型与网红翻车等娱乐八卦内容，提供时间线和关键证据梳理。</p>
+        </div>
+        <div class="footer-col">
+          <h4>热门频道</h4>
+          <ul>
+            <li><a href="/#featured">明星恋情</a></li>
+            <li><a href="/#featured">综艺争议</a></li>
+            <li><a href="/#featured">红毯造型</a></li>
+            <li><a href="/#featured">网红翻车</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>深度内容</h4>
+          <ul>
+            <li><a href="/#deep">番位科普</a></li>
+            <li><a href="/#deep">剪辑权解析</a></li>
+            <li><a href="/#guide">消费路径</a></li>
+            <li><a href="/#faq">常见问题</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>关于</h4>
+          <ul>
+            <li><a href="/#top">返回顶部</a></li>
+            <li><a href="/#latest">最新动态</a></li>
+            <li><a href="/#recommend">延伸方向</a></li>
+            <li><a href="/#timeline">时间线</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 吃瓜网 · 内容仅供娱乐参考</span>
+        <span>部分内容为示例数据，仅用于展示页面结构</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // 搜索过滤：对卡片标题和描述进行本地可见内容查找
+      const searchForm = document.getElementById('searchForm');
+      const searchInput = document.getElementById('searchInput');
+      const cardGrid = document.getElementById('cardGrid');
+      const noResult = document.getElementById('noResult');
+      const sectionBlocks = document.querySelectorAll('.main-content .section');
+      // 只对卡片区域和列表进行过滤，保留其他板块展示
+      function filterContent(query) {
+        const q = query.trim().toLowerCase();
+        if (!q) {
+          // 恢复所有卡片
+          document.querySelectorAll('.card').forEach(c => c.style.display = '');
+          document.querySelectorAll('.compact-list li').forEach(li => li.style.display = '');
+          document.querySelectorAll('.comment-card').forEach(cc => cc.style.display = '');
+          document.querySelectorAll('.news-item').forEach(ni => ni.style.display = '');
+          noResult.classList.remove('show');
+          return;
+        }
+        let visibleCount = 0;
+        // 过滤卡片
+        document.querySelectorAll('.card').forEach(card => {
+          const text = card.textContent.toLowerCase() + ' ' + (card.querySelector('img')?.alt || '').toLowerCase();
+          const match = text.includes(q);
+          card.style.display = match ? '' : 'none';
+          if (match) visibleCount++;
+        });
+        // 过滤紧凑列表
+        document.querySelectorAll('.compact-list li').forEach(li => {
+          const match = li.textContent.toLowerCase().includes(q);
+          li.style.display = match ? '' : 'none';
+          if (match) visibleCount++;
+        });
+        // 过滤评论
+        document.querySelectorAll('.comment-card').forEach(cc => {
+          const match = cc.textContent.toLowerCase().includes(q);
+          cc.style.display = match ? '' : 'none';
+          if (match) visibleCount++;
+        });
+        // 过滤资讯
+        document.querySelectorAll('.news-item').forEach(ni => {
+          const match = ni.textContent.toLowerCase().includes(q);
+          ni.style.display = match ? '' : 'none';
+          if (match) visibleCount++;
+        });
+        // 显示无结果
+        if (visibleCount === 0) {
+          noResult.classList.add('show');
+        } else {
+          noResult.classList.remove('show');
+        }
+      }
+      searchForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        filterContent(searchInput.value);
+      });
+      searchInput.addEventListener('input', function() {
+        filterContent(searchInput.value);
+      });
+    })();
+  </script>
+</body>
+          </html>
