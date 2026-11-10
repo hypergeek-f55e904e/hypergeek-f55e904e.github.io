@@ -1,0 +1,1496 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>番茄小说网 - 免费小说阅读与作品推荐</title>
+  <meta name="description" content="番茄小说网汇聚都市、玄幻、悬疑、言情等热门小说，提供作品推荐、最新更新、榜单与深度解析，适合书荒找书与追更读者浏览。">
+  <meta name="keywords" content="免费小说阅读,都市玄幻推荐,悬疑言情书单,网文排行榜,追更作品">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23e8542f'/%3E%3Cpath d='M10 23V9l12 7-12 7z' fill='%23fff'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --brand: #e8542f;
+      --brand-dark: #c84322;
+      --brand-light: #fef3ef;
+      --ink: #1f1b18;
+      --ink-2: #4a423c;
+      --ink-3: #7a6f67;
+      --line: #e8e1db;
+      --bg: #fdfaf7;
+      --panel: #ffffff;
+      --panel-2: #faf6f2;
+      --gold: #b8860b;
+      --radius: 14px;
+      --radius-sm: 8px;
+      --shadow: 0 6px 24px rgba(31, 27, 24, .07);
+      --shadow-sm: 0 2px 8px rgba(31, 27, 24, .05);
+      --max: 1340px;
+      --announce-h: 42px;
+      --header-h: 64px;
+      --font: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--announce-h) + var(--header-h) + 12px); }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* ============ 吸顶公告条 ============ */
+    .announce {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: linear-gradient(90deg, #2b1f1a, #3d2a20);
+      color: #f6e8df;
+      font-size: 13px;
+      height: var(--announce-h);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .announce-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .announce-badge {
+      background: var(--brand);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
+      flex-shrink: 0;
+      letter-spacing: .5px;
+    }
+    .announce-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .announce-text strong { color: #ffd9a8; font-weight: 600; }
+
+    /* ============ 吸顶页头 ============ */
+    .site-header {
+      position: sticky;
+      top: var(--announce-h);
+      z-index: 99;
+      background: rgba(255, 255, 255, .94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      height: var(--header-h);
+    }
+    .header-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, #f07a4f, #d63d1c);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 3px 10px rgba(232, 84, 47, .3);
+    }
+    .brand-mark svg { width: 18px; height: 18px; }
+    .brand-name {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: .5px;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+    .brand-name em { font-style: normal; color: var(--brand); }
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+      min-width: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .main-nav::-webkit-scrollbar { display: none; }
+    .main-nav a {
+      font-size: 14px;
+      color: var(--ink-2);
+      padding: 6px 12px;
+      border-radius: 20px;
+      white-space: nowrap;
+      transition: background .15s, color .15s;
+    }
+    .main-nav a:hover, .main-nav a:focus-visible {
+      background: var(--brand-light);
+      color: var(--brand-dark);
+      outline: none;
+    }
+    .nav-cta {
+      flex-shrink: 0;
+      background: var(--brand);
+      color: #fff;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 22px;
+      border: none;
+      transition: background .15s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--brand-dark); }
+    .nav-cta:focus-visible { outline: 2px solid var(--brand-dark); outline-offset: 2px; }
+
+    /* ============ 通用容器 ============ */
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ============ 首屏 ============ */
+    .hero {
+      background:
+        radial-gradient(circle at 85% 20%, rgba(232, 84, 47, .12), transparent 45%),
+        radial-gradient(circle at 12% 80%, rgba(184, 134, 11, .09), transparent 40%),
+        linear-gradient(180deg, #fffaf6, #fdfaf7);
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 48px;
+      align-items: center;
+      padding: 52px 0 56px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--brand-light);
+      color: var(--brand-dark);
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(232, 84, 47, .18);
+    }
+    .hero h1 {
+      font-size: clamp(32px, 4vw, 46px);
+      font-weight: 800;
+      line-height: 1.22;
+      letter-spacing: .5px;
+      margin-bottom: 18px;
+    }
+    .hero h1 .accent {
+      color: var(--brand);
+      position: relative;
+    }
+    .hero-desc {
+      font-size: 16px;
+      color: var(--ink-2);
+      max-width: 560px;
+      line-height: 1.85;
+      margin-bottom: 26px;
+    }
+    .hero-desc strong { color: var(--ink); font-weight: 600; }
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+    .btn-primary, .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 11px 26px;
+      border-radius: 26px;
+      transition: transform .15s, box-shadow .2s, background .15s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #f07a4f, #d63d1c);
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(214, 61, 28, .28);
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 9px 22px rgba(214, 61, 28, .34); }
+    .btn-ghost {
+      background: #fff;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-ghost:hover { border-color: var(--brand); color: var(--brand-dark); }
+    .btn-primary:focus-visible, .btn-ghost:focus-visible { outline: 2px solid var(--brand-dark); outline-offset: 3px; }
+
+    .hero-stats {
+      display: flex;
+      gap: 34px;
+      padding-top: 22px;
+      border-top: 1px dashed var(--line);
+    }
+    .hero-stat b {
+      display: block;
+      font-size: 23px;
+      font-weight: 800;
+      color: var(--brand);
+      line-height: 1.2;
+    }
+    .hero-stat span { font-size: 12.5px; color: var(--ink-3); }
+
+    /* 首屏视觉构图 */
+    .hero-visual {
+      position: relative;
+      height: 100%;
+      min-height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .book-stack {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+      height: 320px;
+    }
+    .book-card {
+      position: absolute;
+      border-radius: 12px;
+      box-shadow: 0 16px 40px rgba(31, 27, 24, .16);
+      overflow: hidden;
+      transition: transform .3s ease;
+    }
+    .book-card img { width: 100%; height: 100%; object-fit: cover; }
+    .book-1 {
+      width: 168px; height: 232px;
+      top: 8px; left: 8px;
+      transform: rotate(-8deg);
+      z-index: 2;
+    }
+    .book-2 {
+      width: 178px; height: 244px;
+      top: 46px; left: 148px;
+      transform: rotate(5deg);
+      z-index: 3;
+    }
+    .book-3 {
+      width: 142px; height: 196px;
+      top: 118px; left: 24px;
+      transform: rotate(-3deg);
+      z-index: 1;
+      opacity: .92;
+    }
+    .book-tag {
+      position: absolute;
+      z-index: 5;
+      background: #fff;
+      border-radius: 10px;
+      padding: 8px 14px;
+      box-shadow: 0 8px 24px rgba(31, 27, 24, .14);
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .book-tag .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--brand);
+      flex-shrink: 0;
+    }
+    .tag-hot { top: 0; right: 6px; }
+    .tag-new { bottom: 8px; right: 14px; }
+    .tag-rank { top: 148px; left: 0; }
+
+    /* ============ 主内容区：三栏门户 ============ */
+    .portal {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr) 250px;
+      gap: 28px;
+      padding: 36px 0 48px;
+      align-items: start;
+    }
+
+    /* 左频道索引 */
+    .channel-rail {
+      position: sticky;
+      top: calc(var(--announce-h) + var(--header-h) + 16px);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px 12px;
+      box-shadow: var(--shadow-sm);
+    }
+    .channel-rail h2 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink-3);
+      letter-spacing: 1px;
+      padding: 0 10px 12px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 8px;
+    }
+    .channel-rail ul { display: flex; flex-direction: column; gap: 2px; }
+    .channel-rail a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 10px;
+      font-size: 13.5px;
+      color: var(--ink-2);
+      border-radius: var(--radius-sm);
+      transition: background .15s, color .15s;
+    }
+    .channel-rail a span.count {
+      font-size: 11px;
+      color: var(--ink-3);
+      background: var(--panel-2);
+      padding: 1px 7px;
+      border-radius: 10px;
+    }
+    .channel-rail a:hover, .channel-rail a:focus-visible {
+      background: var(--brand-light);
+      color: var(--brand-dark);
+      outline: none;
+    }
+    .channel-rail a:hover span.count { background: #fff; color: var(--brand-dark); }
+
+    /* 右侧辅助栏 */
+    .side-rail {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      position: sticky;
+      top: calc(var(--announce-h) + var(--header-h) + 16px);
+    }
+    .side-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+    .side-card h2 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .side-card h2::before {
+      content: "";
+      width: 4px; height: 16px;
+      border-radius: 2px;
+      background: var(--brand);
+      display: inline-block;
+    }
+    .rank-list { display: flex; flex-direction: column; gap: 11px; }
+    .rank-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .rank-no {
+      flex-shrink: 0;
+      width: 20px; height: 20px;
+      border-radius: 6px;
+      display: grid;
+      place-items: center;
+      font-size: 11px;
+      font-weight: 700;
+      background: var(--panel-2);
+      color: var(--ink-3);
+      margin-top: 2px;
+    }
+    .rank-item:nth-child(1) .rank-no { background: #fde0d5; color: #c84322; }
+    .rank-item:nth-child(2) .rank-no { background: #fef0d8; color: #a8700a; }
+    .rank-item:nth-child(3) .rank-no { background: #e8f0e0; color: #4d7028; }
+    .rank-item a { color: var(--ink); font-weight: 500; }
+    .rank-item a:hover { color: var(--brand-dark); }
+    .rank-meta { display: block; font-size: 11.5px; color: var(--ink-3); margin-top: 1px; }
+    .side-card .update-list { display: flex; flex-direction: column; gap: 10px; }
+    .update-item { font-size: 13px; padding-bottom: 10px; border-bottom: 1px dashed var(--line); }
+    .update-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .update-item a { font-weight: 600; color: var(--ink); }
+    .update-item a:hover { color: var(--brand-dark); }
+    .update-item .u-meta { font-size: 12px; color: var(--ink-3); }
+    .side-more {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 12.5px;
+      color: var(--brand-dark);
+      font-weight: 600;
+    }
+    .side-more:hover { text-decoration: underline; }
+
+    /* ============ 主内容通用板块样式 ============ */
+    .main-col { display: flex; flex-direction: column; gap: 34px; min-width: 0; }
+    .section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow-sm);
+    }
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .section-head h2 {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: .3px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .section-head h2::before {
+      content: "";
+      width: 5px; height: 20px;
+      border-radius: 3px;
+      background: linear-gradient(180deg, #f07a4f, #d63d1c);
+    }
+    .section-sub { font-size: 13px; color: var(--ink-3); }
+
+    /* 领域概览 */
+    .overview-text p {
+      font-size: 14.5px;
+      color: var(--ink-2);
+      line-height: 1.9;
+      margin-bottom: 12px;
+    }
+    .overview-text p:last-child { margin-bottom: 0; }
+    .overview-text strong { color: var(--ink); font-weight: 600; }
+    .overview-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .overview-chips a {
+      font-size: 12.5px;
+      padding: 5px 13px;
+      border-radius: 18px;
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      color: var(--ink-2);
+      transition: all .15s;
+    }
+    .overview-chips a:hover { background: var(--brand-light); border-color: #f0c4b3; color: var(--brand-dark); }
+
+    /* 精选卡片 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .story-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: #fff;
+      transition: transform .18s, box-shadow .2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .story-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    .card-cover {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--panel-2);
+    }
+    .card-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s; }
+    .story-card:hover .card-cover img { transform: scale(1.04); }
+    .card-type {
+      position: absolute;
+      top: 8px; left: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(31, 27, 24, .68);
+      color: #fff;
+      padding: 2px 9px;
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+    }
+    .card-body { padding: 13px 14px 14px; display: flex; flex-direction: column; flex: 1; }
+    .card-body h3 {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+    .card-body h3 a:hover { color: var(--brand-dark); }
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 8px;
+    }
+    .card-tags span {
+      font-size: 11px;
+      color: var(--ink-3);
+      background: var(--panel-2);
+      padding: 1px 7px;
+      border-radius: 4px;
+    }
+    .card-desc {
+      font-size: 12.5px;
+      color: var(--ink-2);
+      line-height: 1.6;
+      margin-bottom: 10px;
+      flex: 1;
+    }
+    .card-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11.5px;
+      color: var(--ink-3);
+      border-top: 1px dashed var(--line);
+      padding-top: 9px;
+    }
+    .card-heat { color: var(--brand-dark); font-weight: 600; }
+
+    /* 最新更新列表 */
+    .update-rows { display: flex; flex-direction: column; }
+    .update-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 11px 0;
+      border-bottom: 1px dashed var(--line);
+      font-size: 13.5px;
+    }
+    .update-row:last-child { border-bottom: none; }
+    .update-row time {
+      flex-shrink: 0;
+      width: 62px;
+      font-size: 12px;
+      color: var(--ink-3);
+      padding-top: 2px;
+    }
+    .update-row .u-title { font-weight: 600; color: var(--ink); }
+    .update-row .u-title:hover { color: var(--brand-dark); }
+    .update-row .u-note { color: var(--ink-2); font-size: 13px; }
+
+    /* 分类入口 */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .cat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      background: var(--panel-2);
+      border: 1px solid transparent;
+      transition: background .15s, border-color .15s;
+    }
+    .cat-item:hover { background: var(--brand-light); border-color: #f0c4b3; }
+    .cat-item strong { font-size: 14.5px; font-weight: 700; color: var(--ink); }
+    .cat-item span { font-size: 12px; color: var(--ink-3); }
+
+    /* 深度解析 */
+    .deep h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin: 22px 0 10px;
+      color: var(--ink);
+    }
+    .deep h3:first-of-type { margin-top: 0; }
+    .deep p {
+      font-size: 14.5px;
+      color: var(--ink-2);
+      line-height: 1.9;
+      margin-bottom: 12px;
+    }
+    .deep ul {
+      margin: 6px 0 14px 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .deep li {
+      font-size: 14px;
+      color: var(--ink-2);
+      line-height: 1.75;
+      padding-left: 20px;
+      position: relative;
+    }
+    .deep li::before {
+      content: "";
+      position: absolute;
+      left: 2px; top: 9px;
+      width: 7px; height: 7px;
+      border-radius: 2px;
+      background: var(--brand);
+      opacity: .7;
+    }
+    .deep strong { color: var(--ink); font-weight: 600; }
+
+    /* 体验指南 */
+    .guide-steps { display: flex; flex-direction: column; gap: 14px; }
+    .guide-step {
+      display: flex;
+      gap: 14px;
+      padding: 14px 16px;
+      background: var(--panel-2);
+      border-radius: var(--radius-sm);
+    }
+    .guide-num {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      background: var(--brand);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      display: grid;
+      place-items: center;
+    }
+    .guide-step h4 { font-size: 14.5px; font-weight: 700; margin-bottom: 3px; }
+    .guide-step p { font-size: 13px; color: var(--ink-2); line-height: 1.7; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 8px; }
+    .faq-item {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: #fff;
+    }
+    .faq-item summary {
+      padding: 13px 16px;
+      font-size: 14.5px;
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      transition: background .15s;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: "+";
+      font-size: 19px;
+      color: var(--brand);
+      font-weight: 400;
+      flex-shrink: 0;
+      transition: transform .2s;
+    }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item summary:hover { background: var(--panel-2); }
+    .faq-item summary:focus-visible { outline: 2px solid var(--brand); outline-offset: -2px; }
+    .faq-answer {
+      padding: 0 16px 15px;
+      font-size: 13.5px;
+      color: var(--ink-2);
+      line-height: 1.8;
+      border-top: 1px dashed var(--line);
+      padding-top: 12px;
+      margin-top: 0;
+    }
+
+    /* 评论 */
+    .comment-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .comment-card {
+      background: var(--panel-2);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+    .comment-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .avatar {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .comment-name { font-weight: 600; font-size: 12.5px; color: var(--ink); }
+    .comment-text { color: var(--ink-2); }
+    .comment-text em { font-style: normal; color: var(--brand-dark); font-weight: 500; }
+
+    /* 相关资讯 */
+    .news-list { display: flex; flex-direction: column; gap: 0; }
+    .news-item {
+      display: flex;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px dashed var(--line);
+      align-items: flex-start;
+    }
+    .news-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .news-thumb {
+      flex-shrink: 0;
+      width: 108px;
+      height: 72px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--panel-2);
+    }
+    .news-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .news-content { flex: 1; min-width: 0; }
+    .news-content h3 { font-size: 14.5px; font-weight: 700; margin-bottom: 4px; line-height: 1.45; }
+    .news-content h3 a:hover { color: var(--brand-dark); }
+    .news-content p { font-size: 12.5px; color: var(--ink-2); line-height: 1.6; margin-bottom: 4px; }
+    .news-date { font-size: 11.5px; color: var(--ink-3); }
+
+    /* 相关推荐标签索引 */
+    .rec-tags { display: flex; flex-wrap: wrap; gap: 9px; }
+    .rec-tags a {
+      font-size: 13px;
+      padding: 7px 16px;
+      border-radius: 20px;
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      color: var(--ink-2);
+      transition: all .15s;
+    }
+    .rec-tags a:hover { background: var(--brand-light); border-color: #f0c4b3; color: var(--brand-dark); }
+
+    /* 补充板块：可信度分层 */
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .trust-item {
+      padding: 16px;
+      border-radius: var(--radius-sm);
+      background: var(--panel-2);
+      border-left: 4px solid var(--brand);
+    }
+    .trust-item:nth-child(2) { border-left-color: #b8860b; }
+    .trust-item:nth-child(3) { border-left-color: #4d7028; }
+    .trust-item h4 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .trust-item p { font-size: 12.5px; color: var(--ink-2); line-height: 1.7; }
+
+    /* ============ 页尾 ============ */
+    .site-footer {
+      background: #241c17;
+      color: #c9bdb3;
+      padding: 42px 0 0;
+      font-size: 13px;
+    }
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 36px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+    .footer-brand .brand-name { color: #f3ede7; font-size: 20px; }
+    .footer-brand .brand-name em { color: #f07a4f; }
+    .footer-brand p { margin-top: 12px; font-size: 12.5px; line-height: 1.8; color: #a89b90; max-width: 280px; }
+    .footer-col h4 { font-size: 13.5px; color: #f3ede7; margin-bottom: 14px; font-weight: 600; }
+    .footer-col ul { display: flex; flex-direction: column; gap: 9px; }
+    .footer-col a { font-size: 12.5px; color: #a89b90; transition: color .15s; }
+    .footer-col a:hover { color: #f0a07f; }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 0 22px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: #8a7d72;
+    }
+    .footer-bottom .disclaimer { font-size: 11.5px; color: #7a6f67; }
+
+    /* ============ 响应式 ============ */
+    @media (max-width: 1180px) {
+      .portal { grid-template-columns: 168px minmax(0, 1fr) 230px; gap: 20px; }
+      .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .cat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 32px; padding: 38px 0 42px; }
+      .hero-visual { min-height: 280px; }
+      .book-stack { max-width: 320px; height: 280px; }
+      .book-1 { width: 140px; height: 194px; }
+      .book-2 { width: 150px; height: 206px; left: 128px; }
+      .book-3 { width: 118px; height: 164px; top: 100px; }
+      .portal { grid-template-columns: minmax(0, 1fr) 240px; }
+      .channel-rail { display: none; }
+      .main-nav { gap: 0; }
+    }
+    @media (max-width: 860px) {
+      .portal { grid-template-columns: 1fr; }
+      .side-rail { position: static; flex-direction: row; flex-wrap: wrap; }
+      .side-card { flex: 1 1 260px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 740px) {
+      :root { --announce-h: 38px; --header-h: 58px; }
+      .container { padding: 0 16px; }
+      .header-inner { padding: 0 16px; gap: 14px; }
+      .brand-name { font-size: 18px; }
+      .brand-mark { width: 30px; height: 30px; }
+      .main-nav { display: none; }
+      .hero h1 { font-size: 28px; }
+      .hero-desc { font-size: 14.5px; }
+      .hero-stats { gap: 20px; flex-wrap: wrap; }
+      .card-grid { grid-template-columns: 1fr; }
+      .cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .comment-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .news-item { flex-direction: column; gap: 8px; }
+      .news-thumb { width: 100%; height: 140px; }
+      .section { padding: 18px; }
+      .side-rail { flex-direction: column; }
+      .footer-top { grid-template-columns: 1fr; gap: 24px; }
+      .update-row { flex-wrap: wrap; gap: 4px 10px; }
+      .update-row time { width: auto; }
+    }
+    @media (max-width: 380px) {
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .btn-primary, .btn-ghost { justify-content: center; }
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+  <!-- 吸顶公告条 -->
+  <div class="announce" role="status">
+    <div class="announce-inner">
+      <span class="announce-badge">更新</span>
+      <p class="announce-text">
+        <strong>11 月 8 日</strong> 新增《长夜烬明》番外篇、《星轨》第 42 章、《雾中灯塔》大结局已上线，本周共更新 <strong>128</strong> 部作品。
+      </p>
+    </div>
+  </div>
+
+  <!-- 吸顶页头 -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#top" class="brand" aria-label="番茄小说网首页">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 18V6l11 6-11 6z" fill="#fff"/>
+          </svg>
+        </span>
+        <span class="brand-name">番茄<em>小说网</em></span>
+      </a>
+      <nav class="main-nav" aria-label="主题导航">
+        <a href="#overview">作品总览</a>
+        <a href="#featured">精选推荐</a>
+        <a href="#latest">最新更新</a>
+        <a href="#categories">分类入口</a>
+        <a href="#deep-dive">深度解析</a>
+        <a href="#faq">常见问答</a>
+        <a href="#comments">读者评论</a>
+        <a href="#news">相关资讯</a>
+      </nav>
+      <button class="nav-cta" type="button" onclick="document.getElementById('featured').scrollIntoView({behavior:'smooth'})">开始找书</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- 主题首屏 -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <span class="hero-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.6-6.3 4.6L8 13.6l-6-4.4h7.6L12 2z" fill="#e8542f"/></svg>
+              都市玄幻 · 悬疑言情 · 每日追更
+            </span>
+            <h1 id="hero-title">番茄小说网</h1>
+            <p class="hero-desc">
+              汇聚 <strong>都市脑洞、玄幻仙侠、悬疑推理、现代言情</strong> 等热门小说类型，提供具体作品推荐、每日更新动态、分类书单与读者口碑，帮助书荒读者快速找到下一本值得追更的作品。
+            </p>
+            <div class="hero-actions">
+              <a href="#featured" class="btn-primary">浏览精选作品</a>
+              <a href="#latest" class="btn-ghost">查看今日更新</a>
+            </div>
+            <div class="hero-stats">
+              <div class="hero-stat"><b>2,860+</b><span>在架示例作品</span></div>
+              <div class="hero-stat"><b>128</b><span>今日更新章节</span></div>
+              <div class="hero-stat"><b>36</b><span>细分类型频道</span></div>
+            </div>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="book-stack">
+              <div class="book-card book-1">
+                <img src="https://picsum.photos/seed/fanqie-dushi12/400/600" width="400" height="600" alt="都市脑洞小说封面" loading="lazy">
+              </div>
+              <div class="book-card book-2">
+                <img src="https://picsum.photos/seed/fanqie-xuanhuan08/400/600" width="400" height="600" alt="玄幻仙侠小说封面" loading="lazy">
+              </div>
+              <div class="book-card book-3">
+                <img src="https://picsum.photos/seed/fanqie-yanqing21/400/600" width="400" height="600" alt="现代言情小说封面" loading="lazy">
+              </div>
+              <div class="book-tag tag-hot"><span class="dot"></span>今日热读 · 都市</div>
+              <div class="book-tag tag-new"><span class="dot" style="background:#b8860b"></span>新书上线 · 悬疑</div>
+              <div class="book-tag tag-rank"><span class="dot" style="background:#4d7028"></span>口碑榜 · 言情</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 三栏门户布局 -->
+    <div class="container">
+      <div class="portal">
+
+        <!-- 左频道索引 -->
+        <aside class="channel-rail" aria-label="频道索引">
+          <h2>频道索引</h2>
+          <ul>
+            <li><a href="#categories">都市脑洞 <span class="count">428</span></a></li>
+            <li><a href="#categories">玄幻仙侠 <span class="count">396</span></a></li>
+            <li><a href="#categories">悬疑推理 <span class="count">312</span></a></li>
+            <li><a href="#categories">现代言情 <span class="count">507</span></a></li>
+            <li><a href="#categories">古言宫斗 <span class="count">284</span></a></li>
+            <li><a href="#categories">科幻末世 <span class="count">176</span></a></li>
+            <li><a href="#categories">历史军事 <span class="count">203</span></a></li>
+            <li><a href="#categories">轻小说 <span class="count">154</span></a></li>
+            <li><a href="#categories">短篇故事 <span class="count">98</span></a></li>
+            <li><a href="#featured">编辑精选 <span class="count">42</span></a></li>
+          </ul>
+        </aside>
+
+        <!-- 中间主内容 -->
+        <div class="main-col">
+
+          <!-- 板块1：主题领域概览 -->
+          <section class="section" id="overview" aria-labelledby="overview-title">
+            <div class="section-head">
+              <h2 id="overview-title">网络小说领域概览</h2>
+              <span class="section-sub">类型分布 · 阅读方向</span>
+            </div>
+            <div class="overview-text">
+              <p>
+                网络小说以连载形式为主，按题材可划分出 <strong>都市脑洞、玄幻仙侠、悬疑推理、现代言情、古言宫斗、科幻末世、历史军事、轻小说</strong> 等主要方向。番茄小说网上的作品通常以每日或每周固定频率更新，单章字数在 2000—4000 字之间，读者可以按“追更”或“养肥再宰”两种节奏消费。
+              </p>
+              <p>
+                当前平台值得关注的方向包括：都市脑洞类偏重现实设定下的超常展开，如 <strong>《长夜烬明》</strong> 以记忆交易为核心；玄幻仙侠类强调修炼体系与世界观搭建，如 <strong>《星轨》</strong> 的星力等级设定；悬疑推理类注重案件结构与反转密度，代表作为 <strong>《雾中灯塔》</strong>。言情方向则分为现代都市情感与古代权谋两条主线，读者可根据偏好选择。
+              </p>
+              <p>
+                判断一部作品是否值得投入时间，通常看三个维度：<strong>更新稳定性</strong>（是否连续日更）、<strong>章节留存率</strong>（读者在 10 章后的追读比例）、<strong>类型完成度</strong>（该题材的核心爽点或情感点是否到位）。这些维度对都市与玄幻类尤其关键，因为长线连载对节奏控制要求更高。
+              </p>
+              <div class="overview-chips">
+                <a href="#featured">都市脑洞新书</a>
+                <a href="#featured">玄幻修炼体系</a>
+                <a href="#featured">悬疑案件推理</a>
+                <a href="#featured">现代言情追更</a>
+                <a href="#latest">今日更新章节</a>
+                <a href="#categories">古言宫斗书单</a>
+              </div>
+            </div>
+          </section>
+
+          <!-- 板块2：精选内容推荐 -->
+          <section class="section" id="featured" aria-labelledby="featured-title">
+            <div class="section-head">
+              <h2 id="featured-title">精选作品推荐</h2>
+              <span class="section-sub">6 部近期高口碑作品</span>
+            </div>
+            <div class="card-grid">
+              <article class="story-card">
+                <div class="card-cover">
+                  <img src="https://picsum.photos/seed/fanqie-changye05/400/300" width="400" height="300" alt="长夜烬明都市脑洞小说封面" loading="lazy">
+                  <span class="card-type">都市脑洞</span>
+                </div>
+                <div class="card-body">
+                  <h3><a href="#featured">长夜烬明</a></h3>
+                  <div class="card-tags"><span>记忆交易</span><span>现实向</span><span>群像</span></div>
+                  <p class="card-desc">以记忆买卖为核心设定，主角在灰色交易链中追查一桩旧案，前 30 章铺设了完整的地下市场规则。</p>
+                  <div class="card-foot"><span class="card-heat">热度 9.6</span><span>更新至 214 章</span></div>
+                </div>
+              </article>
+              <article class="story-card">
+                <div class="card-cover">
+                  <img src="https://picsum.photos/seed/fanqie-xinggui11/400/300" width="400" height="300" alt="星轨玄幻仙侠小说封面" loading="lazy">
+                  <span class="card-type">玄幻仙侠</span>
+                </div>
+                <div class="card-body">
+                  <h3><a href="#featured">星轨</a></h3>
+                  <div class="card-tags"><span>星力修炼</span><span>宗门</span><span>升级流</span></div>
+                  <p class="card-desc">星力等级从“微光”到“恒曜”共九阶，主角以废灵根逆袭，战斗体系清晰，适合喜欢硬设定升级的读者。</p>
+                  <div class="card-foot"><span class="card-heat">热度 9.4</span><span>更新至 389 章</span></div>
+                </div>
+              </article>
+              <article class="story-card">
+                <div class="card-cover">
+                  <img src="https://picsum.photos/seed/fanqie-wuzhongdengta03/400/300" width="400" height="300" alt="雾中灯塔悬疑推理小说封面" loading="lazy">
+                  <span class="card-type">悬疑推理</span>
+                </div>
+                <div class="card-body">
+                  <h3><a href="#featured">雾中灯塔</a></h3>
+                  <div class="card-tags"><span>海岛密室</span><span>双线叙事</span><span>本格</span></div>
+                  <p class="card-desc">围绕一座废弃灯塔的连环失踪案，每 12 章收束一条支线，证据链完整，适合喜欢推敲细节的读者。</p>
+                  <div class="card-foot"><span class="card-heat">热度 9.3</span><span>已完结 186 章</span></div>
+                </div>
+              </article>
+              <article class="story-card">
+                <div class="card-cover">
+                  <img src="https://picsum.photos/seed/fanqie-chunfeng07/400/300" width="400" height="300" alt="春风不识你现代言情小说封面" loading="lazy">
+                  <span class="card-type">现代言情</span>
+                </div>
+                <div class="card-body">
+                  <h3><a href="#featured">春风不识你</a></h3>
+                  <div class="card-tags"><span>破镜重圆</span><span>职场</span><span>双强</span></div>
+                  <p class="card-desc">男女主在投行项目里重逢，情感线与商战线交替推进，前 20 章完成从对立到合作的转折。</p>
+                  <div class="card-foot"><span class="card-heat">热度 9.1</span><span>更新至 132 章</span></div>
+                </div>
+              </article>
+              <article class="story-card">
+                <div class="card-cover">
+                  <img src="https://picsum.photos/seed/fanqie-gongqiang14/400/300" width="400" height="300" alt="宫墙柳古言宫斗小说封面" loading="lazy">
+                  <span class="card-type">古言宫斗</span>
+                </div>
+                <div class="card-body">
+                  <h3><a href="#featured">宫墙柳</a></h3>
+                  <div class="card-tags"><span>权谋</span><span>群像</span><span>非典型女主</span></div>
+                  <p class="card-desc">以冷宫弃妃为视角展开的朝堂博弈，人物动机扎实，每一卷结尾都有一次明确的权力洗牌。</p>
+                  <div class="card-foot"><span class="card-heat">热度 9.0</span><span>更新至 276 章</span></div>
+                </div>
+              </article>
+              <article class="story-card">
+                <div class="card-cover">
+                  <img src="https://picsum.photos/seed/fanqie-moshi09/400/300" width="400" height="300" alt="末世余晖科幻末世小说封面" loading="lazy">
+                  <span class="card-type">科幻末世</span>
+                </div>
+                <div class="card-body">
+                  <h3><a href="#featured">末世余晖</a></h3>
+                  <div class="card-tags"><span>废土</span><span>避难所</span><span>资源管理</span></div>
+                  <p class="card-desc">太阳熄灭后的第七年，主角在废弃气象站重建生存据点，物资分配与探索路线是主要看点。</p>
+                  <div class="card-foot"><span class="card-heat">热度 8.8</span><span>更新至 98 章</span></div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- 板块3：最新更新 -->
+          <section class="section" id="latest" aria-labelledby="latest-title">
+            <div class="section-head">
+              <h2 id="latest-title">最新更新动态</h2>
+              <span class="section-sub">11 月 7 日 — 11 月 8 日</span>
+            </div>
+            <div class="update-rows">
+              <div class="update-row">
+                <time>今天 09:30</time>
+                <div><a href="#latest" class="u-title">《长夜烬明》</a> <span class="u-note">第 214 章“记忆当铺”已上线，新增一条交易规则。</span></div>
+              </div>
+              <div class="update-row">
+                <time>今天 08:15</time>
+                <div><a href="#latest" class="u-title">《星轨》</a> <span class="u-note">第 389 章“恒曜之门”更新，主角突破第八阶。</span></div>
+              </div>
+              <div class="update-row">
+                <time>昨天 21:10</time>
+                <div><a href="#latest" class="u-title">《雾中灯塔》</a> <span class="u-note">大结局番外篇发布，补充了灯塔管理员的背景。</span></div>
+              </div>
+              <div class="update-row">
+                <time>昨天 19:45</time>
+                <div><a href="#latest" class="u-title">《春风不识你》</a> <span class="u-note">第 132 章“项目过会”更新，商战线进入关键节点。</span></div>
+              </div>
+              <div class="update-row">
+                <time>昨天 17:20</time>
+                <div><a href="#latest" class="u-title">《宫墙柳》</a> <span class="u-note">第 276 章“冷宫起火”发布，开启第三卷权谋线。</span></div>
+              </div>
+              <div class="update-row">
+                <time>11 月 7 日</time>
+                <div><a href="#latest" class="u-title">《末世余晖》</a> <span class="u-note">第 98 章“气象站重建”更新，新增两名幸存者角色。</span></div>
+              </div>
+              <div class="update-row">
+                <time>11 月 6 日</time>
+                <div><a href="#latest" class="u-title">《山海提灯人》</a> <span class="u-note">第 56 章“古图残卷”上线，悬疑线埋下新伏笔。</span></div>
+              </div>
+              <div class="update-row">
+                <time>11 月 5 日</time>
+                <div><a href="#latest" class="u-title">《第七次日落》</a> <span class="u-note">第 41 章更新，时间循环规则出现新变数。</span></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 板块4：分类入口 -->
+          <section class="section" id="categories" aria-labelledby="categories-title">
+            <div class="section-head">
+              <h2 id="categories-title">按类型找书</h2>
+              <span class="section-sub">8 个主要分类</span>
+            </div>
+            <div class="cat-grid">
+              <a href="#categories" class="cat-item"><strong>都市脑洞</strong><span>现实设定 · 超常展开</span></a>
+              <a href="#categories" class="cat-item"><strong>玄幻仙侠</strong><span>修炼体系 · 宗门世界</span></a>
+              <a href="#categories" class="cat-item"><strong>悬疑推理</strong><span>案件结构 · 反转密度</span></a>
+              <a href="#categories" class="cat-item"><strong>现代言情</strong><span>都市情感 · 职场关系</span></a>
+              <a href="#categories" class="cat-item"><strong>古言宫斗</strong><span>朝堂权谋 · 后宫博弈</span></a>
+              <a href="#categories" class="cat-item"><strong>科幻末世</strong><span>废土生存 · 资源管理</span></a>
+              <a href="#categories" class="cat-item"><strong>历史军事</strong><span>架空历史 · 战争推演</span></a>
+              <a href="#categories" class="cat-item"><strong>轻小说</strong><span>日常奇幻 · 短篇单元</span></a>
+            </div>
+          </section>
+
+          <!-- 板块5：深度解析 -->
+          <section class="section deep" id="deep-dive" aria-labelledby="deep-title">
+            <div class="section-head">
+              <h2 id="deep-title">类型差异与阅读判断</h2>
+              <span class="section-sub">约 800 字深度解析</span>
+            </div>
+            <h3>都市脑洞与玄幻仙侠的核心区别</h3>
+            <p>
+              都市脑洞类作品把超常设定嵌入现实城市框架，例如 <strong>《长夜烬明》</strong> 的记忆交易市场就建立在普通商业街的背面。这类作品的关键在于“规则的可信度”——作者能否让读者相信这套体系可以在现实中隐蔽运行。判断一部都市脑洞是否值得追，先看前 10 章有没有把规则边界讲清楚，再看主角使用规则时是否付出代价。
+            </p>
+            <p>
+              玄幻仙侠则依赖完整的修炼等级和宗门生态。<strong>《星轨》</strong> 从微光到恒曜共九阶，每一阶都有明确的战力表现和突破条件。这类作品的阅读重点在于“升级节奏”与“战斗写法”：升级太快会失去期待感，太慢则容易注水；战斗描写需要让读者看清每一招的因果，而不是单纯堆砌招式名。
+            </p>
+            <h3>悬疑推理的判断维度</h3>
+            <p>
+              悬疑推理类作品的核心是案件结构。以 <strong>《雾中灯塔》</strong> 为例，全书 186 章分为 15 个案件单元，每个单元 12 章左右收束一条支线，同时埋下主线线索。判断这类作品是否值得投入时间，可以看三个指标：
+            </p>
+            <ul>
+              <li><strong>线索公平性</strong>：关键证据是否在揭晓前已经呈现给读者，而不是靠最后一章突然补充。</li>
+              <li><strong>反转密度</strong>：每 10 章是否至少有一次有效反转，且反转后人物动机依然成立。</li>
+              <li><strong>收束完成度</strong>：单元案件是否闭环，主线是否稳步推进，避免“挖坑不填”。</li>
+            </ul>
+            <h3>言情方向的选择策略</h3>
+            <p>
+              现代言情与古言宫斗的消费节奏差异明显。现代言情如 <strong>《春风不识你》</strong> 通常以情感推进为主线，职场或商战作为背景板，读者关注的是男女主关系的变化节点；古言宫斗如 <strong>《宫墙柳》</strong> 则更依赖权力结构和群像塑造，感情线往往服务于朝堂博弈。
+            </p>
+            <p>
+              如果你偏好强情感冲突，可以先看现代言情中“破镜重圆”或“先婚后爱”标签的作品；如果你更在意人物阵营和权谋布局，古言宫斗里的“非典型女主”和“群像权谋”会更合适。两类作品在更新频率上相近，但古言宫斗的单章信息密度通常更高，适合愿意细读的读者。
+            </p>
+            <h3>科幻末世与历史军事的阅读门槛</h3>
+            <p>
+              科幻末世类如 <strong>《末世余晖》</strong> 需要读者接受一定的设定门槛，包括资源体系、生存规则和科技水平。这类作品的前 20 章通常会集中交代世界观，如果设定交代得过于密集，阅读体验会受影响；判断标准是作者能否在推进剧情的同时自然带出设定。
+            </p>
+            <p>
+              历史军事类则更看重战争推演和制度描写。架空历史作品如果能在前 5 章建立清楚的势力格局，后续的谋略和战役才有支撑点。对普通读者来说，可以先从“单线战役”或“边境防守”这类切口较小的故事进入，再逐步扩展到多势力博弈的长篇。
+            </p>
+          </section>
+
+          <!-- 板块6：体验指南 -->
+          <section class="section" id="guide" aria-labelledby="guide-title">
+            <div class="section-head">
+              <h2 id="guide-title">内容消费路径指南</h2>
+              <span class="section-sub">从入门到追更的判断顺序</span>
+            </div>
+            <div class="guide-steps">
+              <div class="guide-step">
+                <span class="guide-num">1</span>
+                <div><h4>先确定题材偏好</h4><p>从都市脑洞、玄幻仙侠、悬疑推理、现代言情四个大类中选一个主方向，避免在多个类型之间反复跳转浪费时间。</p></div>
+              </div>
+              <div class="guide-step">
+                <span class="guide-num">2</span>
+                <div><h4>看前 10 章的设定完成度</h4><p>都市脑洞看规则是否自洽，玄幻仙侠看等级体系是否清楚，悬疑推理看第一个案件是否闭环。前三章如果无法建立兴趣点，可以放弃。</p></div>
+              </div>
+              <div class="guide-step">
+                <span class="guide-num">3</span>
+                <div><h4>比较更新稳定性与章节留存</h4><p>连续日更的作品更适合追更；断更超过两周的作品建议先放入书架观察。章节留存率高的作品通常节奏更稳。</p></div>
+              </div>
+              <div class="guide-step">
+                <span class="guide-num">4</span>
+                <div><h4>参考同类型读者的具体评论</h4><p>关注评论里提到的具体章节、人物和情节节点，而不是只看评分。讨论越具体的作品，通常越值得试读。</p></div>
+              </div>
+              <div class="guide-step">
+                <span class="guide-num">5</span>
+                <div><h4>决定追更还是养肥</h4><p>连载超过 200 章且稳定更新的作品适合追更；更新较慢或刚上架的作品可以养肥到 50 章以上再集中阅读。</p></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 板块7：FAQ -->
+          <section class="section" id="faq" aria-labelledby="faq-title">
+            <div class="section-head">
+              <h2 id="faq-title">常见问题</h2>
+              <span class="section-sub">读者高频搜索问答</span>
+            </div>
+            <div class="faq-list">
+              <details class="faq-item" open>
+                <summary>都市脑洞小说一般多久更新一次？</summary>
+                <div class="faq-answer">大多数都市脑洞作品采用日更或每周五更的节奏，单章 2000—3000 字。像《长夜烬明》这类高热度连载通常保持日更，遇到重要剧情节点会加更。读者可以在作品详情页查看最近 7 天的更新记录来判断稳定性。</div>
+              </details>
+              <details class="faq-item">
+                <summary>《星轨》和《长夜烬明》有什么区别？</summary>
+                <div class="faq-answer">《星轨》属于玄幻仙侠，核心是星力修炼体系和宗门升级，阅读重点在战斗与等级突破；《长夜烬明》属于都市脑洞，核心是记忆交易规则和现实悬疑，阅读重点在设定自洽和案件推进。两者的消费节奏不同，前者适合喜欢长线升级的读者，后者适合喜欢单元案件和现实向设定的读者。</div>
+              </details>
+              <details class="faq-item">
+                <summary>第一次接触悬疑推理类，从哪本开始看比较好？</summary>
+                <div class="faq-answer">建议从《雾中灯塔》这类单元案件结构清晰的作品开始。全书分为 15 个案件单元，每个单元 12 章左右收束，主线穿插其中，即使中途暂停也不会影响理解。如果偏好短篇，可以先读《山海提灯人》前 20 章。</div>
+              </details>
+              <details class="faq-item">
+                <summary>现代言情和古言宫斗的评判标准有什么不同？</summary>
+                <div class="faq-answer">现代言情主要看情感推进是否自然、男女主关系变化是否合理，以及职场或商战背景是否服务于感情线；古言宫斗更看重权力结构是否清晰、群像人物动机是否成立，以及每一卷的阵营洗牌是否有说服力。两类作品都可以通过前 20 章判断作者的控制力。</div>
+              </details>
+              <details class="faq-item">
+                <summary>科幻末世类作品需要先了解设定才能看吗？</summary>
+                <div class="faq-answer">不需要提前做功课。好的末世作品会在前 3—5 章自然带出关键设定，比如资源来源、避难所规则和威胁类型。《末世余晖》从第 1 章就交代了太阳熄灭后的第七年背景，读者可以跟着主角的视角逐步了解世界。</div>
+              </details>
+              <details class="faq-item">
+                <summary>玄幻仙侠的修炼等级一般怎么判断是否合理？</summary>
+                <div class="faq-answer">看三个地方：每一阶是否有明确的战力表现、突破条件是否清晰、高阶与低阶之间的差距是否稳定。《星轨》的微光到恒曜九阶体系给出了每一阶的典型战斗场景，读者可以据此判断升级节奏是否可信。</div>
+              </details>
+            </div>
+          </section>
+
+          <!-- 板块8：用户评论 -->
+          <section class="section" id="comments" aria-labelledby="comments-title">
+            <div class="section-head">
+              <h2 id="comments-title">读者评论</h2>
+              <span class="section-sub">来自追更读者的具体反馈</span>
+            </div>
+            <div class="comment-grid">
+              <div class="comment-card"><div class="comment-head"><span class="avatar" style="background:#e8542f">林</span><span class="comment-name">林间有风</span></div><p class="comment-text">《长夜烬明》第 214 章的记忆当铺规则写得挺细，前面埋的交易代价终于用上了，<em>这种回收伏笔的节奏很舒服</em>。</p></div>
+              <div class="comment-card"><div class="comment-head"><span class="avatar" style="background:#b8860b">陈</span><span class="comment-name">陈默读书记</span></div><p class="comment-text">《星轨》的恒曜之门突破写了两章，战斗过程没有跳步，<em>星力九阶的差距也交代清楚了</em>，比很多一路秒杀的作品扎实。</p></div>
+              <div class="comment-card"><div class="comment-head"><span class="avatar" style="background:#4d7028">小</span><span class="comment-name">小满推书</span></div><p class="comment-text">《雾中灯塔》的番外补了管理员背景，但我觉得正文里如果早点给这个线索会更好，<em>结尾有点依赖番外补充</em>。</p></div>
+              <div class="comment-card"><div class="comment-head"><span class="avatar" style="background:#7a5c3e">周</span><span class="comment-name">周周不熬夜</span></div><p class="comment-text">《春风不识你》的投行项目线写得比感情线还细，<em>男女主在过会那章的对手戏很自然</em>，没有硬凑糖。</p></div>
+              <div class="comment-card"><div class="comment-head"><span class="avatar" style="background:#a04a6c">晚</span><span class="comment-name">晚风书单</span></div><p class="comment-text">《宫墙柳》冷宫起火那段群像切换得很快，<em>第三卷的权谋线比前两卷更复杂</em>，期待后面怎么收。</p></div>
+              <div class="comment-card"><div class="comment-head"><span class="avatar" style="background:#3d6b8c">末</span><span class="comment-name">末世观察员</span></div><p class="comment-text">《末世余晖》的气象站重建写得很实际，物资分配和人员分工都有交代，<em>废土种田感比纯战斗更吸引我</em>。</p></div>
+              <div class="comment-card"><div class="comment-head"><span class="avatar" style="background:#8a6a2f">山</span><span class="comment-name">山海读者</span></div><p class="comment-text">《山海提灯人》第 56 章的古图残卷又挖了新坑，<em>希望不要像前两卷那样等到结尾才解释</em>。</p></div>
+              <div class="comment-card"><div class="comment-head"><span class="avatar" style="background:#5c5c8a">第</span><span class="comment-name">第七次日落</span></div><p class="comment-text">时间循环的变数出现在第 41 章，<em>这次不是简单重复前一天</em>，主角开始利用循环收集信息，方向对了。</p></div>
+              <div class="comment-card"><div class="comment-head"><span class="avatar" style="background:#c84322">番</span><span class="comment-name">番茄常驻民</span></div><p class="comment-text">最近在追都市脑洞这个分类，<em>《长夜烬明》和《第七次日落》都在追</em>，前者偏现实悬疑，后者偏时间循环，换着看不会腻。</p></div>
+              <div class="comment-card"><div class="comment-head"><span class="avatar" style="background:#2f6b5c">书</span><span class="comment-name">书架管理员</span></div><p class="comment-text">古言宫斗里《宫墙柳》的人物动机写得最好，<em>每个阵营都有明确的利益诉求</em>，不是单纯的好坏对立。</p></div>
+              <div class="comment-card"><div class="comment-head"><span class="avatar" style="background:#8a5c3e">玄</span><span class="comment-name">玄幻老书虫</span></div><p class="comment-text">《星轨》的宗门设定有点多，前 50 章人物名字记不住，<em>但撑过第一卷之后战斗体系就清楚了</em>。</p></div>
+              <div class="comment-card"><div class="comment-head"><span class="avatar" style="background:#6a4a8a">推</span><span class="comment-name">推书小站</span></div><p class="comment-text">悬疑推理这个分类里，《雾中灯塔》的案件闭环做得最好，<em>每个单元结尾都有明确的证据链</em>，适合细读。</p></div>
+              <div class="comment-card"><div class="comment-head"><span class="avatar" style="background:#b8860b">追</span><span class="comment-name">追更不睡觉</span></div><p class="comment-text">《春风不识你》第 132 章的项目过会写得很真实，<em>职场线没有悬浮感</em>，感情线也在稳步推进。</p></div>
+              <div class="comment-card"><div class="comment-head"><span class="avatar" style="background:#4d7028">养</span><span class="comment-name">养肥专业户</span></div><p class="comment-text">《末世余晖》我打算养到 150 章再看，<em>废土文节奏慢一点，集中阅读体验更好</em>。</p></div>
+            </div>
+          </section>
+
+          <!-- 板块9：相关资讯 -->
+          <section class="section" id="news" aria-labelledby="news-title">
+            <div class="section-head">
+              <h2 id="news-title">相关资讯</h2>
+              <span class="section-sub">近期平台与类型动态</span>
+            </div>
+            <div class="news-list">
+              <article class="news-item">
+                <div class="news-thumb"><img src="https://picsum.photos/seed/fanqie-news01/600/400" width="600" height="400" alt="长夜烬明番外篇上线资讯配图" loading="lazy"></div>
+                <div class="news-content">
+                  <h3><a href="#news">《长夜烬明》番外篇上线，补充记忆当铺早期规则</a></h3>
+                  <p>11 月 8 日，作品更新番外“当铺前传”，交代了主角接手记忆当铺之前的交易记录，为正文第 214 章的新规则提供背景。</p>
+                  <span class="news-date">2026-11-08</span>
+                </div>
+              </article>
+              <article class="news-item">
+                <div class="news-thumb"><img src="https://picsum.photos/seed/fanqie-news02/600/400" width="600" height="400" alt="星轨第389章更新资讯配图" loading="lazy"></div>
+                <div class="news-content">
+                  <h3><a href="#news">《星轨》第 389 章更新，主角突破第八阶</a></h3>
+                  <p>11 月 8 日早上更新“恒曜之门”章节，星力体系第八阶的战斗表现首次完整呈现，宗门线进入新阶段。</p>
+                  <span class="news-date">2026-11-08</span>
+                </div>
+              </article>
+              <article class="news-item">
+                <div class="news-thumb"><img src="https://picsum.photos/seed/fanqie-news03/600/400" width="600" height="400" alt="雾中灯塔完结番外资讯配图" loading="lazy"></div>
+                <div class="news-content">
+                  <h3><a href="#news">《雾中灯塔》完结番外发布，灯塔管理员背景揭晓</a></h3>
+                  <p>11 月 7 日晚，完结番外篇上线，补充了灯塔管理员在失踪案发生前的完整经历，为正文中的多处伏笔提供了解释。</p>
+                  <span class="news-date">2026-11-07</span>
+                </div>
+              </article>
+              <article class="news-item">
+                <div class="news-thumb"><img src="https://picsum.photos/seed/fanqie-news04/600/400" width="600" height="400" alt="都市脑洞分类新增作品资讯配图" loading="lazy"></div>
+                <div class="news-content">
+                  <h3><a href="#news">都市脑洞分类本周新增 12 部连载作品</a></h3>
+                  <p>11 月 1 日至 11 月 7 日，都市脑洞频道新增 12 部作品，其中 5 部以记忆、时间、身份交换为核心设定，题材集中度明显上升。</p>
+                  <span class="news-date">2026-11-06</span>
+                </div>
+              </article>
+              <article class="news-item">
+                <div class="news-thumb"><img src="https://picsum.photos/seed/fanqie-news05/600/400" width="600" height="400" alt="悬疑推理短篇单元趋势资讯配图" loading="lazy"></div>
+                <div class="news-content">
+                  <h3><a href="#news">悬疑推理类短篇单元结构成为近期热门写法</a></h3>
+                  <p>过去两周，悬疑推理分类中采用“12 章一单元”结构的作品数量上升，读者反馈集中在案件闭环和线索公平性两个方面。</p>
+                  <span class="news-date">2026-11-04</span>
+                </div>
+              </article>
+              <article class="news-item">
+                <div class="news-thumb"><img src="https://picsum.photos/seed/fanqie-news06/600/400" width="600" height="400" alt="古言宫斗新书上线资讯配图" loading="lazy"></div>
+                <div class="news-content">
+                  <h3><a href="#news">古言宫斗新书《金炉香》上线，首日更新 10 章</a></h3>
+                  <p>11 月 3 日，古言宫斗频道上线新作《金炉香》，以尚宫局女官视角展开，首日更新 10 章，前 3 章完成主要人物登场。</p>
+                  <span class="news-date">2026-11-03</span>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- 板块10：相关推荐 -->
+          <section class="section" id="recommend" aria-labelledby="recommend-title">
+            <div class="section-head">
+              <h2 id="recommend-title">延伸阅读方向</h2>
+              <span class="section-sub">按设定与类型延伸</span>
+            </div>
+            <div class="rec-tags">
+              <a href="#recommend">记忆交易类都市文</a>
+              <a href="#recommend">星力修炼体系</a>
+              <a href="#recommend">海岛密室悬疑</a>
+              <a href="#recommend">投行职场言情</a>
+              <a href="#recommend">冷宫权谋群像</a>
+              <a href="#recommend">废土资源管理</a>
+              <a href="#recommend">时间循环变数</a>
+              <a href="#recommend">古图残卷探险</a>
+            </div>
+          </section>
+
+          <!-- 板块11：补充板块 - 可信度分层 -->
+          <section class="section" id="trust" aria-labelledby="trust-title">
+            <div class="section-head">
+              <h2 id="trust-title">作品信息可信度分层</h2>
+              <span class="section-sub">按更新记录与章节完整度划分</span>
+            </div>
+            <div class="trust-grid">
+              <div class="trust-item">
+                <h4>稳定连载层</h4>
+                <p>连续 30 天以上日更或周更五章以上，章节无重复、无缺失。如《长夜烬明》《星轨》《春风不识你》，适合追更读者直接放入书架。</p>
+              </div>
+              <div class="trust-item">
+                <h4>观察跟进层</h4>
+                <p>近 14 天有更新但频率不稳定，或刚上架不足 20 章。如《金炉香》《第七次日落》，建议先试读前 10 章再决定是否追更。</p>
+              </div>
+              <div class="trust-item">
+                <h4>完结补读层</h4>
+                <p>已完结且番外完整，适合集中阅读。《雾中灯塔》正文 186 章加番外 3 篇已全部上线，可一次性读完案件主线。</p>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- 右侧辅助栏 -->
+        <aside class="side-rail" aria-label="辅助信息">
+          <div class="side-card">
+            <h2>今日热读榜</h2>
+            <div class="rank-list">
+              <div class="rank-item"><span class="rank-no">1</span><div><a href="#featured">长夜烬明</a><span class="rank-meta">都市脑洞 · 热度 9.6</span></div></div>
+              <div class="rank-item"><span class="rank-no">2</span><div><a href="#featured">星轨</a><span class="rank-meta">玄幻仙侠 · 热度 9.4</span></div></div>
+              <div class="rank-item"><span class="rank-no">3</span><div><a href="#featured">雾中灯塔</a><span class="rank-meta">悬疑推理 · 热度 9.3</span></div></div>
+              <div class="rank-item"><span class="rank-no">4</span><div><a href="#featured">春风不识你</a><span class="rank-meta">现代言情 · 热度 9.1</span></div></div>
+              <div class="rank-item"><span class="rank-no">5</span><div><a href="#featured">宫墙柳</a><span class="rank-meta">古言宫斗 · 热度 9.0</span></div></div>
+              <div class="rank-item"><span class="rank-no">6</span><div><a href="#featured">末世余晖</a><span class="rank-meta">科幻末世 · 热度 8.8</span></div></div>
+            </div>
+          </div>
+          <div class="side-card">
+            <h2>最近更新</h2>
+            <div class="update-list">
+              <div class="update-item"><a href="#latest">《长夜烬明》</a><br><span class="u-meta">第 214 章 · 今天 09:30</span></div>
+              <div class="update-item"><a href="#latest">《星轨》</a><br><span class="u-meta">第 389 章 · 今天 08:15</span></div>
+              <div class="update-item"><a href="#latest">《雾中灯塔》</a><br><span class="u-meta">番外篇 · 昨天 21:10</span></div>
+              <div class="update-item"><a href="#latest">《春风不识你》</a><br><span class="u-meta">第 132 章 · 昨天 19:45</span></div>
+            </div>
+            <a href="#latest" class="side-more">查看全部更新 →</a>
+          </div>
+          <div class="side-card">
+            <h2>分类速查</h2>
+            <div class="overview-chips" style="margin-top:0">
+              <a href="#categories">都市脑洞</a>
+              <a href="#categories">玄幻仙侠</a>
+              <a href="#categories">悬疑推理</a>
+              <a href="#categories">现代言情</a>
+              <a href="#categories">古言宫斗</a>
+              <a href="#categories">科幻末世</a>
+              <a href="#categories">历史军事</a>
+              <a href="#categories">轻小说</a>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- 页尾 -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="brand-name" style="font-weight:800">番茄<em>小说网</em></span>
+          <p>汇聚都市脑洞、玄幻仙侠、悬疑推理与言情等类型作品，提供可搜索的条目推荐、更新动态与阅读判断参考。</p>
+        </div>
+        <div class="footer-col">
+          <h4>作品类型</h4>
+          <ul>
+            <li><a href="#categories">都市脑洞</a></li>
+            <li><a href="#categories">玄幻仙侠</a></li>
+            <li><a href="#categories">悬疑推理</a></li>
+            <li><a href="#categories">现代言情</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>阅读辅助</h4>
+          <ul>
+            <li><a href="#overview">领域概览</a></li>
+            <li><a href="#guide">消费路径</a></li>
+            <li><a href="#faq">常见问题</a></li>
+            <li><a href="#comments">读者评论</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>近期动态</h4>
+          <ul>
+            <li><a href="#latest">最新更新</a></li>
+            <li><a href="#news">相关资讯</a></li>
+            <li><a href="#recommend">延伸阅读</a></li>
+            <li><a href="#trust">可信度分层</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 番茄小说网 · 内容聚合展示</span>
+        <span class="disclaimer">部分内容为示例数据，仅用于展示页面结构</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+  </html>
